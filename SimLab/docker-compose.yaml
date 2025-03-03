@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    command: ["mongod", "--replSet", "rs0"]
+    entrypoint: ["/bin/bash", "-c", "mongod --replSet rs0 --bind_ip_all & sleep 5 && mongosh --eval 'rs.initiate()' && tail -f /dev/null"]
+
+  master_node:
+    build: ./master-node
+    container_name: master_node
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017
+    restart: always
+
+  mo_engine:
+    build: ./mo-engine
+    container_name: mo_engine
+    depends_on:
+      - mongodb
+      - master_node
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017
+    restart: always
+
+  rest_api:
+    build: ./rest-api/SimApi
+    container_name: rest_api
+    ports:
+      - "8000:80"
+      - "8001:443"
+    depends_on:
+      - mongodb
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - MONGO_URI=mongodb://mongodb:27017
+volumes:
+  mongo_data:
