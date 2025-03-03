@@ -8,12 +8,9 @@ namespace SimAPI.Services
     {
         private readonly IMongoCollection<SimulationStatus> _simulationsCollection;
 
-        public SimulationService(IOptions<SimulationDatabaseSettings> simulationDatabaseSettings)
+        public SimulationService(IMongoDatabase database)
         {
-            var mongoClient = new MongoClient(simulationDatabaseSettings.Value.ConnectionString);
-            var mongoDatabase = mongoClient.GetDatabase(simulationDatabaseSettings.Value.DatabaseName);
-            _simulationsCollection = mongoDatabase.GetCollection<SimulationStatus>(
-                simulationDatabaseSettings.Value.SimulationsCollectionName);
+            _simulationsCollection = database.GetCollection<SimulationStatus>("simulations");
         }
 
         public async Task<List<SimulationStatus>> GetAsync() =>
@@ -29,7 +26,6 @@ namespace SimAPI.Services
                 Name = simulationConfig.Name,
                 Status = "Running",
                 StartTime = DateTime.UtcNow,
-                Parameters = simulationConfig.Parameters,
                 Progress = 0
             };
 

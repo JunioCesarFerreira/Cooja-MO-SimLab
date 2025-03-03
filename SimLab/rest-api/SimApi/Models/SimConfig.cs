@@ -7,7 +7,6 @@ namespace SimAPI.Models
     {
         public string Name { get; set; } = null!;
         public int Duration { get; set; }
-        public Dictionary<string, object> Parameters { get; set; } = new Dictionary<string, object>();
 
         /// <summary>
         /// Elementos da simulação

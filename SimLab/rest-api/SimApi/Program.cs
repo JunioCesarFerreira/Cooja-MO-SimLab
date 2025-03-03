@@ -2,6 +2,8 @@ using Microsoft.OpenApi.Models;
 using SimAPI.Services;
 using SimAPI.Models;
 using System.Reflection;
+using MongoDB.Driver;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SimAPI
 {
@@ -28,11 +30,39 @@ namespace SimAPI
                 c.IncludeXmlComments(xmlPath);
             });
 
-            // Configuração do MongoDB
-            builder.Services.Configure<SimulationDatabaseSettings>(
-                builder.Configuration.GetSection("SimulationDatabase"));
+            // Registrar política de CORS
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                });
+            });
 
-            builder.Services.AddSingleton<SimulationService>();
+            // Configuração do MongoDB - Ajustada para usar MONGO_URI do ambiente
+            var mongoUri = Environment.GetEnvironmentVariable("MONGO_URI") ?? "mongodb://localhost:27017";
+            var simulationDbSettings = new SimulationDatabaseSettings
+            {
+                ConnectionString = mongoUri,
+                DatabaseName = "simulation_db",
+                SimulationsCollectionName = "simulations"
+            };
+
+            builder.Services.AddSingleton<IMongoClient>(sp =>
+            {
+                return new MongoClient(simulationDbSettings.ConnectionString);
+            });
+
+            builder.Services.AddSingleton(sp =>
+            {
+                var dbName = simulationDbSettings.DatabaseName;
+                var client = sp.GetRequiredService<IMongoClient>();
+                return client.GetDatabase(dbName);
+            });
+
+            builder.Services.AddScoped<SimulationService>();
 
             var app = builder.Build();
 
@@ -43,7 +73,9 @@ namespace SimAPI
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Simulation API v1");
             });
 
-            app.UseHttpsRedirection();
+            // Habilitar essa política globalmente
+            app.UseCors("AllowAll");
+
             app.UseAuthorization();
             app.MapControllers();
 

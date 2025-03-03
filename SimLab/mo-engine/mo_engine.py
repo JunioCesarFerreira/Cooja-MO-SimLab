@@ -2,7 +2,7 @@ import pymongo
 import time
 import os
 
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://mongodb:27017/?replicaSet=rs0")
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/?replicaSet=rs0")
 client = pymongo.MongoClient(MONGO_URI)
 
 # Aguarda MongoDB estar pronto
