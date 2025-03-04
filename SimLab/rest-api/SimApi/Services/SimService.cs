@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using SimAPI.Models;
 
@@ -24,7 +23,7 @@ namespace SimAPI.Services
             var simulationStatus = new SimulationStatus
             {
                 Name = simulationConfig.Name,
-                Status = "Running",
+                Status = "Queued",
                 StartTime = DateTime.UtcNow,
                 Progress = 0
             };

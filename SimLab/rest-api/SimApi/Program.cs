@@ -3,7 +3,6 @@ using SimAPI.Services;
 using SimAPI.Models;
 using System.Reflection;
 using MongoDB.Driver;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace SimAPI
 {
@@ -42,7 +41,7 @@ namespace SimAPI
             });
 
             // Configuração do MongoDB - Ajustada para usar MONGO_URI do ambiente
-            var mongoUri = Environment.GetEnvironmentVariable("MONGO_URI") ?? "mongodb://localhost:27017";
+            var mongoUri = Environment.GetEnvironmentVariable("MONGO_URI") ?? "mongodb://localhost:27017/?replicaSet=rs0";
             var simulationDbSettings = new SimulationDatabaseSettings
             {
                 ConnectionString = mongoUri,
