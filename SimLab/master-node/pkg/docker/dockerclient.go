@@ -3,6 +3,7 @@ package dockerclient
 import (
 	"context"
 	"fmt"
+	"io"
 
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/client"
@@ -80,4 +81,35 @@ func (dc *DockerClient) IsContainerRunning(ctx context.Context, containerID stri
 		return false, fmt.Errorf("failed to inspect container: %v", err)
 	}
 	return containerJSON.State.Running, nil
+}
+
+// GetContainerLogs obtém os logs de um container
+func (dc *DockerClient) GetContainerLogs(ctx context.Context, containerID string) (string, error) {
+	out, err := dc.cli.ContainerLogs(ctx, containerID, container.LogsOptions{ShowStdout: true, ShowStderr: true})
+	if err != nil {
+		return "", fmt.Errorf("failed to get container logs: %v", err)
+	}
+	defer out.Close()
+
+	logs, err := io.ReadAll(out)
+	if err != nil {
+		return "", fmt.Errorf("failed to read container logs: %v", err)
+	}
+
+	return string(logs), nil
+}
+
+// GetContainerIP obtém o IP do container na rede especificada
+func (dc *DockerClient) GetContainerIP(ctx context.Context, containerID, networkName string) (string, error) {
+	containerJSON, err := dc.cli.ContainerInspect(ctx, containerID)
+	if err != nil {
+		return "", fmt.Errorf("failed to inspect container: %v", err)
+	}
+
+	networkSettings := containerJSON.NetworkSettings.Networks[networkName]
+	if networkSettings == nil {
+		return "", fmt.Errorf("container is not connected to network %s", networkName)
+	}
+
+	return networkSettings.IPAddress, nil
 }

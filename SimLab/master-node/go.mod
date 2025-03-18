@@ -4,6 +4,7 @@ go 1.23.5
 
 require (
 	github.com/docker/docker v28.0.1+incompatible
+	github.com/docker/go-connections v0.5.0
 	go.mongodb.org/mongo-driver v1.17.2
 	golang.org/x/crypto v0.26.0
 )
@@ -12,7 +13,6 @@ require (
 	github.com/Microsoft/go-winio v0.4.14 // indirect
 	github.com/containerd/log v0.1.0 // indirect
 	github.com/distribution/reference v0.6.0 // indirect
-	github.com/docker/go-connections v0.5.0 // indirect
 	github.com/docker/go-units v0.5.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect

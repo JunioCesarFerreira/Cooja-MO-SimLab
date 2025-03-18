@@ -117,8 +117,8 @@ func (w *Worker) Run(ctx context.Context) error {
 
 	if !isRunning {
 		logs, _ := w.dockerClient.GetContainerLogs(ctx, containerID)
-		w.failSimulation(ctx, fmt.Sprintf("simulation exited with code %d: %s", isRunning, logs))
-		return fmt.Errorf("simulation exited with non-zero code: %d", isRunning)
+		w.failSimulation(ctx, fmt.Sprintf("simulation exited\nLog:\n%s\n", logs))
+		return fmt.Errorf("simulation exited with error")
 	}
 
 	// Copiar resultados do container
@@ -131,7 +131,7 @@ func (w *Worker) Run(ctx context.Context) error {
 	}
 
 	// Ler e processar resultados
-	outputBytes, err := ioutil.ReadFile(localOutputPath)
+	outputBytes, err := os.ReadFile(localOutputPath)
 	if err != nil {
 		w.failSimulation(ctx, fmt.Sprintf("failed to read output file: %v", err))
 		return err
