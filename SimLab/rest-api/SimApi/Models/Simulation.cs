@@ -1,5 +1,34 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace SimAPI.Models
 {
+    /// <summary>
+    /// Configuração inicial da simulação
+    /// </summary>
+    public class Simulation
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; } = null!;
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string ExperimentId { get; set; } = null!;
+        public int Generation {get; set;}
+        public string Name { get; set; } = null!;
+        public int Duration { get; set; }
+        public string Status { get; set; } = "NotStarted";
+        public DateTime StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
+        public double CurrentValue { get; set; }
+        public int Progress { get; set; }
+
+        /// <summary>
+        /// Elementos da simulação
+        /// </summary>
+        public SimulationElements SimulationElements { get; set; } = new SimulationElements();
+    }
+    
     /// <summary>
     /// Representa uma configuração de rede de motes
     /// </summary>

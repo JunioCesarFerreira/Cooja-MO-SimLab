@@ -46,6 +46,7 @@ namespace SimAPI
             {
                 ConnectionString = mongoUri,
                 DatabaseName = "simulation_db",
+                ExperimentsCollectionName = "experiments",
                 SimulationsCollectionName = "simulations"
             };
 

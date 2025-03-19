@@ -22,10 +22,10 @@ namespace SimAPI.Controllers
         /// <returns>Status da simulação recém-criada</returns>
         /// <response code="201">Retorna a simulação recém-criada</response>
         /// <response code="400">Se o objeto de configuração for nulo</response>
-        [HttpPost("start-sim")]
+        [HttpPost("start")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<SimulationStatus>> StartSimulation(SimulationConfig config)
+        public async Task<ActionResult<Simulation>> StartSimulation(Simulation config)
         {
             if (config == null)
             {
@@ -44,10 +44,10 @@ namespace SimAPI.Controllers
         /// <returns>Status atualizado da simulação</returns>
         /// <response code="200">Retorna o status atualizado</response>
         /// <response code="404">Se a simulação não for encontrada</response>
-        [HttpPut("stop-sim/{id}")]
+        [HttpPut("stop/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<SimulationStatus>> StopSimulation(string id)
+        public async Task<ActionResult<Simulation>> StopSimulation(string id)
         {
             var simulation = await _simulationService.StopSimulationAsync(id);
 
@@ -66,16 +66,37 @@ namespace SimAPI.Controllers
         /// <returns>Status atual da simulação</returns>
         /// <response code="200">Retorna o status da simulação</response>
         /// <response code="404">Se a simulação não for encontrada</response>
-        [HttpGet("status-sim/{id}")]
+        [HttpGet("status/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<SimulationStatus>> GetSimulationStatus(string id)
+        public async Task<ActionResult<Simulation>> GetSimulationStatus(string id)
         {
             var simulation = await _simulationService.GetAsync(id);
 
             if (simulation == null)
             {
                 return NotFound($"Simulação com ID {id} não encontrada");
+            }
+
+            return Ok(simulation);
+        }
+
+        /// <summary>
+        /// Obtém todas simulações
+        /// </summary>
+        /// <returns>Status atual da simulação</returns>
+        /// <response code="200">Retorna o status da simulação</response>
+        /// <response code="404">Se a simulação não for encontrada</response>
+        [HttpGet("all")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Simulation>> GetSimulations()
+        {
+            var simulation = await _simulationService.GetAsync();
+
+            if (simulation == null)
+            {
+                return NotFound("Nenhuma simulação foi encontrada");
             }
 
             return Ok(simulation);
