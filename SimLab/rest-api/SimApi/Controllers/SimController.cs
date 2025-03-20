@@ -18,21 +18,21 @@ namespace SimAPI.Controllers
         /// <summary>
         /// Inicia uma nova simulação com a configuração fornecida
         /// </summary>
-        /// <param name="config">Configuração inicial da simulação</param>
+        /// <param name="sim">Configuração inicial da simulação</param>
         /// <returns>Status da simulação recém-criada</returns>
         /// <response code="201">Retorna a simulação recém-criada</response>
         /// <response code="400">Se o objeto de configuração for nulo</response>
         [HttpPost("start")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Simulation>> StartSimulation(Simulation config)
+        public async Task<ActionResult<Simulation>> StartSimulation(Simulation sim)
         {
-            if (config == null)
+            if (sim == null)
             {
                 return BadRequest("Configuração de simulação é obrigatória");
             }
 
-            var simulationStatus = await _simulationService.CreateAsync(config);
+            var simulationStatus = await _simulationService.CreateAsync(sim);
 
             return CreatedAtAction(nameof(GetSimulationStatus), new { id = simulationStatus.Id }, simulationStatus);
         }

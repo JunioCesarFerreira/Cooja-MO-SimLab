@@ -63,6 +63,7 @@ namespace SimAPI
             });
 
             builder.Services.AddScoped<SimulationService>();
+            builder.Services.AddScoped<ExperimentService>();
 
             var app = builder.Build();
 

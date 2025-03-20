@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"os"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -15,7 +14,7 @@ import (
 // Número máximo de simulações concorrentes
 const MaxWorkers = 5
 
-var mongoURI = os.Getenv("MONGO_URI")
+var mongoURI = "mongodb://localhost:27017/?replicaSet=rs0" //os.Getenv("MONGO_URI")
 
 func main() {
 	clientOptions := options.Client().ApplyURI(mongoURI)

@@ -3,48 +3,6 @@ using SimAPI.Models;
 
 namespace SimAPI.Services
 {
-    public class ExperimentService
-    {
-        private readonly IMongoCollection<Experiment> _experimentsCollection;
-
-        public ExperimentService(IMongoDatabase database)
-        {
-            _experimentsCollection = database.GetCollection<Experiment>("experiments");
-        }
-
-        public async Task<List<Experiment>> GetAsync() =>
-            await _experimentsCollection.Find(_ => true).ToListAsync();
-
-        public async Task<Experiment?> GetAsync(string id) =>
-            await _experimentsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-
-        public async Task<Experiment?> GetByNameAsync(string name) =>
-            await _experimentsCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
-
-        public async Task<Experiment> CreateAsync(Experiment experiment)
-        {
-            await _experimentsCollection.InsertOneAsync(experiment);
-            return experiment;
-        }
-
-        public async Task UpdateAsync(string id, Experiment updatedExperiment) =>
-            await _experimentsCollection.ReplaceOneAsync(x => x.Id == id, updatedExperiment);
-
-        public async Task<Experiment?> StopExperimentAsync(string id)
-        {
-            var experiment = await _experimentsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-            
-            if (experiment != null)
-            {
-                experiment.Status = "Stopped";
-                experiment.EndTime = DateTime.UtcNow;
-                await _experimentsCollection.ReplaceOneAsync(x => x.Id == id, experiment);
-            }
-            
-            return experiment;
-        }
-    }
-
     public class SimulationService
     {
         private readonly IMongoCollection<Simulation> _simulationsCollection;
@@ -60,10 +18,23 @@ namespace SimAPI.Services
         public async Task<Simulation?> GetAsync(string id) =>
             await _simulationsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-        public async Task<Simulation> CreateAsync(Simulation simulation)
+        public async Task<Simulation> CreateAsync(SimulationBase simulation)
         {
-            await _simulationsCollection.InsertOneAsync(simulation);
-            return simulation;
+            var newSimulation = new Simulation
+            {
+                ExperimentId = simulation.ExperimentId,
+                Generation = simulation.Generation,
+                Name = simulation.Name,
+                Duration = simulation.Duration,
+                Status = simulation.Status,
+                StartTime = simulation.StartTime,
+                EndTime = simulation.EndTime,
+                CurrentValue = simulation.CurrentValue,
+                Progress = simulation.Progress,
+                SimulationElements = simulation.SimulationElements,
+            };
+            await _simulationsCollection.InsertOneAsync(newSimulation);
+            return newSimulation;
         }
 
         public async Task UpdateAsync(string id, Simulation updatedSimulation) =>

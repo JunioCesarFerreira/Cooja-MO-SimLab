@@ -3,15 +3,18 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace SimAPI.Models
 {
-    /// <summary>
-    /// Configuração inicial da simulação
-    /// </summary>
-    public class Simulation
-    {
+    public class Simulation : SimulationBase
+    {        
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; } = null!;
-        [BsonId]
+    }
+
+    /// <summary>
+    /// Configuração inicial da simulação
+    /// </summary>
+    public class SimulationBase
+    {
         [BsonRepresentation(BsonType.ObjectId)]
         public string ExperimentId { get; set; } = null!;
         public int Generation {get; set;}

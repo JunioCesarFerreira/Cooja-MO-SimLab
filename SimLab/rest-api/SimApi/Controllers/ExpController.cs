@@ -25,7 +25,7 @@ namespace SimAPI.Controllers
         [HttpPost("start")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Experiment>> StartExperiment(Experiment config)
+        public async Task<ActionResult<Experiment>> StartExperiment(ExperimentBase config)
         {
             if (config == null)
             {
@@ -47,7 +47,7 @@ namespace SimAPI.Controllers
         [HttpPut("stop/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Experiment>> StopExperiment(string id)
+        public async Task<ActionResult<ExperimentBase>> StopExperiment(string id)
         {
             var simulation = await _experimentService.StopExperimentAsync(id);
 
@@ -69,7 +69,7 @@ namespace SimAPI.Controllers
         [HttpGet("status/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Experiment>> GetExperimentStatus(string id)
+        public async Task<ActionResult<ExperimentBase>> GetExperimentStatus(string id)
         {
             var simulation = await _experimentService.GetAsync(id);
 
@@ -90,7 +90,7 @@ namespace SimAPI.Controllers
         [HttpGet("all")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Experiment>> GetExperiments()
+        public async Task<ActionResult<ExperimentBase>> GetExperiments()
         {
             var simulation = await _experimentService.GetAsync();
 
