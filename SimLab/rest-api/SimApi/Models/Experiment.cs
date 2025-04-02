@@ -13,7 +13,7 @@ namespace SimAPI.Models
         public DateTime StartTime { get; set; }
         public DateTime? EndTime { get; set; }
 
-        public KeyValue[] Parameters { get; set; } = [];
+        public Parameter[] Parameters { get; set; } = [];
 
         /// <summary>
         /// Modelo para simulações
@@ -31,9 +31,10 @@ namespace SimAPI.Models
         public string Id { get; set; } = null!;
     }
     
-    public class KeyValue
+    public class Parameter
     {
-        public string Key { get; set; } = null!;
+        public string Name { get; set; } = null!;
+        public string Type { get; set; } = null!;
         public string Value { get; set; } = null!;
     }
 }

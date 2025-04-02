@@ -45,7 +45,7 @@ namespace SimAPI
             var simulationDbSettings = new SimulationDatabaseSettings
             {
                 ConnectionString = mongoUri,
-                DatabaseName = "simulation_db",
+                DatabaseName = "simlab_db",
                 ExperimentsCollectionName = "experiments",
                 SimulationsCollectionName = "simulations"
             };

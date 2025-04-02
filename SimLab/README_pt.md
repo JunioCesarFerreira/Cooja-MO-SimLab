@@ -10,8 +10,11 @@ GoMongoQueue é um protótipo de sistema para gerenciamento de simulações dist
 O sistema é composto por três serviços principais:
 
 1. **MongoDB**: Banco de dados NoSQL que armazena as tarefas de simulação e seus resultados.
-2. **WorkGenerator (Python)**: Gera tarefas de simulação e monitora os resultados usando MongoDB Change Streams.
-3. **MasterNode (Go)**: Consome tarefas do MongoDB e executa as simulações concorrentes usando goroutines.
+2. **MO Engine (Python)**: Executa o algoritmo de otimização multiobjetivos. Gera tarefas de simulação e monitora os resultados usando MongoDB Change Streams.
+3. **MasterNode (Go)**: Consome tarefas do MongoDB, gera containers de Worker e controla as simulações concorrentes usando goroutines.
+4. **Worker (Docker)**: Container Docker preparado para execução do Cooja e acesso SSH para controle e monitoramento das simulações.
+5. **API (C#)**: API Rest para controle e consulta de dados dos experimentos e simulações.
+6. **UI (Vue)**: UI por onde usuário pode inserir dados para simulações e obter resultados.
 
 📜 **Fluxo de trabalho:**
 1. O **WorkGenerator** insere 15 tarefas no MongoDB.
