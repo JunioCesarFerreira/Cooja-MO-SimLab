@@ -1,11 +1,6 @@
 {
     "name": "first-sim-lab",
     "duration": 30,
-    "parameters": {
-      "additionalProp1": "string",
-      "additionalProp2": "string",
-      "additionalProp3": "string"
-    },
     "simulationElements": {
       "fixedMotes": [
         {
