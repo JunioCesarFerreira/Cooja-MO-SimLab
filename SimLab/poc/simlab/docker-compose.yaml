@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  cooja1:
+    image: ssh-docker-cooja-cooja
+    container_name: cooja1
+    restart: unless-stopped
+    ports:
+      - "2231:22"
+    networks:
+      - cooja-net
+
+  cooja2:
+    image: ssh-docker-cooja-cooja
+    container_name: cooja2
+    restart: unless-stopped
+    ports:
+      - "2232:22"
+    networks:
+      - cooja-net
+
+  cooja3:
+    image: ssh-docker-cooja-cooja
+    container_name: cooja3
+    restart: unless-stopped
+    ports:
+      - "2233:22"
+    networks:
+      - cooja-net
+
+  cooja4:
+    image: ssh-docker-cooja-cooja
+    container_name: cooja4
+    restart: unless-stopped
+    ports:
+      - "2234:22"
+    networks:
+      - cooja-net
+
+  cooja5:
+    image: ssh-docker-cooja-cooja
+    container_name: cooja5
+    restart: unless-stopped
+    ports:
+      - "2235:22"
+    networks:
+      - cooja-net
+
+networks:
+  cooja-net:
+    driver: bridge
