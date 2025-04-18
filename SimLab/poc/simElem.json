@@ -1,6 +1,7 @@
 {
     "name": "first-sim-lab",
     "duration": 30,
+    "radiusOfReach": 75,
     "simulationElements": {
       "fixedMotes": [
         {

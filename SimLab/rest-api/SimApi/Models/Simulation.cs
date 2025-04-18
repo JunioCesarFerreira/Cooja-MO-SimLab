@@ -18,18 +18,22 @@ namespace SimAPI.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string ExperimentId { get; set; } = null!;
         public int Generation {get; set;}
+
         public string Name { get; set; } = null!;
-        public int Duration { get; set; }
         public string Status { get; set; } = "NotStarted";
-        public DateTime StartTime { get; set; }
+        public DateTime EnqueuedTime { get; set; }
+        public DateTime? StartTime { get; set; }
         public DateTime? EndTime { get; set; }
-        public double CurrentValue { get; set; }
-        public int Progress { get; set; }
 
         /// <summary>
         /// Elementos da simulação
         /// </summary>
         public SimulationElements SimulationElements { get; set; } = new SimulationElements();
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string LogSimFile { get; set; } = null!;
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string LogRunFile { get; set; } = null!;
     }
     
     /// <summary>
