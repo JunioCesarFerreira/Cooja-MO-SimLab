@@ -3,3 +3,6 @@ SimLab/rest-api/SimApi/obj
 SimLab/rest-api/SimApi/.vs
 SimLab/rest-api/.vs
 .vscode
+SimLab/poc/logs
+SimLab/poc/temp
+SimLab/poc/tmp
