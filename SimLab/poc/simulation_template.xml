@@ -89,8 +89,8 @@
         log.log("Time: " + time + "\n");
         
         var initTime = time;
-        const timeOut = 1500000 * 1000; // 30 min.
-        TIMEOUT(1501000); // Timeout 30 min. mais 1 segundo de tolerância
+        const timeOut = X * 1000; // X min.
+        TIMEOUT(X); // Timeout X min. mais 1 segundo de tolerância
         
         // Inicia a simulação
         sim.startSimulation();

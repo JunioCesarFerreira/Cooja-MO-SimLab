@@ -61,9 +61,9 @@
     },
     "simulationModel": {
       "name": "first-sim-lab",
-      "duration": 30,
+      "duration": 60,
       "radiusOfReach": 50,
-      "region": [-75,-75,75,75],
+      "region": [-200, -200, 200, 200],
       "simulationElements": {
         "fixedMotes": [
           {
@@ -72,49 +72,180 @@
             "sourceCode": "rpl-udp-server.c"
           },
           {
-            "position": [25, 25],
+            "position": [10, 10],
             "name": "client1",
             "sourceCode": "rpl-udp-client.c"
           },
           {
-            "position": [-25, 25],
+            "position": [-10, 10],
             "name": "client2",
             "sourceCode": "rpl-udp-client.c"
           },
           {
-            "position": [25, -25],
+            "position": [10, -10],
             "name": "client3",
             "sourceCode": "rpl-udp-client.c"
           },
           {
-            "position": [-25, -25],
+            "position": [-10, -10],
             "name": "client4",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [20, 20],
+            "name": "client5",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [20, -20],
+            "name": "client6",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [-20, 20],
+            "name": "client7",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [-20, -20],
+            "name": "client8",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [-25, -25],
+            "name": "client9",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [30, 30],
+            "name": "client10",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [30, -30],
+            "name": "client11",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [-30, 30],
+            "name": "client12",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [-30, -30],
+            "name": "client13",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [40, 40],
+            "name": "client14",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [40, -40],
+            "name": "client15",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [-40, 40],
+            "name": "client16",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [-40, -40],
+            "name": "client17",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [50, 50],
+            "name": "client18",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [50, -50],
+            "name": "client19",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "position": [-50, -50],
+            "name": "client20",
             "sourceCode": "rpl-udp-client.c"
           }
         ],
         "mobileMotes": [
           {
             "functionPath": [
-              "25 * np.cos(2 * np.pi * t)",
-              "25 * np.sin(2 * np.pi * t)"
+              ["25 * np.cos(2 * np.pi * t)", "25 * np.sin(2 * np.pi * t)"]
             ],
             "isClosed": true,
             "isRoundTrip": false,
             "speed": 5,
             "timeStep": 1,
-            "name": "client5",
+            "name": "client21",
             "sourceCode": "rpl-udp-client.c"
           },
           {
             "functionPath": [
-              "100 * t - 50",
-              "50"
+              ["100 * t - 50", "50"],             
+              ["50", "50 - 30 * t"],             
+              ["50 - 100 * t", "20"],
+              ["-50", "20 + 30 * t"]
+            ],
+            "isClosed": true,
+            "isRoundTrip": false,
+            "speed": 4,
+            "timeStep": 2,
+            "name": "client22",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "functionPath": [
+              ["-150 + 60 * t", "-100"],
+              ["-90", "-100 + 40 * t"],
+              ["-90 - 60 * t", "-60"],
+              ["-150", "-60 - 40 * t"]
+            ],
+            "isClosed": true,
+            "isRoundTrip": false,
+            "speed": 3,
+            "timeStep": 2,
+            "name": "client23",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "functionPath": [
+              ["90 + 80 * t", "120"],
+              ["170", "120 - 50 * t"],
+              ["170 - 80 * t", "70"],
+              ["90", "70 + 50 * t"]
+            ],
+            "isClosed": true,
+            "isRoundTrip": false,
+            "speed": 5,
+            "timeStep": 2,
+            "name": "client24",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "functionPath": [
+              ["-100 * t + 50", "-50"]  
             ],
             "isClosed": false,
             "isRoundTrip": true,
             "speed": 3,
             "timeStep": 2,
-            "name": "client6",
+            "name": "client25",
+            "sourceCode": "rpl-udp-client.c"
+          },
+          {
+            "functionPath": [
+              ["100 * t - 100", "100 * t - 100"]
+            ],
+            "isClosed": false,
+            "isRoundTrip": true,
+            "speed": 5,
+            "timeStep": 2,
+            "name": "client26",
             "sourceCode": "rpl-udp-client.c"
           }
         ]
