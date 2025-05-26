@@ -19,7 +19,7 @@ services:
       - "mongo_config:/data/configdb"
 
   cooja1:
-    image: juniocesarferreira/docker-cooja:v1.0
+    image: juniocesarferreira/simulation-cooja:v1.0
     container_name: cooja1
     restart: unless-stopped
     ports:
@@ -28,7 +28,7 @@ services:
       - cooja-net
 
   cooja2:
-    image: juniocesarferreira/docker-cooja:v1.0
+    image: juniocesarferreira/simulation-cooja:v1.0
     container_name: cooja2
     restart: unless-stopped
     ports:
@@ -37,7 +37,7 @@ services:
       - cooja-net
 
   cooja3:
-    image: juniocesarferreira/docker-cooja:v1.0
+    image: juniocesarferreira/simulation-cooja:v1.0
     container_name: cooja3
     restart: unless-stopped
     ports:
@@ -46,7 +46,7 @@ services:
       - cooja-net
 
   cooja4:
-    image: juniocesarferreira/docker-cooja:v1.0
+    image: juniocesarferreira/simulation-cooja:v1.0
     container_name: cooja4
     restart: unless-stopped
     ports:
@@ -55,7 +55,7 @@ services:
       - cooja-net
 
   cooja5:
-    image: juniocesarferreira/docker-cooja:v1.0
+    image: juniocesarferreira/simulation-cooja:v1.0
     container_name: cooja5
     restart: unless-stopped
     ports:
