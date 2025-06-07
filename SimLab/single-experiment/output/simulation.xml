@@ -205,11 +205,4 @@
     </plugin_config>
     <bounds x="513" y="0" height="723" width="817" z="2"/>
   </plugin>
-  <plugin>
-    org.contikios.cooja.plugins.Mobility
-    <plugin_config>
-      <positions>/opt/contiki-ng/tools/cooja/positions.dat</positions>
-    </plugin_config>
-    <bounds x="7" y="517" height="200" width="500"/>
-  </plugin>
 </simconf>

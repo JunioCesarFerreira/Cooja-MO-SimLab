@@ -68,6 +68,12 @@ def update_simulation_xml(
             id_config = ET.SubElement(mote, "interface_config")
             id_config.text = "org.contikios.cooja.contikimote.interfaces.ContikiMoteID"
             ET.SubElement(id_config, "id").text = str(i + 1)
+            
+    if mobile_positions is None or len(mobile_positions) == 0:
+        # Remove o plugin de mobilidade, se existir
+        for plugin in root.findall(".//plugin"):
+            if plugin.text and "org.contikios.cooja.plugins.Mobility" in plugin.text:
+                root.remove(plugin)
     
     xml_str = ET.tostring(root, encoding='utf-8')
     parsed_xml = minidom.parseString(xml_str)
