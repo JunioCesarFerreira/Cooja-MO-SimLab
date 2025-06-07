@@ -1,4 +1,4 @@
-CONTIKI_PROJECT = udp-client udp-server
+CONTIKI_PROJECT = root node
 all: $(CONTIKI_PROJECT)
 
 CONTIKI=../..
