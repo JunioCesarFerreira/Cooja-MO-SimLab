@@ -1,46 +1,78 @@
 # Experimentos Unitários
 
-Neste diretório você entrará material para execução de simulações isoladas com intuito de avaliar as métricas propóstas e funcionamento do Cooja.
+Este diretório contém materiais para a execução de simulações isoladas, com o objetivo de avaliar as métricas propostas e verificar o funcionamento do simulador Cooja.
 
-## Fluxo de uso
+## Fluxo de Uso
 
-1. Abra o notebook [`fix-motes-pos.ipynb`](fix-motes-pos.ipynb). Neste notebook você pode visualizar a topologia do experimento e gerar o arquivo `data/inputExample.json` utilizando o ultimo bloco de código, modifique a linha `exp_index = n` onde `n` é o indice do experimento.
+1. **Configuração da topologia**
 
-2. Execute um container do Cooja use o [seguinte guia](https://github.com/JunioCesarFerreira/Cooja-Docker-VM-Setup/tree/main/ssh-docker-cooja).
+   Abra o notebook [`fix-motes-pos.ipynb`](fix-motes-pos.ipynb). Nele, é possível visualizar a topologia do experimento e gerar o arquivo `data/inputExample.json`. Para isso, modifique a linha `exp_index = n`, onde `n` é o índice do experimento desejado, e execute o último bloco de código.
 
-3. No diretório `single-experiment` execute `py main.py`. Note que, o diretório `data` contém os dados básicos para gerar simulações, incluindo o template de construção do xml e o json gerado no passo anterior. Após esta execução, o arquivo `output/simulation.xml` será atualizado.
+2. **Inicialização do ambiente Cooja**
 
-4. No diretório `~/Cooja-MO-SimLab/SimLab/single-experiment/output` utilize:
-```shell
-scp -P 2231 * root@127.0.0.1:/opt/contiki-ng/tools/cooja
-```
-para enviar os arquivos para execução da simualação.
+   Execute um container do Cooja utilizando o [guia disponível aqui](https://github.com/JunioCesarFerreira/Cooja-Docker-VM-Setup/tree/main/ssh-docker-cooja). Utilize por exemplo o [docker-compose disponível na poc](../poc/simlab/docker-compose.yaml).
 
-5. Conecte via SSH no container de simulação:
-```shell
-ssh -p 2231 root@127.0.0.1
-```
-para mais [detalhes veja](https://github.com/JunioCesarFerreira/Cooja-Docker-VM-Setup/tree/main/ssh-docker-cooja).
+3. **Geração do arquivo de simulação**
 
-6. Dentro do container de escopo vá para o diretório `/opt/contiki-ng/tools/cooja` e modifique o nome do arquivo:
-```shel
-mv simulation.xml simulation.csc
-```
+   No diretório `single-experiment`, execute o comando:
+    ```bash
+    python main.py
+    ```
 
-7. Execute a simulação com o comando:
-```shell
-java --enable-preview -Xms4g -Xmx4g -jar build/libs/cooja.jar --no-gui simulation.csc
-```
+    Isso irá gerar o arquivo `output/simulation.xml`, com base nos dados presentes no diretório `data`, incluindo o template XML e o JSON criado no passo anterior.
 
-8. Aguarde o final da execução da simulação.
+4. **Envio do arquivo de simulação para o container**
 
-9. Utilize o `scp` para pegar o log resultante:
-```shell
-scp -P 2231 root@127.0.0.1:/opt/contiki-ng/tools/cooja/COOJA.testlog cooja.log
-```
+   No diretório `~/Cooja-MO-SimLab/SimLab/single-experiment/output`, utilize o seguinte comando para enviar os arquivos ao container:
 
-10. Crie um diretório para os resultados:
-- Diretórion `expN` onde `N` é o número do experimento.
-- Copie o `data/inputExample.json` para o diretório `expN`.
-- Copie o `cooja.log` obtido no passo anterior para o diretório `expN`.
-- Copie o nb `expN-1.ipynb` e renomeie para `expN.ipynb`, ajuste o texto descritivo e execute todos os blocos.
+   ```bash
+   scp -P 2231 * root@127.0.0.1:/opt/contiki-ng/tools/cooja
+   ```
+
+5. **Acesso ao container via SSH**
+
+   Conecte-se ao container com o comando:
+
+   ```bash
+   ssh -p 2231 root@127.0.0.1
+   ```
+
+   Para mais detalhes, consulte novamente o [guia de configuração do container](https://github.com/JunioCesarFerreira/Cooja-Docker-VM-Setup/tree/main/ssh-docker-cooja).
+
+6. **Preparação do arquivo de simulação no container**
+
+   Dentro do container, acesse o diretório `/opt/contiki-ng/tools/cooja` e renomeie o arquivo:
+
+   ```bash
+   mv simulation.xml simulation.csc
+   ```
+
+7. **Execução da simulação**
+
+   Execute o Cooja em modo não interativo com:
+
+   ```bash
+   java --enable-preview -Xms4g -Xmx4g -jar build/libs/cooja.jar --no-gui simulation.csc
+   ```
+
+8. **Aguarde a finalização da simulação**
+
+9. **Recuperação do log de simulação**
+
+   Após a execução, recupere o arquivo de log com:
+
+   ```bash
+   scp -P 2231 root@127.0.0.1:/opt/contiki-ng/tools/cooja/COOJA.testlog cooja.log
+   ```
+
+10. **Organização dos resultados do experimento**
+
+    * Crie um diretório `expN`, onde `N` é o número do experimento.
+    * Copie para este diretório os seguintes arquivos:
+
+      * `data/inputExample.json`
+      * `cooja.log`
+      * O notebook `expN-1.ipynb`, renomeando-o para `expN.ipynb`
+    * Atualize o texto descritivo do notebook e execute todos os blocos.
+
+---
