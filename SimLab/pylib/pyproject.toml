@@ -10,4 +10,4 @@ requires-python = ">=3.12"
 dependencies = ["numpy"]       # coloque o que usar
 
 [tool.setuptools]
-py-modules = ["dto", "files", "parse_json_pos", "replace_xml"]
+py-modules = ["dto", "files", "parse_json_pos", "replace_xml", "plot_network"]
