@@ -4,7 +4,9 @@ Neste diretório você entrará material para execução de simulações isolada
 
 ## Fluxo de uso
 
-1. O notebook [`fix-motes-pos.ipynb`](fix-motes-pos.ipynb) contém os exemplos de simulações estáticas. Neste notebook você pode visualizar a topologia do experimento e gerar o arquivo `data/inputExample.json`.
+1. O notebook [`fix-motes-pos.ipynb`](fix-motes-pos.ipynb) contém os exemplos de simulações estáticas. Neste notebook você pode visualizar a topologia do experimento e gerar o arquivo `data/inputExample.json` utilizando o ultimo bloco de código, modifique a linha `exp_index = n` onde `n` é o indice do experimento.
+
+2. 
 
 2. No diretório `single-experiment` execute `py main.py`. Note que, o diretório `data` contém os dados básicos para gerar simulações, incluindo o template de construção do xml e o json gerado no passo anterior.
 
