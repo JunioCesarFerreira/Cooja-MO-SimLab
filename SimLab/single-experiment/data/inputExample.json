@@ -2,8 +2,8 @@
   "simulationModel": {
     "name": "single-experiment-sim-lab",
     "duration": 60,
-    "radiusOfReach": 50,
-    "radiusOfInter": 60,
+    "radiusOfReach": 45,
+    "radiusOfInter": 55,
     "region": [
       -100,
       -100,
@@ -22,66 +22,74 @@
         },
         {
           "position": [
-            40,
-            0
+            21.72,
+            19.18
           ],
           "name": "client1",
           "sourceCode": "node.c"
         },
         {
           "position": [
-            80,
-            0
+            22.97,
+            56.05
           ],
           "name": "client2",
           "sourceCode": "node.c"
         },
         {
           "position": [
-            120,
-            0
+            31.25,
+            78.82
           ],
           "name": "client3",
           "sourceCode": "node.c"
         },
         {
           "position": [
-            160,
-            0
+            57.89,
+            104.1
           ],
           "name": "client4",
           "sourceCode": "node.c"
         },
         {
           "position": [
-            0,
-            40
+            91.89,
+            109.1
           ],
           "name": "client5",
           "sourceCode": "node.c"
         },
         {
           "position": [
-            0,
-            80
+            62.97,
+            7.9
           ],
           "name": "client6",
           "sourceCode": "node.c"
         },
         {
           "position": [
-            0,
-            120
+            88.25,
+            12.24
           ],
           "name": "client7",
           "sourceCode": "node.c"
         },
         {
           "position": [
-            0,
-            160
+            118.31,
+            31.7
           ],
           "name": "client8",
+          "sourceCode": "node.c"
+        },
+        {
+          "position": [
+            132.5,
+            57.44
+          ],
+          "name": "client9",
           "sourceCode": "node.c"
         }
       ],
