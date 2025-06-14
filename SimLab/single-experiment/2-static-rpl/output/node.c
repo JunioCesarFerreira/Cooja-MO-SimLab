@@ -18,8 +18,13 @@
 #include "net/ipv6/uiplib.h"
 #include "sys/energest.h"
 #include "random.h"
+#include <string.h>           /* memcmp / memcpy */
 
 #include "metrics-packet.h"
+
+/* ---------- Conversão de tempo ------------------------------------------ */
+#define NOW_TICKS()         clock_time()                               /* ticks */
+#define TICKS_TO_MS(t)      (((uint64_t)(t) * 1000) / CLOCK_SECOND)    /* ms   */
 
 //------------------------ Configuration Constants ----------------------------
 
@@ -134,7 +139,7 @@ static void fill_node_metrics_packet(node_metrics_packet_t *metrics) {
     metrics->bytes_rx       = bytes_rx;
 
     metrics->packet_number = total_sent - 1;
-    metrics->current_time = tsch_get_network_uptime_ticks();
+    metrics->current_time = NOW_TICKS();
     metrics->from_root_to_node_latency = root_to_node_latency;
 
     metrics->last_rssi = last_rssi;
@@ -170,7 +175,7 @@ static void udp_rx_callback(struct simple_udp_connection *c,
     NETSTACK_RADIO.get_value(RADIO_PARAM_LAST_RSSI, &last_rssi);
     NETSTACK_RADIO.get_value(RADIO_PARAM_LAST_LINK_QUALITY, &last_lqi);
 
-    uint64_t now = tsch_get_network_uptime_ticks();
+    uint64_t now = NOW_TICKS();
 
     if (datalen == sizeof(ping_packet_t)) {
         ping_packet_t *pkt = (ping_packet_t *)data;

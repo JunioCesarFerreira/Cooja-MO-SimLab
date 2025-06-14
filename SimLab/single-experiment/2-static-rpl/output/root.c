@@ -13,8 +13,13 @@
 #include "net/ipv6/simple-udp.h"
 #include "net/ipv6/uiplib.h"
 #include <stdio.h>
+#include <string.h>           /* memcmp / memcpy */
 
 #include "metrics-packet.h"
+
+/* ---------- Conversão de tempo ------------------------------------------ */
+#define NOW_TICKS()         clock_time()                               /* ticks */
+#define TICKS_TO_MS(t)      (((uint64_t)(t) * 1000) / CLOCK_SECOND)    /* ms   */
 
 //------------------------ Configuration Constants ----------------------------
 
@@ -99,7 +104,7 @@ static mote_t* rx_handle_mote_counters(const uip_ipaddr_t *sender_addr) {
  */
 static void send_ping_to_all_nodes(void) {
     ping_pkt.ping_seq++;
-    ping_pkt.send_timestamp = tsch_get_network_uptime_ticks();
+    ping_pkt.send_timestamp = NOW_TICKS();   /* timestamp em clock ticks */
 
     for (int i = 0; i < MAX_MOTES; i++) {
         if (motes[i].used) {
@@ -198,7 +203,7 @@ static void udp_rx_callback(struct simple_udp_connection *c,
     //printf("UDP Packet received from %s\n", addr_str);
     
     mote_t* scp_mote = rx_handle_mote_counters(sender_addr);
-    uint64_t now = tsch_get_network_uptime_ticks();
+    uint64_t now = NOW_TICKS();   /* timestamp em clock ticks */
 
     if (datalen == sizeof(ping_packet_t)) {
         ping_packet_t *received_pkt = (ping_packet_t *)data;
