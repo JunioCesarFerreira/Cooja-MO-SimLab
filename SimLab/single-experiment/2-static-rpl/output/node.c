@@ -18,6 +18,7 @@
 #include "net/ipv6/uiplib.h"
 #include "sys/energest.h"
 #include "random.h"
+#include <stdio.h>
 #include <string.h>           /* memcmp / memcpy */
 
 #include "metrics-packet.h"
