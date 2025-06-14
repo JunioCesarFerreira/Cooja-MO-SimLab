@@ -2,13 +2,13 @@
   "simulationModel": {
     "name": "single-experiment-sim-lab",
     "duration": 60,
-    "radiusOfReach": 45,
-    "radiusOfInter": 55,
+    "radiusOfReach": 50,
+    "radiusOfInter": 60,
     "region": [
-      -100,
-      -100,
-      240,
-      240
+      -200,
+      -200,
+      200,
+      200
     ],
     "simulationElements": {
       "fixedMotes": [
@@ -17,91 +17,58 @@
             0,
             0
           ],
-          "name": "server",
+          "name": "root",
           "sourceCode": "root.c"
         },
         {
           "position": [
-            21.72,
-            19.18
+            37,
+            0
           ],
-          "name": "client1",
+          "name": "node1",
           "sourceCode": "node.c"
         },
         {
           "position": [
-            22.97,
-            56.05
+            -37,
+            0
           ],
-          "name": "client2",
+          "name": "node2",
           "sourceCode": "node.c"
         },
         {
           "position": [
-            31.25,
-            78.82
+            75,
+            0
           ],
-          "name": "client3",
+          "name": "node3",
           "sourceCode": "node.c"
         },
         {
           "position": [
-            57.89,
-            104.1
+            -75,
+            0
           ],
-          "name": "client4",
-          "sourceCode": "node.c"
-        },
-        {
-          "position": [
-            91.89,
-            109.1
-          ],
-          "name": "client5",
-          "sourceCode": "node.c"
-        },
-        {
-          "position": [
-            62.97,
-            7.9
-          ],
-          "name": "client6",
-          "sourceCode": "node.c"
-        },
-        {
-          "position": [
-            88.25,
-            12.24
-          ],
-          "name": "client7",
-          "sourceCode": "node.c"
-        },
-        {
-          "position": [
-            118.31,
-            31.7
-          ],
-          "name": "client8",
-          "sourceCode": "node.c"
-        },
-        {
-          "position": [
-            132.5,
-            57.44
-          ],
-          "name": "client9",
-          "sourceCode": "node.c"
-        },
-        {
-          "position": [
-            115,
-            91
-          ],
-          "name": "client10",
+          "name": "node4",
           "sourceCode": "node.c"
         }
       ],
-      "mobileMotes": []
+      "mobileMotes": [
+        {
+          "functionPath": [
+            [
+              "100 * np.cos(2 * np.pi * t)",
+              "40 * np.sin(2 * np.pi * t)"
+            ]
+          ],
+          "isClosed": true,
+          "isRoundTrip": false,
+          "speed": 5,
+          "timeStep": 1,
+          "name": "node5",
+          "sourceCode": "node.c"
+        }
+      ]
     }
   }
 }
