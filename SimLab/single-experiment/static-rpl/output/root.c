@@ -12,7 +12,6 @@
 #include "net/netstack.h"
 #include "net/ipv6/simple-udp.h"
 #include "net/ipv6/uiplib.h"
-#include "net/mac/tsch/tsch.h"
 #include <stdio.h>
 
 #include "metrics-packet.h"
