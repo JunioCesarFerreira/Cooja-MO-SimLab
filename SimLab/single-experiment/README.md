@@ -4,7 +4,8 @@ Neste diretório, apresentamos métodos e resultados de experimentos realizados 
 
 ## Organização
 
-Dividimos os experimentos em dois diretórios `static` e `mobile`, sendo o primeiro para experimentos com redes estáticas, enquanto no segundo incluímos mobilidade.
+O diretório `build` contém os códigos e dados necessários para gerar configurações do Cooja e executar simulações. O processo é descrito no [arquivo](./build/README.md).
+Os resultados e dados utilizadas em cada experimento estão nos dois diretórios `static` e `mobile`, sendo o primeiro para experimentos com redes estáticas, enquanto no segundo incluímos mobilidade.
 
 - `static`
     - `rpl-udp-tsch`

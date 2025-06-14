@@ -5,7 +5,7 @@ import os
 import sys
 
 # Para utilizar a biblioteca interna
-project_path = os.path.abspath(os.path.join(os.getcwd(), "../../..")) 
+project_path = os.path.abspath(os.path.join(os.getcwd(), "../..")) 
 if project_path not in sys.path:
     sys.path.insert(0, project_path)
 
