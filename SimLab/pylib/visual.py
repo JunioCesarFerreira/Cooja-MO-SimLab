@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import Circle
+import json
 
 def plot_network(
     points: list[tuple[float, float]],
@@ -147,3 +148,38 @@ def dict_for_plot(
     }
 
     return simulation_model
+
+
+def json_to_exp_dict(json_path: str) -> dict:
+    """
+    Lê um arquivo JSON contendo uma simulação e converte para o dicionário exp.
+    
+    Args:
+        json_path: Caminho para o arquivo JSON.
+        
+    Returns:
+        Um dicionário no formato especificado.
+    """
+    with open(json_path, 'r') as file:
+        data = json.load(file)
+
+    sim_model = data["simulationModel"]
+    fixed_motes = sim_model["simulationElements"]["fixedMotes"]
+
+    points = [tuple(mote["position"]) for mote in fixed_motes]
+
+    exp = {
+        "points": points,
+        "region": tuple(sim_model["region"]),
+        "radius": sim_model["radiusOfReach"],
+        "interf": sim_model["radiusOfInter"]
+    }
+
+    return exp
+
+def plot_network_from_json(
+    file_path: str,
+    ) -> None:
+    exp = json_to_exp_dict(file_path)
+    plot_network(exp["points"], exp["region"], exp["radius"], exp["interf"])
+    
