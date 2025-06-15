@@ -7,7 +7,8 @@ def plot_network(
     points: list[tuple[float, float]],
     region: tuple[float, float, float, float],
     radius: float,
-    interference_radius: float
+    interference_radius: float,
+    paths: list[list[str]] = None
     ) -> None:
     """
     Plota uma rede de nós com dois discos concêntricos para cada nó:
@@ -28,6 +29,16 @@ def plot_network(
     interference_radius : float
         Raio de interferência do nó (disco externo - cinza).  
         Deve ser ≥ ``radius``.
+    -----------
+    Parâmetros adicionais:
+    - paths: lista de caminhos. Cada caminho é uma lista de partes.
+      Cada parte é uma sublista com 2 strings: expressão para x(t) e y(t), com t ∈ [0,1].
+
+      Exemplo de paths:
+      [
+          [ ["x_expr1", "y_expr1"] ],                        # Caminho com 1 parte
+          [ ["x_expr1", "y_expr1"], ["x_expr2", "y_expr2"] ] # Caminho com 2 partes
+      ]
     """
     if interference_radius < radius:
         raise ValueError("interference_radius deve ser maior ou igual a radius")
@@ -102,6 +113,38 @@ def plot_network(
         ax.text(x, y, str(i+1), color="black",
                 ha="center", va="center", fontsize=8)
 
+    # ~~~ Plotagem dos caminhos (paths) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    if paths:
+        for path_idx, path in enumerate(paths):
+            if not isinstance(path, list) or any(len(part) != 2 for part in path):
+                print(f"Atenção: Caminho ignorado por estrutura inválida: {path}")
+                continue
+
+            num_parts = len(path)
+            ts = np.linspace(0, 1, 100 * num_parts)
+
+            xs_total = []
+            ys_total = []
+
+            for part_idx, (x_expr, y_expr) in enumerate(path):
+                t_start = part_idx / num_parts
+                t_end = (part_idx + 1) / num_parts
+
+                ts_segment = ts[(ts >= t_start) & (ts <= t_end)]
+                t_local = (ts_segment - t_start) / (t_end - t_start)
+
+                try:
+                    x_vals = eval(x_expr, {"np": np, "t": t_local})
+                    y_vals = eval(y_expr, {"np": np, "t": t_local})
+                except Exception as e:
+                    print(f"Erro ao avaliar parte {part_idx} do caminho {path_idx}: {e}")
+                    continue
+
+                xs_total.extend(x_vals)
+                ys_total.extend(y_vals)
+
+            ax.plot(xs_total, ys_total, linestyle='--', color='blue', alpha=0.6)
+
     plt.show()
     
 def dict_for_plot(
@@ -150,36 +193,21 @@ def dict_for_plot(
     return simulation_model
 
 
-def json_to_exp_dict(json_path: str) -> dict:
-    """
-    Lê um arquivo JSON contendo uma simulação e converte para o dicionário exp.
-    
-    Args:
-        json_path: Caminho para o arquivo JSON.
-        
-    Returns:
-        Um dicionário no formato especificado.
-    """
-    with open(json_path, 'r') as file:
+def plot_network_from_json(
+    file_path: str,
+    ) -> None:
+    with open(file_path, 'r') as file:
         data = json.load(file)
 
     sim_model = data["simulationModel"]
     fixed_motes = sim_model["simulationElements"]["fixedMotes"]
+    mobile_motes = sim_model["simulationElements"]["mobileMotes"]
 
-    points = [tuple(mote["position"]) for mote in fixed_motes]
-
-    exp = {
-        "points": points,
-        "region": tuple(sim_model["region"]),
-        "radius": sim_model["radiusOfReach"],
-        "interf": sim_model["radiusOfInter"]
-    }
-
-    return exp
-
-def plot_network_from_json(
-    file_path: str,
-    ) -> None:
-    exp = json_to_exp_dict(file_path)
-    plot_network(exp["points"], exp["region"], exp["radius"], exp["interf"])
+    plot_network(
+        points = [tuple(mote["position"]) for mote in fixed_motes], 
+        region = tuple(sim_model["region"]), 
+        radius = sim_model["radiusOfReach"], 
+        interference_radius = sim_model["radiusOfInter"], 
+        paths = [list[str](mote["functionPath"]) for mote in mobile_motes]
+        )
     
