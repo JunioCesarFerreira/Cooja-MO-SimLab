@@ -70,7 +70,7 @@
       <mote>
         <interface_config>
           org.contikios.cooja.interfaces.Position
-          <pos x="37" y="0"/>
+          <pos x="-29" y="32"/>
         </interface_config>
         <interface_config>
           org.contikios.cooja.contikimote.interfaces.ContikiMoteID
@@ -80,7 +80,7 @@
       <mote>
         <interface_config>
           org.contikios.cooja.interfaces.Position
-          <pos x="-37" y="0"/>
+          <pos x="-71" y="13"/>
         </interface_config>
         <interface_config>
           org.contikios.cooja.contikimote.interfaces.ContikiMoteID
@@ -90,7 +90,7 @@
       <mote>
         <interface_config>
           org.contikios.cooja.interfaces.Position
-          <pos x="75" y="0"/>
+          <pos x="-102" y="-21"/>
         </interface_config>
         <interface_config>
           org.contikios.cooja.contikimote.interfaces.ContikiMoteID
@@ -100,7 +100,7 @@
       <mote>
         <interface_config>
           org.contikios.cooja.interfaces.Position
-          <pos x="-75" y="0"/>
+          <pos x="-91" y="-59"/>
         </interface_config>
         <interface_config>
           org.contikios.cooja.contikimote.interfaces.ContikiMoteID
@@ -110,11 +110,141 @@
       <mote>
         <interface_config>
           org.contikios.cooja.interfaces.Position
-          <pos x="100.0" y="0.0"/>
+          <pos x="-73" y="42"/>
         </interface_config>
         <interface_config>
           org.contikios.cooja.contikimote.interfaces.ContikiMoteID
           <id>6</id>
+        </interface_config>
+      </mote>
+      <mote>
+        <interface_config>
+          org.contikios.cooja.interfaces.Position
+          <pos x="-11" y="-45.5"/>
+        </interface_config>
+        <interface_config>
+          org.contikios.cooja.contikimote.interfaces.ContikiMoteID
+          <id>7</id>
+        </interface_config>
+      </mote>
+      <mote>
+        <interface_config>
+          org.contikios.cooja.interfaces.Position
+          <pos x="36" y="-50"/>
+        </interface_config>
+        <interface_config>
+          org.contikios.cooja.contikimote.interfaces.ContikiMoteID
+          <id>8</id>
+        </interface_config>
+      </mote>
+      <mote>
+        <interface_config>
+          org.contikios.cooja.interfaces.Position
+          <pos x="17" y="39"/>
+        </interface_config>
+        <interface_config>
+          org.contikios.cooja.contikimote.interfaces.ContikiMoteID
+          <id>9</id>
+        </interface_config>
+      </mote>
+      <mote>
+        <interface_config>
+          org.contikios.cooja.interfaces.Position
+          <pos x="74" y="29"/>
+        </interface_config>
+        <interface_config>
+          org.contikios.cooja.contikimote.interfaces.ContikiMoteID
+          <id>10</id>
+        </interface_config>
+      </mote>
+      <mote>
+        <interface_config>
+          org.contikios.cooja.interfaces.Position
+          <pos x="92" y="16"/>
+        </interface_config>
+        <interface_config>
+          org.contikios.cooja.contikimote.interfaces.ContikiMoteID
+          <id>11</id>
+        </interface_config>
+      </mote>
+      <mote>
+        <interface_config>
+          org.contikios.cooja.interfaces.Position
+          <pos x="114" y="-33"/>
+        </interface_config>
+        <interface_config>
+          org.contikios.cooja.contikimote.interfaces.ContikiMoteID
+          <id>12</id>
+        </interface_config>
+      </mote>
+      <mote>
+        <interface_config>
+          org.contikios.cooja.interfaces.Position
+          <pos x="87" y="44"/>
+        </interface_config>
+        <interface_config>
+          org.contikios.cooja.contikimote.interfaces.ContikiMoteID
+          <id>13</id>
+        </interface_config>
+      </mote>
+      <mote>
+        <interface_config>
+          org.contikios.cooja.interfaces.Position
+          <pos x="70.0" y="44.0"/>
+        </interface_config>
+        <interface_config>
+          org.contikios.cooja.contikimote.interfaces.ContikiMoteID
+          <id>14</id>
+        </interface_config>
+      </mote>
+      <mote>
+        <interface_config>
+          org.contikios.cooja.interfaces.Position
+          <pos x="141.0" y="-28.0"/>
+        </interface_config>
+        <interface_config>
+          org.contikios.cooja.contikimote.interfaces.ContikiMoteID
+          <id>15</id>
+        </interface_config>
+      </mote>
+      <mote>
+        <interface_config>
+          org.contikios.cooja.interfaces.Position
+          <pos x="-114.0" y="61.0"/>
+        </interface_config>
+        <interface_config>
+          org.contikios.cooja.contikimote.interfaces.ContikiMoteID
+          <id>16</id>
+        </interface_config>
+      </mote>
+      <mote>
+        <interface_config>
+          org.contikios.cooja.interfaces.Position
+          <pos x="-134.0" y="16.0"/>
+        </interface_config>
+        <interface_config>
+          org.contikios.cooja.contikimote.interfaces.ContikiMoteID
+          <id>17</id>
+        </interface_config>
+      </mote>
+      <mote>
+        <interface_config>
+          org.contikios.cooja.interfaces.Position
+          <pos x="114.0" y="80.0"/>
+        </interface_config>
+        <interface_config>
+          org.contikios.cooja.contikimote.interfaces.ContikiMoteID
+          <id>18</id>
+        </interface_config>
+      </mote>
+      <mote>
+        <interface_config>
+          org.contikios.cooja.interfaces.Position
+          <pos x="-54.0" y="-81.0"/>
+        </interface_config>
+        <interface_config>
+          org.contikios.cooja.contikimote.interfaces.ContikiMoteID
+          <id>19</id>
         </interface_config>
       </mote>
     </motetype>
