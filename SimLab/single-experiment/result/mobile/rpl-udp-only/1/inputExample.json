@@ -1,0 +1,74 @@
+{
+  "simulationModel": {
+    "name": "single-experiment-sim-lab",
+    "duration": 60,
+    "radiusOfReach": 50,
+    "radiusOfInter": 60,
+    "region": [
+      -200,
+      -200,
+      200,
+      200
+    ],
+    "simulationElements": {
+      "fixedMotes": [
+        {
+          "position": [
+            0,
+            0
+          ],
+          "name": "root",
+          "sourceCode": "root.c"
+        },
+        {
+          "position": [
+            37,
+            0
+          ],
+          "name": "node1",
+          "sourceCode": "node.c"
+        },
+        {
+          "position": [
+            -37,
+            0
+          ],
+          "name": "node2",
+          "sourceCode": "node.c"
+        },
+        {
+          "position": [
+            75,
+            0
+          ],
+          "name": "node3",
+          "sourceCode": "node.c"
+        },
+        {
+          "position": [
+            -75,
+            0
+          ],
+          "name": "node4",
+          "sourceCode": "node.c"
+        }
+      ],
+      "mobileMotes": [
+        {
+          "functionPath": [
+            [
+              "100 * np.cos(2 * np.pi * t)",
+              "40 * np.sin(2 * np.pi * t)"
+            ]
+          ],
+          "isClosed": true,
+          "isRoundTrip": false,
+          "speed": 5,
+          "timeStep": 1,
+          "name": "node5",
+          "sourceCode": "node.c"
+        }
+      ]
+    }
+  }
+}
