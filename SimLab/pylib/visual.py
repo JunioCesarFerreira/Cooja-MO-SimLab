@@ -134,8 +134,20 @@ def plot_network(
                 t_local = (ts_segment - t_start) / (t_end - t_start)
 
                 try:
-                    x_vals = eval(x_expr, {"np": np, "t": t_local})
-                    y_vals = eval(y_expr, {"np": np, "t": t_local})
+                    x_eval = eval(x_expr, {"np": np, "t": t_local})
+                    y_eval = eval(y_expr, {"np": np, "t": t_local})
+                    
+                    # Ajuste caso o resultado seja escalar
+                    if np.isscalar(x_eval):
+                        x_vals = np.full_like(t_local, x_eval, dtype=float)
+                    else:
+                        x_vals = np.array(x_eval, dtype=float)
+
+                    if np.isscalar(y_eval):
+                        y_vals = np.full_like(t_local, y_eval, dtype=float)
+                    else:
+                        y_vals = np.array(y_eval, dtype=float)
+                        
                 except Exception as e:
                     print(f"Erro ao avaliar parte {part_idx} do caminho {path_idx}: {e}")
                     continue
