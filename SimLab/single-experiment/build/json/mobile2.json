@@ -41,7 +41,7 @@
 			"sourceCode": "node.c"
 		},
 		{
-			"position": [17,39],
+			"position": [27,39],
 			"name": "node8",
 			"sourceCode": "node.c"
 		},
@@ -51,7 +51,7 @@
 			"sourceCode": "node.c"
 		},
 		{
-			"position": [92,16],
+			"position": [102,-12],
 			"name": "node10",
 			"sourceCode": "node.c"
 		},
