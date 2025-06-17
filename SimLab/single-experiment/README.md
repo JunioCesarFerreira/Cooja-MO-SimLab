@@ -10,8 +10,7 @@ Neste nível você encontrará a seguinte organização dos diretórios:
 - `setting`: Contém a coleção de configurações geradas com o processo do `build` para os experimentos.
 - `source`: Contém os códigos fonte em C para compilação dos motes nas simulações.
 
-O diretório `build` contém os códigos e dados necessários para gerar configurações do Cooja e executar simulações. O processo é descrito no [arquivo](./build/README.md).
-
+O diretório `build` contém os códigos e dados necessários para gerar configurações do Cooja e executar simulações. O processo é descrito no tópico a seguir.
 
 
 ## Fluxo de Uso
