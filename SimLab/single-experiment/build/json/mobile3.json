@@ -1,0 +1,35 @@
+{
+	"fixedMotes": [
+		{
+			"position": [0, 0],
+			"name": "root",
+			"sourceCode": "root.c"
+		},
+		{
+			"position": [-22, 40],
+			"name": "node1",
+			"sourceCode": "node.c"
+		},
+		{
+			"position": [22, 40],
+			"name": "node2",
+			"sourceCode": "node.c"
+		}
+	],
+	"mobileMotes": [
+		{
+			"functionPath": [
+                ["45","28+52*t"],
+                ["45-90*t","80"],
+                ["-45","80-52*t"],
+                ["-45+90*t","28"]
+            ],
+			"isClosed": true,
+			"isRoundTrip": false,
+			"speed": 5,
+			"timeStep": 1,
+			"name": "node3",
+			"sourceCode": "node.c"
+		}
+	]
+}
