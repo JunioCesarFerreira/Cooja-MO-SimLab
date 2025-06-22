@@ -20,12 +20,7 @@ def convert_log_to_csv(log_path: Path, csv_output: Path) -> pd.DataFrame:
                 rec = json.loads(m.group(1))
             except json.JSONDecodeError:
                 continue
-
-            # métricas derivadas
-            rec["throughput1"] = rec["server_sent"] - rec["total_received"]
-            rec["throughput2"] = (
-                rec["server_sent"] + rec["total_sent"] - rec["server_received"]
-            )
+            
             rows.append(rec)
 
     # -------------------------- DataFrame bruto --------------------------------

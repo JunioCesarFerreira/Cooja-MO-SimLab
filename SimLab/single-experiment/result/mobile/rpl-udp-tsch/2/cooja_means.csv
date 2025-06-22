@@ -1,4 +1,4 @@
-node,rtt_latency,r2n_latency,n2r_latency,rssi,radio_rx_energy_mj,radio_tx_energy_mj,cpu_energy_mj,throughput1,throughput2
+node,rtt_latency,r2n_latency,n2r_latency,rssi,radio_rx_energy_mj,radio_tx_energy_mj,cpu_energy_mj,lost_packets_r2n,lost_packets_n2r
 fd00::202:2:2:2,1892.05,1525.83,1182.12,-82.54,27.91,1.4,26.27,1.07,20.37
 fd00::203:3:3:3,2604.17,1938.17,2571.83,-87.41,60.13,1.4,33.88,3.22,6.05
 fd00::204:4:4:4,3126.04,2981.75,2978.51,-87.34,18.71,0.39,20.29,0.43,0.88
