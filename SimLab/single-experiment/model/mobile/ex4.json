@@ -5,10 +5,10 @@
     "radiusOfReach": 50,
     "radiusOfInter": 60,
     "region": [
-      -200,
-      -200,
-      200,
-      200
+      -120,
+      -120,
+      120,
+      120
     ],
     "simulationElements": {
       "fixedMotes": [
