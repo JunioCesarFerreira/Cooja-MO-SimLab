@@ -30,8 +30,8 @@
         },
         {
           "position": [
-            22,
-            40
+            20,
+            50
           ],
           "name": "node2",
           "sourceCode": "node.c"
