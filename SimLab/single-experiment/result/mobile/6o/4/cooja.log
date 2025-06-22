@@ -1,0 +1,1825 @@
+Random seed: 123456
+Initializing simulation script
+Time: 236000
+[Mote:2] [INFO: Main      ] - Routing: RPL Lite
+[Mote:2] [INFO: Main      ] - Net: sicslowpan
+[Mote:2] [INFO: Main      ] - MAC: TSCH
+[Mote:2] [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+[Mote:2] [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+[Mote:2] [INFO: Main      ] Node ID: 2
+[Mote:2] [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+[Mote:2] [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+[Mote:4] [INFO: Main      ] Starting Contiki-NG-develop/v5.0-dirty
+[Mote:4] [INFO: Main      ] - Routing: RPL Lite
+[Mote:4] [INFO: Main      ] - Net: sicslowpan
+[Mote:4] [INFO: Main      ] - MAC: TSCH
+[Mote:4] [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+[Mote:4] [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+[Mote:4] [INFO: Main      ] Node ID: 4
+[Mote:4] [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+[Mote:4] [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+[Mote:1] [INFO: Main      ] Starting Contiki-NG-develop/v5.0-dirty
+[Mote:1] [INFO: Main      ] - Routing: RPL Lite
+[Mote:1] [INFO: Main      ] - Net: sicslowpan
+[Mote:1] [INFO: Main      ] - MAC: TSCH
+[Mote:1] [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+[Mote:1] [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+[Mote:1] [INFO: Main      ] Node ID: 1
+[Mote:1] [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+[Mote:1] [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+[Mote:1] UDP Root process started
+[Mote:3] [INFO: Main      ] Starting Contiki-NG-develop/v5.0-dirty
+[Mote:3] [INFO: Main      ] - Routing: RPL Lite
+[Mote:3] [INFO: Main      ] - Net: sicslowpan
+[Mote:3] [INFO: Main      ] - MAC: TSCH
+[Mote:3] [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+[Mote:3] [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+[Mote:3] [INFO: Main      ] Node ID: 3
+[Mote:3] [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+[Mote:3] [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+[Mote:2] Not reachable yet
+[Mote:4] Not reachable yet
+[Mote:3] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":37,"total_mj":60,"latency_ms":0,"volume_B":60,"response_ms":1,"throughput_bps":480000,"root_time_now":20930}
+[Mote:3] Not reachable yet
+[Mote:4] Not reachable yet
+[Mote:3] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":43,"volume_B":132,"response_ms":113,"throughput_bps":5097,"root_time_now":31500}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":73,"total_mj":455,"latency_ms":0,"volume_B":60,"response_ms":1,"throughput_bps":480000,"root_time_now":41650}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":204,"response_ms":124,"throughput_bps":4645,"root_time_now":42000}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":484,"volume_B":132,"response_ms":624,"throughput_bps":923,"root_time_now":51940}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":276,"response_ms":274,"throughput_bps":2102,"root_time_now":52500}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":494,"volume_B":204,"response_ms":634,"throughput_bps":908,"root_time_now":62230}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":348,"response_ms":354,"throughput_bps":1627,"root_time_now":63070}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":224,"volume_B":276,"response_ms":504,"throughput_bps":1142,"root_time_now":72450}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":420,"response_ms":434,"throughput_bps":1327,"root_time_now":73570}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":133,"total_mj":1211,"latency_ms":0,"volume_B":60,"response_ms":1,"throughput_bps":480000,"root_time_now":73990}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1774,"volume_B":348,"response_ms":1984,"throughput_bps":290,"root_time_now":82740}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":492,"response_ms":724,"throughput_bps":795,"root_time_now":84350}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":314,"volume_B":420,"response_ms":1784,"throughput_bps":322,"root_time_now":92960}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":564,"response_ms":1364,"throughput_bps":422,"root_time_now":95410}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":4584,"volume_B":192,"response_ms":5494,"throughput_bps":192,"root_time_now":95550}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":464,"volume_B":492,"response_ms":744,"throughput_bps":774,"root_time_now":103460}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":636,"response_ms":394,"throughput_bps":1461,"root_time_now":105210}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1303,"volume_B":264,"response_ms":1374,"throughput_bps":419,"root_time_now":105560}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":685,"volume_B":564,"response_ms":825,"throughput_bps":698,"root_time_now":113540}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":265,"volume_B":708,"response_ms":545,"throughput_bps":1056,"root_time_now":115710}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":764,"volume_B":636,"response_ms":904,"throughput_bps":637,"root_time_now":124390}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":780,"response_ms":694,"throughput_bps":829,"root_time_now":126280}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":634,"volume_B":708,"response_ms":774,"throughput_bps":744,"root_time_now":134050}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":852,"response_ms":564,"throughput_bps":1021,"root_time_now":136780}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":364,"volume_B":780,"response_ms":574,"throughput_bps":1003,"root_time_now":144830}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":924,"response_ms":294,"throughput_bps":1959,"root_time_now":147280}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":28,"latency_ms":3863,"volume_B":516,"response_ms":4634,"throughput_bps":435,"root_time_now":147980}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":584,"volume_B":852,"response_ms":1004,"throughput_bps":573,"root_time_now":154560}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":996,"response_ms":234,"throughput_bps":2461,"root_time_now":157850}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1014,"volume_B":924,"response_ms":1294,"throughput_bps":445,"root_time_now":164850}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":1068,"response_ms":804,"throughput_bps":716,"root_time_now":168350}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":604,"volume_B":996,"response_ms":1024,"throughput_bps":562,"root_time_now":175070}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1435,"volume_B":660,"response_ms":1284,"throughput_bps":897,"root_time_now":176540}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":1140,"response_ms":534,"throughput_bps":1078,"root_time_now":178920}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":894,"volume_B":1068,"response_ms":1034,"throughput_bps":557,"root_time_now":185360}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":1212,"response_ms":334,"throughput_bps":1724,"root_time_now":189420}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":414,"volume_B":1140,"response_ms":834,"throughput_bps":690,"root_time_now":195650}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":1284,"response_ms":764,"throughput_bps":753,"root_time_now":199993}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":914,"volume_B":1212,"response_ms":1334,"throughput_bps":431,"root_time_now":205870}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":1368,"response_ms":644,"throughput_bps":1043,"root_time_now":210700}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":504,"volume_B":1284,"response_ms":784,"throughput_bps":734,"root_time_now":216160}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":1440,"response_ms":164,"throughput_bps":3512,"root_time_now":221130}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":584,"volume_B":1356,"response_ms":1074,"throughput_bps":536,"root_time_now":226450}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:4] Not reachable yet
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":1512,"response_ms":384,"throughput_bps":1500,"root_time_now":232190}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":734,"volume_B":1428,"response_ms":2134,"throughput_bps":269,"root_time_now":236670}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":1584,"response_ms":534,"throughput_bps":1078,"root_time_now":242340}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":744,"volume_B":1500,"response_ms":884,"throughput_bps":651,"root_time_now":246960}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":1656,"response_ms":754,"throughput_bps":763,"root_time_now":252630}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":334,"volume_B":1572,"response_ms":824,"throughput_bps":699,"root_time_now":257180}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":1728,"response_ms":554,"throughput_bps":1039,"root_time_now":263200}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1534,"volume_B":1644,"response_ms":1954,"throughput_bps":294,"root_time_now":267470}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":1800,"response_ms":354,"throughput_bps":1627,"root_time_now":273700}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":634,"volume_B":1716,"response_ms":774,"throughput_bps":744,"root_time_now":277760}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":1872,"response_ms":1904,"throughput_bps":302,"root_time_now":284200}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":294,"volume_B":1788,"response_ms":1974,"throughput_bps":291,"root_time_now":287980}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":1944,"response_ms":864,"throughput_bps":666,"root_time_now":294770}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":304,"volume_B":1860,"response_ms":934,"throughput_bps":616,"root_time_now":298270}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":2016,"response_ms":314,"throughput_bps":1834,"root_time_now":305270}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":594,"volume_B":1932,"response_ms":1714,"throughput_bps":336,"root_time_now":308560}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":2088,"response_ms":324,"throughput_bps":1777,"root_time_now":315840}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":534,"volume_B":2004,"response_ms":1444,"throughput_bps":398,"root_time_now":318780}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":2160,"response_ms":264,"throughput_bps":2181,"root_time_now":326340}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1594,"volume_B":2076,"response_ms":1874,"throughput_bps":307,"root_time_now":329070}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":2232,"response_ms":1464,"throughput_bps":393,"root_time_now":336840}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":904,"volume_B":2148,"response_ms":1534,"throughput_bps":375,"root_time_now":339290}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":2304,"response_ms":214,"throughput_bps":2691,"root_time_now":347410}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":634,"volume_B":2220,"response_ms":1474,"throughput_bps":390,"root_time_now":349580}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":2376,"response_ms":784,"throughput_bps":734,"root_time_now":357910}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":342,"total_mj":1627,"latency_ms":1184,"volume_B":828,"response_ms":6834,"throughput_bps":196,"root_time_now":359030}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":434,"volume_B":2292,"response_ms":854,"throughput_bps":674,"root_time_now":359870}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":2448,"response_ms":514,"throughput_bps":1120,"root_time_now":368480}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":584,"volume_B":2364,"response_ms":1004,"throughput_bps":573,"root_time_now":370510}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":805,"volume_B":2520,"response_ms":1155,"throughput_bps":498,"root_time_now":378980}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1505,"volume_B":2436,"response_ms":1925,"throughput_bps":299,"root_time_now":380520}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1424,"volume_B":960,"response_ms":1564,"throughput_bps":675,"root_time_now":387800}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":2592,"response_ms":184,"throughput_bps":3130,"root_time_now":389620}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1024,"volume_B":2508,"response_ms":2424,"throughput_bps":237,"root_time_now":390810}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":2664,"response_ms":474,"throughput_bps":1215,"root_time_now":400190}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:4] Not reachable yet
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":624,"volume_B":2592,"response_ms":1604,"throughput_bps":418,"root_time_now":401800}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":2748,"response_ms":634,"throughput_bps":1059,"root_time_now":410690}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":774,"volume_B":2664,"response_ms":1194,"throughput_bps":482,"root_time_now":411250}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":2820,"response_ms":1484,"throughput_bps":388,"root_time_now":421610}
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":294,"volume_B":2736,"response_ms":1554,"throughput_bps":370,"root_time_now":421680}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":2892,"response_ms":304,"throughput_bps":1894,"root_time_now":431900}
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":864,"volume_B":2808,"response_ms":1144,"throughput_bps":503,"root_time_now":432110}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":454,"volume_B":2880,"response_ms":1504,"throughput_bps":382,"root_time_now":441980}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":2964,"response_ms":1434,"throughput_bps":401,"root_time_now":442190}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":534,"volume_B":2952,"response_ms":1024,"throughput_bps":562,"root_time_now":452200}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":3036,"response_ms":464,"throughput_bps":1241,"root_time_now":452690}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1034,"volume_B":3024,"response_ms":1314,"throughput_bps":438,"root_time_now":462490}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":3108,"response_ms":474,"throughput_bps":1215,"root_time_now":463260}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":554,"volume_B":3096,"response_ms":834,"throughput_bps":690,"root_time_now":472780}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":134,"volume_B":3180,"response_ms":764,"throughput_bps":753,"root_time_now":473760}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":704,"volume_B":3168,"response_ms":2034,"throughput_bps":283,"root_time_now":483000}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":144,"volume_B":3252,"response_ms":1754,"throughput_bps":328,"root_time_now":484330}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":364,"volume_B":3240,"response_ms":574,"throughput_bps":1003,"root_time_now":493290}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":3324,"response_ms":154,"throughput_bps":3740,"root_time_now":494830}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":864,"volume_B":3312,"response_ms":1004,"throughput_bps":573,"root_time_now":503580}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":3396,"response_ms":234,"throughput_bps":2461,"root_time_now":505400}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":594,"volume_B":3384,"response_ms":1014,"throughput_bps":568,"root_time_now":513800}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":3468,"response_ms":384,"throughput_bps":1500,"root_time_now":515900}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":604,"volume_B":3456,"response_ms":954,"throughput_bps":603,"root_time_now":524090}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":3540,"response_ms":184,"throughput_bps":3130,"root_time_now":526400}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":824,"volume_B":3528,"response_ms":1244,"throughput_bps":463,"root_time_now":534310}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":3612,"response_ms":754,"throughput_bps":763,"root_time_now":536970}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":834,"volume_B":3600,"response_ms":1254,"throughput_bps":459,"root_time_now":544600}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":3684,"response_ms":414,"throughput_bps":1391,"root_time_now":547470}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1024,"volume_B":1200,"response_ms":7064,"throughput_bps":271,"root_time_now":547960}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":6855,"volume_B":1272,"response_ms":7064,"throughput_bps":81,"root_time_now":549010}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":634,"volume_B":3672,"response_ms":1544,"throughput_bps":373,"root_time_now":554890}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":3756,"response_ms":284,"throughput_bps":2028,"root_time_now":558040}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":504,"volume_B":3744,"response_ms":644,"throughput_bps":894,"root_time_now":565110}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":3828,"response_ms":294,"throughput_bps":1959,"root_time_now":568540}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":6855,"volume_B":1392,"response_ms":7064,"throughput_bps":135,"root_time_now":572180}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":584,"volume_B":3816,"response_ms":724,"throughput_bps":795,"root_time_now":575400}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":3900,"response_ms":374,"throughput_bps":1540,"root_time_now":579110}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":934,"volume_B":1464,"response_ms":2404,"throughput_bps":239,"root_time_now":582260}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1854,"volume_B":3888,"response_ms":2624,"throughput_bps":219,"root_time_now":585690}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":3972,"response_ms":1294,"throughput_bps":445,"root_time_now":589610}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1024,"volume_B":1548,"response_ms":1864,"throughput_bps":360,"root_time_now":592270}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":464,"volume_B":3960,"response_ms":1514,"throughput_bps":380,"root_time_now":595910}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":4056,"response_ms":334,"throughput_bps":2011,"root_time_now":600670}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1024,"volume_B":1608,"response_ms":1864,"throughput_bps":257,"root_time_now":602000}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1454,"volume_B":4032,"response_ms":1664,"throughput_bps":346,"root_time_now":606200}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":4128,"response_ms":1674,"throughput_bps":344,"root_time_now":611800}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":484,"volume_B":4104,"response_ms":1744,"throughput_bps":330,"root_time_now":616420}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":4200,"response_ms":214,"throughput_bps":2691,"root_time_now":622720}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1124,"volume_B":4176,"response_ms":2804,"throughput_bps":205,"root_time_now":626710}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":4272,"response_ms":154,"throughput_bps":3740,"root_time_now":631750}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":574,"volume_B":4248,"response_ms":994,"throughput_bps":579,"root_time_now":637000}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":4344,"response_ms":1284,"throughput_bps":448,"root_time_now":642250}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":304,"volume_B":4320,"response_ms":1354,"throughput_bps":425,"root_time_now":647220}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":4416,"response_ms":1294,"throughput_bps":445,"root_time_now":652820}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":314,"volume_B":4392,"response_ms":1364,"throughput_bps":422,"root_time_now":657510}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":4488,"response_ms":324,"throughput_bps":1777,"root_time_now":663320}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":534,"volume_B":4464,"response_ms":954,"throughput_bps":603,"root_time_now":667800}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":4560,"response_ms":2644,"throughput_bps":217,"root_time_now":673890}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":684,"volume_B":4536,"response_ms":2714,"throughput_bps":212,"root_time_now":678230}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":4632,"response_ms":274,"throughput_bps":2102,"root_time_now":684390}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":764,"volume_B":4608,"response_ms":1114,"throughput_bps":517,"root_time_now":688310}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":4704,"response_ms":634,"throughput_bps":908,"root_time_now":694960}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":914,"volume_B":4680,"response_ms":1474,"throughput_bps":390,"root_time_now":698530}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":4776,"response_ms":224,"throughput_bps":2571,"root_time_now":705460}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":434,"volume_B":4752,"response_ms":574,"throughput_bps":1003,"root_time_now":708820}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":4848,"response_ms":164,"throughput_bps":3512,"root_time_now":715960}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":584,"volume_B":4824,"response_ms":1074,"throughput_bps":536,"root_time_now":719110}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":4920,"response_ms":314,"throughput_bps":1834,"root_time_now":726530}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":734,"volume_B":4896,"response_ms":1084,"throughput_bps":531,"root_time_now":729330}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":4992,"response_ms":394,"throughput_bps":1461,"root_time_now":737030}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1794,"volume_B":4968,"response_ms":2004,"throughput_bps":287,"root_time_now":739620}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":5064,"response_ms":194,"throughput_bps":2969,"root_time_now":747600}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":614,"volume_B":5040,"response_ms":1174,"throughput_bps":490,"root_time_now":749910}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":5136,"response_ms":484,"throughput_bps":1190,"root_time_now":758100}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1324,"volume_B":5112,"response_ms":1534,"throughput_bps":375,"root_time_now":760550}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":144,"volume_B":5208,"response_ms":424,"throughput_bps":1358,"root_time_now":768670}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":984,"volume_B":5184,"response_ms":1334,"throughput_bps":431,"root_time_now":770420}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":285,"total_mj":481,"latency_ms":1684,"volume_B":1872,"response_ms":1824,"throughput_bps":1157,"root_time_now":770840}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":5280,"response_ms":294,"throughput_bps":1959,"root_time_now":779170}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":514,"volume_B":5268,"response_ms":1774,"throughput_bps":378,"root_time_now":781830}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":2184,"volume_B":1944,"response_ms":2534,"throughput_bps":227,"root_time_now":782180}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":5352,"response_ms":1704,"throughput_bps":338,"root_time_now":789670}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":314,"volume_B":5340,"response_ms":804,"throughput_bps":716,"root_time_now":790930}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":5436,"response_ms":254,"throughput_bps":2645,"root_time_now":800310}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":604,"volume_B":5412,"response_ms":744,"throughput_bps":774,"root_time_now":801220}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":5508,"response_ms":1174,"throughput_bps":490,"root_time_now":811230}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1034,"volume_B":5484,"response_ms":1804,"throughput_bps":319,"root_time_now":811860}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":2904,"volume_B":2088,"response_ms":4154,"throughput_bps":277,"root_time_now":812490}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":2904,"volume_B":2148,"response_ms":4154,"throughput_bps":115,"root_time_now":812910}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":5580,"response_ms":414,"throughput_bps":1391,"root_time_now":821310}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":484,"volume_B":5556,"response_ms":974,"throughput_bps":591,"root_time_now":821800}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":354,"volume_B":5652,"response_ms":1754,"throughput_bps":328,"root_time_now":832440}
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":704,"volume_B":5628,"response_ms":1824,"throughput_bps":315,"root_time_now":832510}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":2904,"volume_B":2268,"response_ms":4154,"throughput_bps":231,"root_time_now":835940}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":504,"volume_B":5700,"response_ms":994,"throughput_bps":579,"root_time_now":842240}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":5724,"response_ms":364,"throughput_bps":1582,"root_time_now":842380}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1064,"volume_B":2352,"response_ms":1274,"throughput_bps":527,"root_time_now":844620}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":794,"volume_B":5772,"response_ms":1214,"throughput_bps":474,"root_time_now":852530}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":5796,"response_ms":1144,"throughput_bps":503,"root_time_now":852880}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1424,"volume_B":2424,"response_ms":1634,"throughput_bps":352,"root_time_now":855190}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":734,"volume_B":5844,"response_ms":1574,"throughput_bps":365,"root_time_now":862820}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":5868,"response_ms":384,"throughput_bps":1500,"root_time_now":863450}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":3184,"volume_B":2496,"response_ms":3394,"throughput_bps":169,"root_time_now":865690}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1164,"volume_B":5916,"response_ms":1374,"throughput_bps":419,"root_time_now":873040}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":5940,"response_ms":744,"throughput_bps":774,"root_time_now":873950}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":754,"volume_B":5988,"response_ms":1104,"throughput_bps":521,"root_time_now":883330}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":6012,"response_ms":194,"throughput_bps":2969,"root_time_now":884450}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":3184,"volume_B":2616,"response_ms":3394,"throughput_bps":282,"root_time_now":889350}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":484,"volume_B":6060,"response_ms":764,"throughput_bps":753,"root_time_now":893550}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":6084,"response_ms":694,"throughput_bps":829,"root_time_now":895020}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1114,"volume_B":2688,"response_ms":1324,"throughput_bps":435,"root_time_now":897400}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1054,"volume_B":6132,"response_ms":2244,"throughput_bps":256,"root_time_now":903840}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":6156,"response_ms":494,"throughput_bps":1165,"root_time_now":905520}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1404,"volume_B":2760,"response_ms":2314,"throughput_bps":248,"root_time_now":907970}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":574,"volume_B":6204,"response_ms":1344,"throughput_bps":428,"root_time_now":914130}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":6228,"response_ms":784,"throughput_bps":734,"root_time_now":916090}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1484,"volume_B":2832,"response_ms":1694,"throughput_bps":340,"root_time_now":918470}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":724,"volume_B":6276,"response_ms":1634,"throughput_bps":352,"root_time_now":924350}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":6300,"response_ms":1564,"throughput_bps":368,"root_time_now":926590}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":524,"volume_B":6348,"response_ms":734,"throughput_bps":784,"root_time_now":934990}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":6372,"response_ms":244,"throughput_bps":2360,"root_time_now":937160}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":604,"volume_B":6420,"response_ms":814,"throughput_bps":707,"root_time_now":944930}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":6444,"response_ms":184,"throughput_bps":3130,"root_time_now":947660}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":474,"volume_B":6492,"response_ms":894,"throughput_bps":644,"root_time_now":955150}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":6516,"response_ms":194,"throughput_bps":2969,"root_time_now":958230}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1044,"volume_B":6564,"response_ms":1464,"throughput_bps":393,"root_time_now":965440}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":6588,"response_ms":694,"throughput_bps":829,"root_time_now":968730}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1194,"volume_B":6636,"response_ms":1474,"throughput_bps":390,"root_time_now":975660}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":6660,"response_ms":704,"throughput_bps":818,"root_time_now":979300}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":924,"volume_B":6708,"response_ms":1484,"throughput_bps":388,"root_time_now":985950}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":6732,"response_ms":224,"throughput_bps":2571,"root_time_now":989800}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1074,"volume_B":6780,"response_ms":1494,"throughput_bps":385,"root_time_now":996240}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":6816,"response_ms":174,"throughput_bps":3862,"root_time_now":1000510}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":664,"volume_B":6852,"response_ms":1084,"throughput_bps":531,"root_time_now":1006460}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":6888,"response_ms":184,"throughput_bps":3130,"root_time_now":1010940}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":604,"volume_B":6924,"response_ms":884,"throughput_bps":651,"root_time_now":1016750}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":6960,"response_ms":194,"throughput_bps":2969,"root_time_now":1021370}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":474,"volume_B":6996,"response_ms":1314,"throughput_bps":438,"root_time_now":1027040}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":7032,"response_ms":764,"throughput_bps":753,"root_time_now":1031940}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":344,"volume_B":7068,"response_ms":834,"throughput_bps":690,"root_time_now":1037260}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":7104,"response_ms":214,"throughput_bps":2691,"root_time_now":1042440}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":494,"volume_B":7140,"response_ms":634,"throughput_bps":908,"root_time_now":1047550}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":7176,"response_ms":1274,"throughput_bps":452,"root_time_now":1053010}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":364,"volume_B":7212,"response_ms":1344,"throughput_bps":428,"root_time_now":1057770}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":7248,"response_ms":164,"throughput_bps":3512,"root_time_now":1063510}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1984,"volume_B":7284,"response_ms":2194,"throughput_bps":262,"root_time_now":1068060}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":7320,"response_ms":174,"throughput_bps":3310,"root_time_now":1074010}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":266,"total_mj":422,"latency_ms":1154,"volume_B":3096,"response_ms":2204,"throughput_bps":958,"root_time_now":1076810}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":664,"volume_B":7356,"response_ms":1084,"throughput_bps":531,"root_time_now":1078350}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":7392,"response_ms":1234,"throughput_bps":466,"root_time_now":1084580}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":534,"volume_B":7428,"response_ms":1304,"throughput_bps":441,"root_time_now":1088570}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":7464,"response_ms":754,"throughput_bps":763,"root_time_now":1095080}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1444,"volume_B":3228,"response_ms":1654,"throughput_bps":638,"root_time_now":1098650}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":474,"volume_B":7500,"response_ms":824,"throughput_bps":699,"root_time_now":1098860}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":7536,"response_ms":904,"throughput_bps":637,"root_time_now":1105650}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1184,"volume_B":3300,"response_ms":1464,"throughput_bps":393,"root_time_now":1108450}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1744,"volume_B":7572,"response_ms":1884,"throughput_bps":305,"root_time_now":1109150}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":7608,"response_ms":1754,"throughput_bps":328,"root_time_now":1116150}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":704,"volume_B":7644,"response_ms":1824,"throughput_bps":315,"root_time_now":1119370}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":7680,"response_ms":294,"throughput_bps":1959,"root_time_now":1127000}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":574,"volume_B":7716,"response_ms":994,"throughput_bps":579,"root_time_now":1129660}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":7752,"response_ms":304,"throughput_bps":1894,"root_time_now":1137220}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":584,"volume_B":7788,"response_ms":1284,"throughput_bps":448,"root_time_now":1139950}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":37,"volume_B":7824,"response_ms":807,"throughput_bps":713,"root_time_now":1147790}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:4] Not reachable yet
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":457,"volume_B":7860,"response_ms":1017,"throughput_bps":566,"root_time_now":1151850}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":7896,"response_ms":604,"throughput_bps":953,"root_time_now":1158290}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":534,"volume_B":7932,"response_ms":1934,"throughput_bps":297,"root_time_now":1160670}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":7968,"response_ms":614,"throughput_bps":938,"root_time_now":1168790}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:4] Not reachable yet
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":484,"volume_B":8016,"response_ms":1884,"throughput_bps":356,"root_time_now":1171940}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":8040,"response_ms":1814,"throughput_bps":317,"root_time_now":1179360}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:4] Not reachable yet
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":484,"volume_B":8076,"response_ms":1884,"throughput_bps":254,"root_time_now":1183980}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":8112,"response_ms":3924,"throughput_bps":146,"root_time_now":1189860}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":434,"volume_B":8160,"response_ms":784,"throughput_bps":857,"root_time_now":1191260}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":8196,"response_ms":304,"throughput_bps":2210,"root_time_now":1200500}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1074,"volume_B":8232,"response_ms":1214,"throughput_bps":474,"root_time_now":1201480}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":8268,"response_ms":734,"throughput_bps":784,"root_time_now":1211070}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1154,"volume_B":8304,"response_ms":1294,"throughput_bps":445,"root_time_now":1211770}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":8340,"response_ms":744,"throughput_bps":774,"root_time_now":1221500}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":884,"volume_B":8376,"response_ms":1024,"throughput_bps":562,"root_time_now":1222060}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":8412,"response_ms":334,"throughput_bps":1724,"root_time_now":1232000}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":474,"volume_B":8448,"response_ms":1174,"throughput_bps":490,"root_time_now":1232350}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":8484,"response_ms":554,"throughput_bps":1039,"root_time_now":1242570}
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1044,"volume_B":8520,"response_ms":1184,"throughput_bps":486,"root_time_now":1242640}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1404,"volume_B":8592,"response_ms":1544,"throughput_bps":373,"root_time_now":1252790}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":8556,"response_ms":1334,"throughput_bps":431,"root_time_now":1253070}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1134,"volume_B":8664,"response_ms":1414,"throughput_bps":407,"root_time_now":1263080}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":8628,"response_ms":574,"throughput_bps":1003,"root_time_now":1263570}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":374,"volume_B":8736,"response_ms":934,"throughput_bps":616,"root_time_now":1273370}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":8700,"response_ms":864,"throughput_bps":666,"root_time_now":1274140}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1784,"volume_B":8808,"response_ms":1924,"throughput_bps":299,"root_time_now":1283590}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":8772,"response_ms":804,"throughput_bps":716,"root_time_now":1284640}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":674,"volume_B":8880,"response_ms":884,"throughput_bps":651,"root_time_now":1293880}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":8844,"response_ms":814,"throughput_bps":707,"root_time_now":1295210}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1594,"volume_B":8952,"response_ms":1734,"throughput_bps":332,"root_time_now":1304170}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":8916,"response_ms":404,"throughput_bps":1425,"root_time_now":1305710}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":484,"volume_B":9024,"response_ms":2304,"throughput_bps":250,"root_time_now":1314390}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":8988,"response_ms":974,"throughput_bps":591,"root_time_now":1316280}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":634,"volume_B":9096,"response_ms":774,"throughput_bps":744,"root_time_now":1324680}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":9060,"response_ms":494,"throughput_bps":1165,"root_time_now":1326780}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1064,"volume_B":9168,"response_ms":1344,"throughput_bps":428,"root_time_now":1335040}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":9132,"response_ms":504,"throughput_bps":1142,"root_time_now":1337350}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":374,"volume_B":9240,"response_ms":724,"throughput_bps":795,"root_time_now":1345190}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":9204,"response_ms":654,"throughput_bps":880,"root_time_now":1347850}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":454,"volume_B":9312,"response_ms":804,"throughput_bps":716,"root_time_now":1355480}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":9276,"response_ms":734,"throughput_bps":784,"root_time_now":1358350}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":884,"volume_B":9384,"response_ms":1374,"throughput_bps":419,"root_time_now":1365700}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":9348,"response_ms":1094,"throughput_bps":526,"root_time_now":1368920}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":474,"volume_B":9456,"response_ms":1664,"throughput_bps":346,"root_time_now":1375990}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":9420,"response_ms":1594,"throughput_bps":361,"root_time_now":1379420}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1044,"volume_B":9528,"response_ms":1184,"throughput_bps":486,"root_time_now":1386280}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":9492,"response_ms":274,"throughput_bps":2102,"root_time_now":1389993}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1264,"volume_B":9600,"response_ms":1404,"throughput_bps":410,"root_time_now":1396500}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":9576,"response_ms":224,"throughput_bps":3000,"root_time_now":1400490}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":644,"volume_B":9672,"response_ms":924,"throughput_bps":623,"root_time_now":1406790}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":9648,"response_ms":1634,"throughput_bps":352,"root_time_now":1411690}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":724,"volume_B":9744,"response_ms":2054,"throughput_bps":280,"root_time_now":1417010}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":9720,"response_ms":384,"throughput_bps":1500,"root_time_now":1421560}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":524,"volume_B":9816,"response_ms":1294,"throughput_bps":445,"root_time_now":1427300}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":114,"volume_B":9792,"response_ms":464,"throughput_bps":1241,"root_time_now":1432130}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":604,"volume_B":9888,"response_ms":954,"throughput_bps":603,"root_time_now":1437590}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":9864,"response_ms":684,"throughput_bps":842,"root_time_now":1442630}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":754,"volume_B":9960,"response_ms":1034,"throughput_bps":557,"root_time_now":1447810}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":9936,"response_ms":344,"throughput_bps":1674,"root_time_now":1453130}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":904,"volume_B":10032,"response_ms":1184,"throughput_bps":486,"root_time_now":1458100}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":10008,"response_ms":634,"throughput_bps":908,"root_time_now":1463700}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":627,"total_mj":3907,"latency_ms":564,"volume_B":3564,"response_ms":1464,"throughput_bps":1442,"root_time_now":1467340}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":354,"volume_B":10104,"response_ms":704,"throughput_bps":818,"root_time_now":1468390}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":10080,"response_ms":154,"throughput_bps":3740,"root_time_now":1474200}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1834,"volume_B":3636,"response_ms":1974,"throughput_bps":291,"root_time_now":1477910}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":504,"volume_B":10176,"response_ms":924,"throughput_bps":623,"root_time_now":1478610}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":10152,"response_ms":1074,"throughput_bps":536,"root_time_now":1484770}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":794,"volume_B":10248,"response_ms":1564,"throughput_bps":368,"root_time_now":1488900}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":10224,"response_ms":174,"throughput_bps":3310,"root_time_now":1495270}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":454,"volume_B":10320,"response_ms":664,"throughput_bps":867,"root_time_now":1499190}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1834,"volume_B":3756,"response_ms":1974,"throughput_bps":486,"root_time_now":1501080}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":10296,"response_ms":324,"throughput_bps":1777,"root_time_now":1505840}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1164,"volume_B":10392,"response_ms":1444,"throughput_bps":398,"root_time_now":1509410}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":2774,"volume_B":3828,"response_ms":2984,"throughput_bps":193,"root_time_now":1509550}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":10368,"response_ms":404,"throughput_bps":1425,"root_time_now":1516340}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1384,"volume_B":10464,"response_ms":1524,"throughput_bps":377,"root_time_now":1519700}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1174,"volume_B":3900,"response_ms":1314,"throughput_bps":438,"root_time_now":1522290}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":204,"volume_B":10440,"response_ms":414,"throughput_bps":1391,"root_time_now":1526840}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":764,"volume_B":10536,"response_ms":1044,"throughput_bps":551,"root_time_now":1529920}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1324,"volume_B":3972,"response_ms":2374,"throughput_bps":242,"root_time_now":1530760}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":77,"volume_B":10512,"response_ms":217,"throughput_bps":2654,"root_time_now":1537410}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":847,"volume_B":10608,"response_ms":987,"throughput_bps":583,"root_time_now":1540840}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":10584,"response_ms":784,"throughput_bps":734,"root_time_now":1547910}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":304,"volume_B":10692,"response_ms":1074,"throughput_bps":625,"root_time_now":1551130}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1494,"volume_B":4116,"response_ms":1704,"throughput_bps":676,"root_time_now":1552250}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":10656,"response_ms":794,"throughput_bps":725,"root_time_now":1558480}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":304,"volume_B":10752,"response_ms":1074,"throughput_bps":446,"root_time_now":1562820}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":10728,"response_ms":2694,"throughput_bps":213,"root_time_now":1568980}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":743,"volume_B":10836,"response_ms":1723,"throughput_bps":390,"root_time_now":1571780}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1494,"volume_B":4236,"response_ms":1704,"throughput_bps":563,"root_time_now":1577870}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":43,"volume_B":10800,"response_ms":183,"throughput_bps":3147,"root_time_now":1579550}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":474,"volume_B":10908,"response_ms":684,"throughput_bps":842,"root_time_now":1582140}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1524,"volume_B":4320,"response_ms":2224,"throughput_bps":302,"root_time_now":1583540}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":10872,"response_ms":264,"throughput_bps":2181,"root_time_now":1590190}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":694,"volume_B":10980,"response_ms":1044,"throughput_bps":551,"root_time_now":1591940}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1324,"volume_B":4392,"response_ms":1674,"throughput_bps":344,"root_time_now":1594110}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":10956,"response_ms":214,"throughput_bps":3140,"root_time_now":1600620}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":704,"volume_B":11052,"response_ms":984,"throughput_bps":585,"root_time_now":1601810}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1124,"volume_B":4464,"response_ms":1334,"throughput_bps":431,"root_time_now":1604610}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":11028,"response_ms":1414,"throughput_bps":407,"root_time_now":1611610}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":434,"volume_B":11124,"response_ms":1484,"throughput_bps":388,"root_time_now":1612030}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":11100,"response_ms":514,"throughput_bps":1120,"root_time_now":1621620}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":724,"volume_B":11196,"response_ms":864,"throughput_bps":666,"root_time_now":1622320}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":11172,"response_ms":1084,"throughput_bps":531,"root_time_now":1632190}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":2274,"volume_B":11268,"response_ms":2624,"throughput_bps":219,"root_time_now":1632890}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":854,"volume_B":4596,"response_ms":1554,"throughput_bps":679,"root_time_now":1633380}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":11244,"response_ms":674,"throughput_bps":854,"root_time_now":1642690}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":534,"volume_B":11340,"response_ms":744,"throughput_bps":774,"root_time_now":1642830}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":964,"volume_B":11412,"response_ms":1174,"throughput_bps":490,"root_time_now":1653120}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":11316,"response_ms":334,"throughput_bps":1724,"root_time_now":1653260}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":414,"volume_B":11484,"response_ms":694,"throughput_bps":829,"root_time_now":1663410}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":11388,"response_ms":344,"throughput_bps":1674,"root_time_now":1663760}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":704,"volume_B":11556,"response_ms":1194,"throughput_bps":482,"root_time_now":1673630}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":11460,"response_ms":284,"throughput_bps":2028,"root_time_now":1674330}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":434,"volume_B":11628,"response_ms":924,"throughput_bps":623,"root_time_now":1683920}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":11532,"response_ms":854,"throughput_bps":674,"root_time_now":1684830}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":654,"volume_B":11700,"response_ms":864,"throughput_bps":666,"root_time_now":1694140}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":11604,"response_ms":234,"throughput_bps":2461,"root_time_now":1695400}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":524,"volume_B":11772,"response_ms":944,"throughput_bps":610,"root_time_now":1704430}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":11676,"response_ms":314,"throughput_bps":1834,"root_time_now":1705900}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":673,"volume_B":11844,"response_ms":1163,"throughput_bps":495,"root_time_now":1714720}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":43,"volume_B":11748,"response_ms":323,"throughput_bps":1783,"root_time_now":1716400}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":684,"volume_B":11916,"response_ms":964,"throughput_bps":597,"root_time_now":1724940}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":194,"volume_B":11820,"response_ms":474,"throughput_bps":1215,"root_time_now":1726970}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":554,"volume_B":11988,"response_ms":1114,"throughput_bps":517,"root_time_now":1735230}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":11892,"response_ms":344,"throughput_bps":1674,"root_time_now":1737470}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1334,"volume_B":12060,"response_ms":1614,"throughput_bps":356,"root_time_now":1745520}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":11964,"response_ms":354,"throughput_bps":1627,"root_time_now":1748040}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":295,"volume_B":12132,"response_ms":435,"throughput_bps":1324,"root_time_now":1755740}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":15,"volume_B":12036,"response_ms":155,"throughput_bps":3716,"root_time_now":1758540}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":247,"total_mj":577,"latency_ms":864,"volume_B":4788,"response_ms":1284,"throughput_bps":1196,"root_time_now":1763090}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":654,"volume_B":12204,"response_ms":1144,"throughput_bps":503,"root_time_now":1766030}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":12108,"response_ms":234,"throughput_bps":2461,"root_time_now":1769110}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1154,"volume_B":12276,"response_ms":1364,"throughput_bps":422,"root_time_now":1776250}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":174,"volume_B":12180,"response_ms":314,"throughput_bps":1834,"root_time_now":1779610}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":884,"volume_B":12348,"response_ms":1164,"throughput_bps":494,"root_time_now":1786540}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":12252,"response_ms":604,"throughput_bps":953,"root_time_now":1790390}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":864,"volume_B":4908,"response_ms":1284,"throughput_bps":747,"root_time_now":1793400}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":3905,"volume_B":4980,"response_ms":4044,"throughput_bps":142,"root_time_now":1794590}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":3484,"volume_B":12420,"response_ms":3764,"throughput_bps":153,"root_time_now":1796830}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":27,"latency_ms":64,"volume_B":12336,"response_ms":204,"throughput_bps":3294,"root_time_now":1800680}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":764,"volume_B":12492,"response_ms":1394,"throughput_bps":413,"root_time_now":1807050}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":12408,"response_ms":284,"throughput_bps":2028,"root_time_now":1811180}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":3364,"volume_B":12564,"response_ms":3644,"throughput_bps":158,"root_time_now":1817340}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":3905,"volume_B":5100,"response_ms":4044,"throughput_bps":237,"root_time_now":1819230}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":13,"volume_B":12480,"response_ms":293,"throughput_bps":1965,"root_time_now":1821820}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1553,"volume_B":5184,"response_ms":2113,"throughput_bps":318,"root_time_now":1826230}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":503,"volume_B":12636,"response_ms":643,"throughput_bps":895,"root_time_now":1827630}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":12552,"response_ms":794,"throughput_bps":725,"root_time_now":1832250}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1004,"volume_B":5256,"response_ms":1144,"throughput_bps":503,"root_time_now":1836800}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":304,"volume_B":12708,"response_ms":864,"throughput_bps":666,"root_time_now":1837850}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":12624,"response_ms":314,"throughput_bps":1834,"root_time_now":1842820}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1014,"volume_B":5328,"response_ms":1154,"throughput_bps":499,"root_time_now":1847370}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":384,"volume_B":12780,"response_ms":664,"throughput_bps":867,"root_time_now":1848140}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":12696,"response_ms":184,"throughput_bps":3130,"root_time_now":1853320}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":534,"volume_B":12852,"response_ms":884,"throughput_bps":651,"root_time_now":1858430}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":12768,"response_ms":544,"throughput_bps":1058,"root_time_now":1863890}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":964,"volume_B":12924,"response_ms":1104,"throughput_bps":521,"root_time_now":1868650}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1164,"volume_B":5460,"response_ms":1304,"throughput_bps":809,"root_time_now":1873340}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":12840,"response_ms":694,"throughput_bps":829,"root_time_now":1874390}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:4] Not reachable yet
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1254,"volume_B":12996,"response_ms":1884,"throughput_bps":305,"root_time_now":1878940}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":12912,"response_ms":354,"throughput_bps":1627,"root_time_now":1884960}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":774,"volume_B":13068,"response_ms":984,"throughput_bps":585,"root_time_now":1889160}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":12984,"response_ms":434,"throughput_bps":1327,"root_time_now":1895460}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":294,"volume_B":13140,"response_ms":784,"throughput_bps":734,"root_time_now":1899450}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":13056,"response_ms":164,"throughput_bps":3512,"root_time_now":1905960}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":584,"volume_B":13212,"response_ms":724,"throughput_bps":795,"root_time_now":1909740}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":13128,"response_ms":244,"throughput_bps":2360,"root_time_now":1916530}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":594,"volume_B":13284,"response_ms":1294,"throughput_bps":445,"root_time_now":1919960}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":47,"volume_B":13200,"response_ms":537,"throughput_bps":1072,"root_time_now":1927030}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:4] Not reachable yet
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1027,"volume_B":13356,"response_ms":1377,"throughput_bps":418,"root_time_now":1931790}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":13272,"response_ms":1734,"throughput_bps":332,"root_time_now":1937600}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":614,"volume_B":13428,"response_ms":1874,"throughput_bps":307,"root_time_now":1940750}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":13344,"response_ms":204,"throughput_bps":2823,"root_time_now":1948100}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":564,"volume_B":13512,"response_ms":844,"throughput_bps":796,"root_time_now":1950970}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":13416,"response_ms":774,"throughput_bps":744,"root_time_now":1958670}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":564,"volume_B":13572,"response_ms":844,"throughput_bps":568,"root_time_now":1961400}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":13488,"response_ms":504,"throughput_bps":1142,"root_time_now":1969170}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":374,"volume_B":13656,"response_ms":794,"throughput_bps":846,"root_time_now":1971270}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":13560,"response_ms":724,"throughput_bps":795,"root_time_now":1979740}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":454,"volume_B":13728,"response_ms":804,"throughput_bps":716,"root_time_now":1981560}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":13632,"response_ms":384,"throughput_bps":1500,"root_time_now":1991990}
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":884,"volume_B":13800,"response_ms":2144,"throughput_bps":268,"root_time_now":1992200}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":124,"volume_B":13716,"response_ms":1034,"throughput_bps":649,"root_time_now":2001160}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":544,"volume_B":13872,"response_ms":1104,"throughput_bps":521,"root_time_now":2002070}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":13788,"response_ms":344,"throughput_bps":1674,"root_time_now":2011310}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":414,"volume_B":13944,"response_ms":834,"throughput_bps":690,"root_time_now":2012360}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":13860,"response_ms":214,"throughput_bps":2691,"root_time_now":2021950}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1754,"volume_B":14016,"response_ms":2174,"throughput_bps":264,"root_time_now":2022650}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":13932,"response_ms":154,"throughput_bps":3740,"root_time_now":2032380}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":644,"volume_B":14088,"response_ms":994,"throughput_bps":579,"root_time_now":2032870}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":14004,"response_ms":304,"throughput_bps":1894,"root_time_now":2042880}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":444,"volume_B":14160,"response_ms":584,"throughput_bps":986,"root_time_now":2043440}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":323,"total_mj":1016,"latency_ms":864,"volume_B":5652,"response_ms":1004,"throughput_bps":1529,"root_time_now":2047920}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1363,"volume_B":14232,"response_ms":1503,"throughput_bps":383,"root_time_now":2053380}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":33,"volume_B":14076,"response_ms":453,"throughput_bps":1271,"root_time_now":2053450}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1153,"volume_B":5724,"response_ms":1293,"throughput_bps":445,"root_time_now":2058490}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":464,"volume_B":14304,"response_ms":884,"throughput_bps":651,"root_time_now":2063670}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":14148,"response_ms":394,"throughput_bps":1461,"root_time_now":2063950}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":614,"volume_B":14376,"response_ms":824,"throughput_bps":699,"root_time_now":2073960}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":14220,"response_ms":544,"throughput_bps":1058,"root_time_now":2074520}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":554,"volume_B":14448,"response_ms":694,"throughput_bps":829,"root_time_now":2084180}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":14292,"response_ms":484,"throughput_bps":1190,"root_time_now":2085020}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":704,"volume_B":14520,"response_ms":1334,"throughput_bps":431,"root_time_now":2094470}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":14364,"response_ms":284,"throughput_bps":2028,"root_time_now":2095520}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1694,"volume_B":14592,"response_ms":1834,"throughput_bps":314,"root_time_now":2104760}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":14436,"response_ms":504,"throughput_bps":1142,"root_time_now":2106090}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":864,"volume_B":14664,"response_ms":1284,"throughput_bps":448,"root_time_now":2115050}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":14508,"response_ms":794,"throughput_bps":725,"root_time_now":2116590}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":664,"volume_B":14736,"response_ms":1784,"throughput_bps":322,"root_time_now":2125270}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":14580,"response_ms":1714,"throughput_bps":336,"root_time_now":2127160}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":744,"volume_B":14808,"response_ms":1094,"throughput_bps":526,"root_time_now":2135490}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":14652,"response_ms":324,"throughput_bps":1777,"root_time_now":2137660}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":684,"volume_B":14880,"response_ms":1034,"throughput_bps":557,"root_time_now":2145780}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":14724,"response_ms":194,"throughput_bps":2969,"root_time_now":2148230}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":484,"volume_B":14952,"response_ms":1044,"throughput_bps":551,"root_time_now":2156070}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":14796,"response_ms":414,"throughput_bps":1391,"root_time_now":2158730}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":914,"volume_B":15024,"response_ms":1824,"throughput_bps":315,"root_time_now":2166290}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":14868,"response_ms":1754,"throughput_bps":328,"root_time_now":2169300}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":714,"volume_B":15096,"response_ms":994,"throughput_bps":579,"root_time_now":2176580}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":14940,"response_ms":224,"throughput_bps":2571,"root_time_now":2179800}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":724,"volume_B":15168,"response_ms":1564,"throughput_bps":368,"root_time_now":2186870}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":25,"latency_ms":34,"volume_B":15024,"response_ms":244,"throughput_bps":2754,"root_time_now":2190580}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1084,"volume_B":15240,"response_ms":1574,"throughput_bps":365,"root_time_now":2197090}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":15096,"response_ms":814,"throughput_bps":707,"root_time_now":2201080}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":464,"volume_B":15312,"response_ms":1024,"throughput_bps":562,"root_time_now":2207380}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":15168,"response_ms":264,"throughput_bps":2181,"root_time_now":2211510}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":474,"volume_B":15384,"response_ms":614,"throughput_bps":938,"root_time_now":2217670}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":15240,"response_ms":694,"throughput_bps":829,"root_time_now":2221940}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":484,"volume_B":15456,"response_ms":834,"throughput_bps":690,"root_time_now":2227890}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":15312,"response_ms":1684,"throughput_bps":342,"root_time_now":2232440}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":494,"volume_B":15528,"response_ms":1754,"throughput_bps":328,"root_time_now":2238250}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":15384,"response_ms":154,"throughput_bps":3740,"root_time_now":2243010}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:4] Not reachable yet
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":644,"volume_B":15600,"response_ms":994,"throughput_bps":579,"root_time_now":2248400}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":15456,"response_ms":1424,"throughput_bps":404,"root_time_now":2253510}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":444,"volume_B":15672,"response_ms":1494,"throughput_bps":385,"root_time_now":2258690}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":15528,"response_ms":454,"throughput_bps":1268,"root_time_now":2264010}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":524,"volume_B":15744,"response_ms":944,"throughput_bps":610,"root_time_now":2268980}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":15600,"response_ms":254,"throughput_bps":2267,"root_time_now":2274580}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":534,"volume_B":15816,"response_ms":884,"throughput_bps":651,"root_time_now":2279200}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":15672,"response_ms":194,"throughput_bps":2969,"root_time_now":2285080}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":404,"volume_B":15888,"response_ms":614,"throughput_bps":938,"root_time_now":2289490}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":15744,"response_ms":414,"throughput_bps":1391,"root_time_now":2295650}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":624,"volume_B":15960,"response_ms":764,"throughput_bps":753,"root_time_now":2299780}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":15816,"response_ms":1614,"throughput_bps":356,"root_time_now":2306150}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":844,"volume_B":16032,"response_ms":1754,"throughput_bps":328,"root_time_now":2311400}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":224,"volume_B":15888,"response_ms":1484,"throughput_bps":388,"root_time_now":2316720}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":644,"volume_B":16104,"response_ms":1554,"throughput_bps":370,"root_time_now":2320710}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":15960,"response_ms":654,"throughput_bps":880,"root_time_now":2327290}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1564,"volume_B":16176,"response_ms":1704,"throughput_bps":338,"root_time_now":2331350}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":16032,"response_ms":244,"throughput_bps":2360,"root_time_now":2337790}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":394,"volume_B":16260,"response_ms":2564,"throughput_bps":262,"root_time_now":2342620}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":16104,"response_ms":2494,"throughput_bps":230,"root_time_now":2348290}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":404,"volume_B":16332,"response_ms":1524,"throughput_bps":377,"root_time_now":2351580}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":16176,"response_ms":1454,"throughput_bps":396,"root_time_now":2358790}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1044,"volume_B":16404,"response_ms":1324,"throughput_bps":435,"root_time_now":2361380}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":16248,"response_ms":484,"throughput_bps":1190,"root_time_now":2369360}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":704,"volume_B":16476,"response_ms":2944,"throughput_bps":195,"root_time_now":2373000}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":16320,"response_ms":2874,"throughput_bps":200,"root_time_now":2379860}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":994,"volume_B":16548,"response_ms":1344,"throughput_bps":428,"root_time_now":2381890}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":16404,"response_ms":514,"throughput_bps":1307,"root_time_now":2390570}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1424,"volume_B":16620,"response_ms":1564,"throughput_bps":368,"root_time_now":2392110}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":25,"latency_ms":34,"volume_B":16476,"response_ms":244,"throughput_bps":2360,"root_time_now":2400930}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":594,"volume_B":16692,"response_ms":1294,"throughput_bps":445,"root_time_now":2402400}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":16548,"response_ms":394,"throughput_bps":1461,"root_time_now":2411500}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":744,"volume_B":16764,"response_ms":1024,"throughput_bps":562,"root_time_now":2412620}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":334,"volume_B":16620,"response_ms":474,"throughput_bps":1215,"root_time_now":2422280}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1384,"volume_B":16836,"response_ms":1804,"throughput_bps":319,"root_time_now":2422910}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1574,"volume_B":6216,"response_ms":1784,"throughput_bps":2206,"root_time_now":2426270}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":16692,"response_ms":344,"throughput_bps":1674,"root_time_now":2432570}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":904,"volume_B":16908,"response_ms":1324,"throughput_bps":435,"root_time_now":2433200}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":16764,"response_ms":424,"throughput_bps":1358,"root_time_now":2443070}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1124,"volume_B":16980,"response_ms":1334,"throughput_bps":431,"root_time_now":2443700}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":16836,"response_ms":574,"throughput_bps":1003,"root_time_now":2453570}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1274,"volume_B":17052,"response_ms":1414,"throughput_bps":407,"root_time_now":2453710}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":584,"volume_B":17124,"response_ms":1004,"throughput_bps":573,"root_time_now":2464000}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":16908,"response_ms":514,"throughput_bps":1120,"root_time_now":2464140}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":594,"volume_B":17196,"response_ms":734,"throughput_bps":784,"root_time_now":2474220}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":16980,"response_ms":244,"throughput_bps":2360,"root_time_now":2474640}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":604,"volume_B":17268,"response_ms":1514,"throughput_bps":380,"root_time_now":2484510}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":17052,"response_ms":394,"throughput_bps":1461,"root_time_now":2485210}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":754,"volume_B":17340,"response_ms":1104,"throughput_bps":521,"root_time_now":2494730}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":17124,"response_ms":264,"throughput_bps":2181,"root_time_now":2495710}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":624,"volume_B":17412,"response_ms":834,"throughput_bps":690,"root_time_now":2505020}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":17196,"response_ms":414,"throughput_bps":1391,"root_time_now":2506280}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":634,"volume_B":17484,"response_ms":984,"throughput_bps":585,"root_time_now":2515310}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":17268,"response_ms":214,"throughput_bps":2691,"root_time_now":2516780}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1134,"volume_B":17556,"response_ms":1694,"throughput_bps":340,"root_time_now":2525530}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":17340,"response_ms":924,"throughput_bps":623,"root_time_now":2527350}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1214,"volume_B":17628,"response_ms":1774,"throughput_bps":324,"root_time_now":2536030}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":17412,"response_ms":374,"throughput_bps":1540,"root_time_now":2537850}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":664,"volume_B":17700,"response_ms":1294,"throughput_bps":445,"root_time_now":2546110}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":17484,"response_ms":174,"throughput_bps":3310,"root_time_now":2548350}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":324,"volume_B":17772,"response_ms":674,"throughput_bps":854,"root_time_now":2556330}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":17556,"response_ms":604,"throughput_bps":953,"root_time_now":2558920}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":754,"volume_B":17844,"response_ms":1104,"throughput_bps":521,"root_time_now":2566690}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":17628,"response_ms":614,"throughput_bps":938,"root_time_now":2569420}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":414,"volume_B":17916,"response_ms":1464,"throughput_bps":393,"root_time_now":2576910}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":17700,"response_ms":1394,"throughput_bps":413,"root_time_now":2579993}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":304,"total_mj":716,"latency_ms":5955,"volume_B":6432,"response_ms":6654,"throughput_bps":259,"root_time_now":2587200}
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":984,"volume_B":17988,"response_ms":2524,"throughput_bps":228,"root_time_now":2587270}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":17784,"response_ms":1064,"throughput_bps":631,"root_time_now":2591190}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":714,"volume_B":18060,"response_ms":1274,"throughput_bps":452,"root_time_now":2597420}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":17856,"response_ms":234,"throughput_bps":2461,"root_time_now":2601060}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":654,"volume_B":18132,"response_ms":1424,"throughput_bps":404,"root_time_now":2607640}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":17928,"response_ms":244,"throughput_bps":2360,"root_time_now":2611560}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1007,"volume_B":6576,"response_ms":2044,"throughput_bps":563,"root_time_now":2613940}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:4] Not reachable yet
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":524,"volume_B":18204,"response_ms":664,"throughput_bps":867,"root_time_now":2617930}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":18000,"response_ms":2284,"throughput_bps":252,"root_time_now":2622410}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":674,"volume_B":18276,"response_ms":2354,"throughput_bps":244,"root_time_now":2628220}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":18072,"response_ms":404,"throughput_bps":1425,"root_time_now":2632630}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":894,"volume_B":18348,"response_ms":1664,"throughput_bps":346,"root_time_now":2638440}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":18144,"response_ms":1884,"throughput_bps":305,"root_time_now":2643130}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":624,"volume_B":18420,"response_ms":1954,"throughput_bps":294,"root_time_now":2648730}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":18216,"response_ms":214,"throughput_bps":2691,"root_time_now":2653700}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":564,"volume_B":18492,"response_ms":914,"throughput_bps":630,"root_time_now":2659020}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":18288,"response_ms":154,"throughput_bps":3740,"root_time_now":2664200}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":504,"volume_B":18564,"response_ms":784,"throughput_bps":734,"root_time_now":2669240}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":584,"volume_B":18360,"response_ms":724,"throughput_bps":795,"root_time_now":2674770}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1074,"volume_B":18636,"response_ms":1494,"throughput_bps":385,"root_time_now":2679530}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":244,"volume_B":18432,"response_ms":2064,"throughput_bps":279,"root_time_now":2685270}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1574,"volume_B":18708,"response_ms":2134,"throughput_bps":269,"root_time_now":2689750}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":18504,"response_ms":394,"throughput_bps":1461,"root_time_now":2695840}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":814,"volume_B":18780,"response_ms":954,"throughput_bps":603,"root_time_now":2700740}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":124,"volume_B":18576,"response_ms":824,"throughput_bps":699,"root_time_now":2706340}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":334,"volume_B":18852,"response_ms":894,"throughput_bps":644,"root_time_now":2710400}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":18648,"response_ms":204,"throughput_bps":2823,"root_time_now":2716910}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1394,"volume_B":18924,"response_ms":1534,"throughput_bps":375,"root_time_now":2720550}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":18720,"response_ms":214,"throughput_bps":2691,"root_time_now":2727410}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":434,"volume_B":19008,"response_ms":924,"throughput_bps":727,"root_time_now":2731330}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":18792,"response_ms":364,"throughput_bps":1582,"root_time_now":2737910}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":654,"volume_B":19080,"response_ms":1494,"throughput_bps":385,"root_time_now":2741550}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":18864,"response_ms":234,"throughput_bps":2461,"root_time_now":2748480}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":594,"volume_B":19152,"response_ms":734,"throughput_bps":784,"root_time_now":2751350}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":18936,"response_ms":384,"throughput_bps":1500,"root_time_now":2758980}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":884,"volume_B":19224,"response_ms":1234,"throughput_bps":466,"root_time_now":2762340}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":19008,"response_ms":394,"throughput_bps":1461,"root_time_now":2769550}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":544,"volume_B":19296,"response_ms":824,"throughput_bps":699,"root_time_now":2771860}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":19080,"response_ms":334,"throughput_bps":1724,"root_time_now":2780610}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":764,"volume_B":19368,"response_ms":974,"throughput_bps":591,"root_time_now":2782150}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":19164,"response_ms":494,"throughput_bps":1360,"root_time_now":2790620}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1264,"volume_B":19440,"response_ms":1754,"throughput_bps":328,"root_time_now":2792440}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":964,"volume_B":6828,"response_ms":4304,"throughput_bps":468,"root_time_now":2797480}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":19236,"response_ms":364,"throughput_bps":1582,"root_time_now":2802310}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":504,"volume_B":19512,"response_ms":2254,"throughput_bps":255,"root_time_now":2802730}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":19308,"response_ms":304,"throughput_bps":1894,"root_time_now":2811970}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":654,"volume_B":19584,"response_ms":794,"throughput_bps":725,"root_time_now":2812950}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":19380,"response_ms":244,"throughput_bps":2360,"root_time_now":2822190}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":734,"volume_B":19656,"response_ms":944,"throughput_bps":610,"root_time_now":2823240}
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1707,"volume_B":6972,"response_ms":16474,"throughput_bps":69,"root_time_now":2827930}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1084,"volume_B":7044,"response_ms":16474,"throughput_bps":34,"root_time_now":2829120}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":19452,"response_ms":254,"throughput_bps":2267,"root_time_now":2832690}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1024,"volume_B":19728,"response_ms":1234,"throughput_bps":466,"root_time_now":2833460}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":19524,"response_ms":754,"throughput_bps":763,"root_time_now":2843260}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1104,"volume_B":19800,"response_ms":1454,"throughput_bps":396,"root_time_now":2843750}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":19596,"response_ms":834,"throughput_bps":690,"root_time_now":2853760}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":414,"volume_B":19872,"response_ms":904,"throughput_bps":637,"root_time_now":2853970}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":704,"volume_B":19944,"response_ms":1334,"throughput_bps":431,"root_time_now":2864260}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":19668,"response_ms":284,"throughput_bps":2028,"root_time_now":2864330}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":644,"volume_B":20016,"response_ms":1064,"throughput_bps":541,"root_time_now":2874550}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":19740,"response_ms":224,"throughput_bps":2571,"root_time_now":2874830}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":724,"volume_B":20088,"response_ms":864,"throughput_bps":666,"root_time_now":2884770}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":19812,"response_ms":584,"throughput_bps":986,"root_time_now":2885400}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":804,"volume_B":20160,"response_ms":944,"throughput_bps":610,"root_time_now":2895060}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":19884,"response_ms":244,"throughput_bps":2360,"root_time_now":2895900}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1304,"volume_B":20232,"response_ms":1724,"throughput_bps":334,"root_time_now":2905350}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":19956,"response_ms":1654,"throughput_bps":348,"root_time_now":2906470}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":474,"volume_B":20304,"response_ms":824,"throughput_bps":699,"root_time_now":2915570}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":20028,"response_ms":754,"throughput_bps":763,"root_time_now":2916970}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":414,"volume_B":20376,"response_ms":1044,"throughput_bps":551,"root_time_now":2925860}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":20100,"response_ms":974,"throughput_bps":591,"root_time_now":2927540}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":704,"volume_B":20448,"response_ms":984,"throughput_bps":585,"root_time_now":2936150}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":20172,"response_ms":914,"throughput_bps":630,"root_time_now":2938040}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":784,"volume_B":20520,"response_ms":994,"throughput_bps":579,"root_time_now":2946370}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":20244,"response_ms":294,"throughput_bps":1959,"root_time_now":2948540}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":514,"volume_B":20592,"response_ms":864,"throughput_bps":666,"root_time_now":2956660}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":20316,"response_ms":234,"throughput_bps":2461,"root_time_now":2959110}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":384,"volume_B":20664,"response_ms":664,"throughput_bps":867,"root_time_now":2966880}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":20388,"response_ms":524,"throughput_bps":1099,"root_time_now":2969610}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":534,"volume_B":20736,"response_ms":954,"throughput_bps":603,"root_time_now":2977170}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":20472,"response_ms":404,"throughput_bps":1663,"root_time_now":2980530}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":614,"volume_B":20808,"response_ms":754,"throughput_bps":763,"root_time_now":2987460}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":20544,"response_ms":694,"throughput_bps":829,"root_time_now":2990750}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":554,"volume_B":20880,"response_ms":974,"throughput_bps":591,"root_time_now":2997680}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":20616,"response_ms":1124,"throughput_bps":512,"root_time_now":3001180}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1474,"volume_B":20952,"response_ms":1824,"throughput_bps":315,"root_time_now":3008180}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":1694,"volume_B":20688,"response_ms":3514,"throughput_bps":163,"root_time_now":3013570}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":2604,"volume_B":21024,"response_ms":3654,"throughput_bps":157,"root_time_now":3018400}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":20760,"response_ms":1914,"throughput_bps":300,"root_time_now":3022250}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":724,"volume_B":21096,"response_ms":1984,"throughput_bps":290,"root_time_now":3028480}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":20832,"response_ms":384,"throughput_bps":1500,"root_time_now":3032820}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":594,"volume_B":21168,"response_ms":874,"throughput_bps":659,"root_time_now":3038770}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":20904,"response_ms":254,"throughput_bps":2267,"root_time_now":3043320}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1024,"volume_B":21240,"response_ms":1794,"throughput_bps":321,"root_time_now":3048990}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":20976,"response_ms":264,"throughput_bps":2181,"root_time_now":3053890}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":684,"volume_B":21312,"response_ms":964,"throughput_bps":597,"root_time_now":3059280}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":21048,"response_ms":2794,"throughput_bps":206,"root_time_now":3064390}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":974,"volume_B":21384,"response_ms":2864,"throughput_bps":201,"root_time_now":3069570}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":21120,"response_ms":214,"throughput_bps":2691,"root_time_now":3074960}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":634,"volume_B":21456,"response_ms":1194,"throughput_bps":482,"root_time_now":3079860}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":21192,"response_ms":224,"throughput_bps":2571,"root_time_now":3085460}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":504,"volume_B":21528,"response_ms":784,"throughput_bps":734,"root_time_now":3090640}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":93,"volume_B":21264,"response_ms":303,"throughput_bps":1900,"root_time_now":3095960}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1073,"volume_B":21600,"response_ms":1213,"throughput_bps":474,"root_time_now":3101980}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":21336,"response_ms":524,"throughput_bps":1099,"root_time_now":3106530}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":25,"latency_ms":394,"volume_B":21684,"response_ms":2284,"throughput_bps":294,"root_time_now":3112480}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":21408,"response_ms":2214,"throughput_bps":260,"root_time_now":3117030}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":754,"volume_B":21756,"response_ms":1664,"throughput_bps":346,"root_time_now":3121720}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":21480,"response_ms":404,"throughput_bps":1425,"root_time_now":3127600}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":754,"volume_B":21816,"response_ms":1664,"throughput_bps":288,"root_time_now":3131590}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":21552,"response_ms":414,"throughput_bps":1391,"root_time_now":3138240}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1464,"volume_B":21888,"response_ms":1674,"throughput_bps":344,"root_time_now":3141390}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":570,"total_mj":1202,"latency_ms":2874,"volume_B":7392,"response_ms":3224,"throughput_bps":863,"root_time_now":3145800}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":21624,"response_ms":984,"throughput_bps":585,"root_time_now":3148810}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":784,"volume_B":21972,"response_ms":2674,"throughput_bps":251,"root_time_now":3152730}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":21696,"response_ms":294,"throughput_bps":1959,"root_time_now":3159170}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":444,"volume_B":22044,"response_ms":1634,"throughput_bps":352,"root_time_now":3161900}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":2874,"volume_B":7512,"response_ms":3224,"throughput_bps":297,"root_time_now":3168060}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":21768,"response_ms":1494,"throughput_bps":385,"root_time_now":3169740}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":594,"volume_B":22116,"response_ms":1224,"throughput_bps":470,"root_time_now":3172190}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1504,"volume_B":7584,"response_ms":1714,"throughput_bps":336,"root_time_now":3177510}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":21852,"response_ms":184,"throughput_bps":3652,"root_time_now":3180310}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":954,"volume_B":22188,"response_ms":1164,"throughput_bps":494,"root_time_now":3182480}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":1304,"volume_B":7656,"response_ms":1514,"throughput_bps":380,"root_time_now":3188290}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":21924,"response_ms":334,"throughput_bps":1724,"root_time_now":3191370}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":684,"volume_B":22260,"response_ms":1454,"throughput_bps":396,"root_time_now":3192700}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":964,"volume_B":7728,"response_ms":1524,"throughput_bps":377,"root_time_now":3198580}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":21996,"response_ms":764,"throughput_bps":753,"root_time_now":3202710}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1114,"volume_B":22332,"response_ms":2794,"throughput_bps":206,"root_time_now":3203130}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":22068,"response_ms":354,"throughput_bps":1627,"root_time_now":3211810}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1544,"volume_B":22404,"response_ms":2104,"throughput_bps":273,"root_time_now":3213210}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":964,"volume_B":7848,"response_ms":1524,"throughput_bps":629,"root_time_now":3222240}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":22140,"response_ms":784,"throughput_bps":734,"root_time_now":3222380}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":294,"volume_B":22476,"response_ms":2114,"throughput_bps":272,"root_time_now":3223500}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":22212,"response_ms":304,"throughput_bps":1894,"root_time_now":3232880}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":374,"volume_B":22548,"response_ms":584,"throughput_bps":986,"root_time_now":3233790}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":22284,"response_ms":664,"throughput_bps":867,"root_time_now":3243450}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":804,"volume_B":22620,"response_ms":1084,"throughput_bps":531,"root_time_now":3244010}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":22356,"response_ms":254,"throughput_bps":2267,"root_time_now":3253950}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":954,"volume_B":22692,"response_ms":1234,"throughput_bps":466,"root_time_now":3254300}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":22428,"response_ms":334,"throughput_bps":1724,"root_time_now":3264590}
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":894,"volume_B":22764,"response_ms":1034,"throughput_bps":557,"root_time_now":3264800}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":904,"volume_B":22836,"response_ms":1254,"throughput_bps":459,"root_time_now":3274810}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":22500,"response_ms":694,"throughput_bps":829,"root_time_now":3275020}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":494,"volume_B":22908,"response_ms":1474,"throughput_bps":390,"root_time_now":3285240}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":22572,"response_ms":1404,"throughput_bps":410,"root_time_now":3285520}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":644,"volume_B":22980,"response_ms":1624,"throughput_bps":354,"root_time_now":3295390}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":22644,"response_ms":224,"throughput_bps":2571,"root_time_now":3296090}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":584,"volume_B":23052,"response_ms":934,"throughput_bps":616,"root_time_now":3305610}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":22716,"response_ms":864,"throughput_bps":666,"root_time_now":3306590}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":944,"volume_B":23124,"response_ms":1504,"throughput_bps":382,"root_time_now":3315900}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":22788,"response_ms":174,"throughput_bps":3310,"root_time_now":3317160}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":744,"volume_B":23196,"response_ms":1234,"throughput_bps":466,"root_time_now":3326120}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":22860,"response_ms":324,"throughput_bps":1777,"root_time_now":3327660}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1104,"volume_B":23268,"response_ms":1384,"throughput_bps":416,"root_time_now":3336410}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":22932,"response_ms":194,"throughput_bps":2969,"root_time_now":3338230}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":764,"volume_B":23340,"response_ms":974,"throughput_bps":591,"root_time_now":3346700}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":23004,"response_ms":204,"throughput_bps":2823,"root_time_now":3348730}
+[Mote:4] Not reachable yet
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":634,"volume_B":23412,"response_ms":1054,"throughput_bps":546,"root_time_now":3356920}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":23076,"response_ms":984,"throughput_bps":585,"root_time_now":3359300}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":644,"volume_B":23484,"response_ms":1134,"throughput_bps":507,"root_time_now":3367210}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":23148,"response_ms":364,"throughput_bps":1582,"root_time_now":3369800}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1074,"volume_B":23556,"response_ms":1354,"throughput_bps":425,"root_time_now":3377500}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":23232,"response_ms":244,"throughput_bps":2754,"root_time_now":3380300}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":734,"volume_B":23628,"response_ms":1364,"throughput_bps":422,"root_time_now":3387930}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":23304,"response_ms":324,"throughput_bps":1777,"root_time_now":3391080}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":394,"volume_B":23700,"response_ms":744,"throughput_bps":774,"root_time_now":3398010}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":23376,"response_ms":684,"throughput_bps":842,"root_time_now":3401370}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":474,"volume_B":23772,"response_ms":754,"throughput_bps":763,"root_time_now":3408230}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":64,"volume_B":23448,"response_ms":974,"throughput_bps":591,"root_time_now":3412150}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":484,"volume_B":23844,"response_ms":1324,"throughput_bps":435,"root_time_now":3418520}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":23520,"response_ms":214,"throughput_bps":2691,"root_time_now":3422440}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":494,"volume_B":23916,"response_ms":1334,"throughput_bps":431,"root_time_now":3428810}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":23592,"response_ms":784,"throughput_bps":734,"root_time_now":3433010}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":364,"volume_B":23988,"response_ms":854,"throughput_bps":674,"root_time_now":3439030}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":23664,"response_ms":1634,"throughput_bps":352,"root_time_now":3443510}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":654,"volume_B":24060,"response_ms":1704,"throughput_bps":338,"root_time_now":3449320}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":23736,"response_ms":174,"throughput_bps":3310,"root_time_now":3454080}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":384,"volume_B":24132,"response_ms":524,"throughput_bps":1099,"root_time_now":3459680}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":23808,"response_ms":184,"throughput_bps":3130,"root_time_now":3464580}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":394,"volume_B":24204,"response_ms":814,"throughput_bps":707,"root_time_now":3469970}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":57,"volume_B":23880,"response_ms":1037,"throughput_bps":555,"root_time_now":3475080}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":407,"volume_B":24276,"response_ms":1107,"throughput_bps":520,"root_time_now":3480960}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":134,"volume_B":23952,"response_ms":904,"throughput_bps":637,"root_time_now":3485650}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1464,"volume_B":24348,"response_ms":2304,"throughput_bps":250,"root_time_now":3490900}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":24024,"response_ms":774,"throughput_bps":744,"root_time_now":3496150}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":364,"volume_B":24432,"response_ms":2604,"throughput_bps":258,"root_time_now":3502660}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":14,"volume_B":24096,"response_ms":2534,"throughput_bps":227,"root_time_now":3506720}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":304,"volume_B":24504,"response_ms":584,"throughput_bps":986,"root_time_now":3510990}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":24168,"response_ms":514,"throughput_bps":1120,"root_time_now":3517220}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":524,"volume_B":24576,"response_ms":664,"throughput_bps":867,"root_time_now":3521280}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":24240,"response_ms":314,"throughput_bps":1834,"root_time_now":3527790}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1094,"volume_B":24648,"response_ms":1234,"throughput_bps":466,"root_time_now":3531500}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":44,"volume_B":24312,"response_ms":604,"throughput_bps":953,"root_time_now":3538290}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":614,"volume_B":24720,"response_ms":754,"throughput_bps":763,"root_time_now":3541720}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":54,"volume_B":24384,"response_ms":404,"throughput_bps":1425,"root_time_now":3548860}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":764,"volume_B":24792,"response_ms":1044,"throughput_bps":551,"root_time_now":3551940}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":204,"volume_B":24456,"response_ms":344,"throughput_bps":1674,"root_time_now":3559360}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":494,"volume_B":24864,"response_ms":914,"throughput_bps":630,"root_time_now":3562230}
+[Mote:4] Not reachable yet
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":74,"volume_B":24528,"response_ms":844,"throughput_bps":682,"root_time_now":3569860}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1904,"volume_B":24936,"response_ms":2114,"throughput_bps":272,"root_time_now":3572870}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":24,"volume_B":24612,"response_ms":234,"throughput_bps":2871,"root_time_now":3580430}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":654,"volume_B":25008,"response_ms":1144,"throughput_bps":503,"root_time_now":3582740}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":2324,"volume_B":8148,"response_ms":2954,"throughput_bps":812,"root_time_now":3589740}
+[Mote:2] Sensor IPv6 = fe80::202:2:2:2
+[Mote:1] {"node":"fd00::202:2:2:2","cpu_mj":18,"total_mj":26,"latency_ms":34,"volume_B":24684,"response_ms":1294,"throughput_bps":445,"root_time_now":3591350}
+[Mote:3] Sensor IPv6 = fe80::203:3:3:3
+[Mote:1] {"node":"fd00::203:3:3:3","cpu_mj":18,"total_mj":26,"latency_ms":1504,"volume_B":25080,"response_ms":1644,"throughput_bps":350,"root_time_now":3593030}
+[Mote:4] Sensor IPv6 = fe80::204:4:4:4
+[Mote:1] {"node":"fd00::204:4:4:4","cpu_mj":19,"total_mj":27,"latency_ms":734,"volume_B":8220,"response_ms":1434,"throughput_bps":401,"root_time_now":3599680}
+TEST TIMEOUT
+TEST FAILED
+Test ended at simulation time: 3601000000
