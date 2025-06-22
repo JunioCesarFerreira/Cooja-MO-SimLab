@@ -83,16 +83,23 @@ O diretório `build` contém os códigos e dados necessários para gerar configu
     
 ## Fluxo Recomendado para Reprodução de Experimentos
 
-1. **Configuração da topologia**
+1. **Inicialização do ambiente Cooja**
+
+   Execute um container do Cooja utilizando o [guia disponível aqui](https://github.com/JunioCesarFerreira/Cooja-Docker-VM-Setup/tree/main/ssh-docker-cooja). Utilize por exemplo o [docker-compose disponível na poc](../poc/simlab/docker-compose.yaml).
+
+2. **Configuração da topologia**
 
    Utilize o `scp` para movimentar todos os arquivos do diretório `setting` para dentro do container Cooja.
 
+   Exemplo (considerando o uso do [docker-compose disponível na poc](../poc/simlab/docker-compose.yaml)):
+   No diretório:
    ```bash
+   cd ./Cooja-MO-SimLab/SimLab/single-experiment/setting$
    ```
-
-2. **Inicialização do ambiente Cooja**
-
-   Execute um container do Cooja utilizando o [guia disponível aqui](https://github.com/JunioCesarFerreira/Cooja-Docker-VM-Setup/tree/main/ssh-docker-cooja). Utilize por exemplo o [docker-compose disponível na poc](../poc/simlab/docker-compose.yaml).
+   Execute:
+   ```bash
+   scp -P 2231 * root@127.0.0.1:/opt/contiki-ng/tools/cooja
+   ```
 
 3. **Envio do código fonte para container de simulação**
 
@@ -117,7 +124,12 @@ O diretório `build` contém os códigos e dados necessários para gerar configu
    Dentro do container, acesse o diretório `/opt/contiki-ng/tools/cooja` e renomeie o arquivo:
 
    ```bash
-   mv simulation.xml simulation.csc
+   cp simulation1.xml simulation.csc
+   ```
+
+   se for exemplo com mobilidade renomeie também:
+   ```bash
+   cp positions1.dat positions.csc
    ```
 
 6. **Execução da simulação**
@@ -138,10 +150,7 @@ O diretório `build` contém os códigos e dados necessários para gerar configu
    scp -P 2231 root@127.0.0.1:/opt/contiki-ng/tools/cooja/COOJA.testlog cooja.log
    ```
 
-9. **Organização dos resultados do experimento**
+9. **Consideração Final**
 
-    * Dentro do diretório `result` siga a organização, dividida por tipo de experimento, com mobilidade ou sem, e os protocolos utilizados.
-    * Uma vez determinado o nível correto, crie um diretório para os resultados.
-    * No diretório de resultados copie um nb (exemplo: `sta-tsch-1.ipynb`) de algum outro resultado já existente.
-    * Copie o arquivo de log do Cooja e o inputExample.json utilizado para geração das configurações.
-    * Modifique o nome do arquivo `.ipynb` seguindo o padrão de nomenclatura do diretório.
+   Este fluxo foi projetado para permitir a reprodução de diferentes cenários de simulação, combinando livremente os arquivos de configuração disponíveis no container. Para cada execução, basta garantir que os arquivos estejam nomeados conforme o padrão esperado (ex.: `simulation.csc`, `positions.csc`). Da mesma forma, o envio dos códigos-fonte necessários ao container deve ser feito previamente, permitindo flexibilidade na escolha dos firmwares para cada experimento.
+   
