@@ -6,14 +6,15 @@ Neste diretório você encontrará diversos scripts e resultados de experimentos
 
 Neste nível você encontrará a seguinte organização dos diretórios:
 - `build`: Este diretório contém os scripts de geração de configurações para testes com Cooja.
+- `model`: Coleção de arquivos json de modelos para visualização das configurações dos testes.
 - `result`: Neste estão os subdiretórios organizados de resultados e análises do experimentos executados.
-- `setting`: Contém a coleção de configurações geradas com o processo do `build` para os experimentos.
+- `setting`: Contém a coleção de configurações do Cooja geradas com o processo do `build` para os experimentos.
 - `source`: Contém os códigos fonte em C para compilação dos motes nas simulações.
 
 O diretório `build` contém os códigos e dados necessários para gerar configurações do Cooja e executar simulações. O processo é descrito no tópico a seguir.
 
 
-## Fluxo de Uso
+## Fluxo de Uso Durante Desenvolvimento
 
 1. **Configuração da topologia**
 
@@ -75,6 +76,72 @@ O diretório `build` contém os códigos e dados necessários para gerar configu
 
     * Dentro do diretório `result` siga a organização, dividida por tipo de experimento, com mobilidade ou sem, e os protocolos utilizados.
     * Uma vez determinado o nível correto, crie um diretório para os resultados.
-    * No diretório de resultados copie um nb `expN.ipynb` de algum outro resultado já existente.
+    * No diretório de resultados copie um nb (exemplo: `sta-tsch-1.ipynb`) de algum outro resultado já existente.
     * Copie o arquivo de log do Cooja e o inputExample.json utilizado para geração das configurações.
-    * Modifique o nome do arquivo `expN.ipynb`
+    * Modifique o nome do arquivo `.ipynb` seguindo o padrão de nomenclatura do diretório.
+
+    
+## Fluxo Recomendado para Reprodução de Experimentos
+
+1. **Configuração da topologia**
+
+   Utilize o `scp` para movimentar todos os arquivos do diretório `setting` para dentro do container Cooja.
+
+   ```bash
+   ```
+
+2. **Inicialização do ambiente Cooja**
+
+   Execute um container do Cooja utilizando o [guia disponível aqui](https://github.com/JunioCesarFerreira/Cooja-Docker-VM-Setup/tree/main/ssh-docker-cooja). Utilize por exemplo o [docker-compose disponível na poc](../poc/simlab/docker-compose.yaml).
+
+3. **Envio do código fonte para container de simulação**
+
+   No diretório `~/Cooja-MO-SimLab/SimLab/single-experiment/source`, utilizando o subdiretório desejado, execute o seguinte comando para enviar os arquivos ao container:
+
+   ```bash
+   scp -P 2231 * root@127.0.0.1:/opt/contiki-ng/tools/cooja
+   ```
+
+4. **Acesso ao container via SSH**
+
+   Conecte-se ao container com o comando:
+
+   ```bash
+   ssh -p 2231 root@127.0.0.1
+   ```
+
+   Para mais detalhes, consulte novamente o [guia de configuração do container](https://github.com/JunioCesarFerreira/Cooja-Docker-VM-Setup/tree/main/ssh-docker-cooja).
+
+5. **Preparação do arquivo de simulação no container**
+
+   Dentro do container, acesse o diretório `/opt/contiki-ng/tools/cooja` e renomeie o arquivo:
+
+   ```bash
+   mv simulation.xml simulation.csc
+   ```
+
+6. **Execução da simulação**
+
+   Execute o Cooja em modo não interativo com:
+
+   ```bash
+   java --enable-preview -Xms4g -Xmx4g -jar build/libs/cooja.jar --no-gui simulation.csc
+   ```
+
+7. **Aguarde a finalização da simulação**
+
+8. **Recuperação do log de simulação**
+
+   Após a execução, recupere o arquivo de log com:
+
+   ```bash
+   scp -P 2231 root@127.0.0.1:/opt/contiki-ng/tools/cooja/COOJA.testlog cooja.log
+   ```
+
+9. **Organização dos resultados do experimento**
+
+    * Dentro do diretório `result` siga a organização, dividida por tipo de experimento, com mobilidade ou sem, e os protocolos utilizados.
+    * Uma vez determinado o nível correto, crie um diretório para os resultados.
+    * No diretório de resultados copie um nb (exemplo: `sta-tsch-1.ipynb`) de algum outro resultado já existente.
+    * Copie o arquivo de log do Cooja e o inputExample.json utilizado para geração das configurações.
+    * Modifique o nome do arquivo `.ipynb` seguindo o padrão de nomenclatura do diretório.
