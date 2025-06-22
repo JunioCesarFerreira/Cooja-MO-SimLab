@@ -138,8 +138,9 @@ static void metrics_print(char* addr_str,
     uint32_t throughput_bps = (delta_bytes * 8 * 1000UL) / rtt_ms;            /* Eq. 2.28 */
 
     /* ---- único log CSV/JSON ---- */
-    printf("{\"node\":\"%s\",\"cpu_mj\":%u,\",\"total_mj\":%u,\"latency_ms\":%u,\"volume_B\":%u,\"response_ms\":%u,\"throughput_bps\":%u}\n",
-            addr_str, cpu, etot, latency, volume, rtt_ms, throughput_bps);
+    printf(
+        "{\"node\":\"%s\",\"cpu_mj\":%u,\",\"total_mj\":%u,\"latency_ms\":%u,\"volume_B\":%u,\"response_ms\":%u,\"throughput_bps\":%u,\"root_time_now\":%lu}\n",
+        addr_str, cpu, etot, latency, volume, rtt_ms, throughput_bps, now);
 }
 
 //------------------------ UDP Receive Callback -------------------------------
