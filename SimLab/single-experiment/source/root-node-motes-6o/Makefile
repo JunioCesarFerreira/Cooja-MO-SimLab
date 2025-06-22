@@ -1,7 +1,7 @@
 CONTIKI_PROJECT = udp-client udp-server
 all: $(CONTIKI_PROJECT)
 
-CONTIKI = ../../..
+CONTIKI = ../..
 
 #To enable TSCH
 MAKE_MAC = MAKE_MAC_TSCH
