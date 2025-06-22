@@ -139,7 +139,7 @@ static void metrics_print(char* addr_str,
 
     /* ---- único log CSV/JSON ---- */
     printf(
-        "{\"node\":\"%s\",\"cpu_mj\":%u,\",\"total_mj\":%u,\"latency_ms\":%u,\"volume_B\":%u,\"response_ms\":%u,\"throughput_bps\":%u,\"root_time_now\":%lu}\n",
+        "{\"node\":\"%s\",\"cpu_mj\":%u,\"total_mj\":%u,\"latency_ms\":%u,\"volume_B\":%u,\"response_ms\":%u,\"throughput_bps\":%u,\"root_time_now\":%lu}\n",
         addr_str, cpu, etot, latency, volume, rtt_ms, throughput_bps, now);
 }
 
