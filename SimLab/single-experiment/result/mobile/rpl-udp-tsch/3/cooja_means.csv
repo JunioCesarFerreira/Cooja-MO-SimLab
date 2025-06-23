@@ -1,4 +1,4 @@
-node,rtt_latency,r2n_latency,n2r_latency,rssi,radio_rx_energy_mj,radio_tx_energy_mj,cpu_energy_mj,lost_packets_r2n,lost_packets_n2r
-fd00::202:2:2:2,369.7,389.62,98.95,-86.74,8.05,0.0,18.06,0.04,0.04
-fd00::203:3:3:3,361.87,64.68,101.91,-86.75,8.01,0.0,18.05,0.01,0.01
-fd00::204:4:4:4,1234.46,1215.35,1597.04,-65.42,206.4,0.4,103.31,82.9,184.04
+node,rtt_latency,r2n_latency,n2r_latency,rssi,radio_rx_energy_mj,radio_tx_energy_mj,cpu_energy_mj,lost_packets_r2n,lost_packets_n2r,hops
+fd00::202:2:2:2,369.7,389.62,98.95,-86.74,8.05,0.0,18.06,0.04,0.04,0.0
+fd00::203:3:3:3,361.87,64.68,101.91,-86.75,8.01,0.0,18.05,0.01,0.01,0.0
+fd00::204:4:4:4,1234.46,1215.35,1597.04,-65.42,206.4,0.4,103.31,82.9,184.04,0.98

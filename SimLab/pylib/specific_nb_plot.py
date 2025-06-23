@@ -23,6 +23,7 @@ def process_log1(log_path: Path, csv_full_output: Path, csv_means_output: Path):
         "cpu_energy_mj",
         "lost_packets_r2n",
         "lost_packets_n2r",
+        "hops",
     ]
 
     means = (
