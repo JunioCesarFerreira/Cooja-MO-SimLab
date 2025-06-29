@@ -1,58 +1,61 @@
 # MO-Cooja-Sim
 
-## Overview
-MO-Cooja-Sim is a scalable multi-objective optimization simulation system utilizing Cooja and Docker. It enables distributed simulations of evolutionary algorithms in a containerized environment, efficiently managing experiment workflows with Python, Go, and MongoDB.
+## Visão Geral
+Neste repositório apresento uma pesquisa sobre um sistema de simulação escalável para otimização multiobjetivo utilizando Cooja e Docker. Ele permite simulações distribuídas de algoritmos evolutivos em um ambiente conteinerizado, gerenciando eficientemente os fluxos de experimentos com Python, Go e MongoDB.
 
-## System Architecture
-The system is composed of three main components:
+## Conteúdo
+- **SimLab**: 
 
-1. **Python Evolutionary Algorithm Module**
-   - Runs an evolutionary algorithm to generate new candidate solutions.
-   - Enqueues each new generation's elements in MongoDB for simulation.
-   - Listens for simulation results via MongoDB Change Stream.
+## Arquitetura do Sistema
+O sistema é composto por três componentes principais:
 
-2. **Master-Node (Go Application)**
-   - Consumes the simulation queue from MongoDB.
-   - Dynamically spawns Docker containers for simulation execution.
-   - Transfers simulation input data via SCP.
-   - Monitors the simulation process via SSH.
-   - Registers simulation results back to MongoDB.
-   - Destroys the simulation container after execution.
+1. **Módulo de Algoritmo Evolutivo em Python**
+   - Executa um algoritmo evolutivo para gerar novas soluções candidatas.
+   - Enfileira os elementos de cada nova geração no MongoDB para simulação.
+   - Escuta os resultados das simulações via MongoDB Change Stream.
 
-3. **Cooja Simulation Containers**
-   - Each container runs a Cooja instance to process a single simulation task.
-   - Receives input data from Master-Node.
-   - Generates and returns simulation results.
+2. **Master-Node (Aplicação em Go)**
+   - Consome a fila de simulações no MongoDB.
+   - Cria dinamicamente containers Docker para execução das simulações.
+   - Transfere os dados de entrada da simulação via SCP.
+   - Monitora o processo de simulação via SSH.
+   - Registra os resultados das simulações de volta no MongoDB.
+   - Destroi o container de simulação após a execução.
 
-## Features
-- **Scalable Execution:** Dynamic container provisioning ensures efficient resource utilization.
-- **Distributed Processing:** Parallel execution of multiple simulations.
-- **Seamless Data Flow:** Integration with MongoDB for real-time result processing.
-- **Automation:** End-to-end automated execution from algorithm evolution to result collection.
+3. **Containers de Simulação com Cooja**
+   - Cada container executa uma instância do Cooja para processar uma única tarefa de simulação.
+   - Recebe os dados de entrada do Master-Node.
+   - Gera e retorna os resultados da simulação.
 
-## Installation
-### Prerequisites
-- Docker & Docker Compose
+## Funcionalidades
+- **Execução Escalável:** Provisão dinâmica de containers garante uso eficiente dos recursos.
+- **Processamento Distribuído:** Execução paralela de múltiplas simulações.
+- **Fluxo de Dados Integrado:** Integração com MongoDB para processamento em tempo real dos resultados.
+- **Automação:** Execução totalmente automatizada, desde a evolução do algoritmo até a coleta dos resultados.
+
+## Instalação
+### Pré-requisitos
+- Docker e Docker Compose
 - Python (>= 3.12)
 - Go (>= 1.23)
 - MongoDB
-- [Docker Image Cooja (Contiki-NG environment)](https://github.com/JunioCesarFerreira/Cooja-Docker-VM-Setup)
+- [Imagem Docker do Cooja (ambiente Contiki-NG)](https://github.com/JunioCesarFerreira/Cooja-Docker-VM-Setup)
 
-### Setup Instructions
+### Instruções de Configuração
 
-*It is yet to be completed.*
+*Ainda não foram concluídas.*
 
-## Usage
+## Uso
 
-*It is yet to be completed.*
+*Ainda não foram concluídas.*
 
-## Future Enhancements
-- Implement advanced scheduling mechanisms for simulation prioritization.
-- Optimize container lifecycle management for cost efficiency.
-- Extend support for additional optimization techniques.
+## Melhorias Futuras
+- Implementar mecanismos avançados de escalonamento para priorização de simulações.
+- Otimizar o gerenciamento do ciclo de vida dos containers para reduzir custos.
+- Estender o suporte a outras técnicas de otimização.
 
-## License
-This project is licensed under the [MIT License](./LICENSE).
+## Licença
+Este projeto está licenciado sob a [Licença MIT](./LICENSE).
 
-## Contributing
-Contributions are welcome! Please submit issues or pull requests for improvements.
+## Contribuições
+Contribuições são bem-vindas! Envie issues ou pull requests com sugestões de melhorias.
