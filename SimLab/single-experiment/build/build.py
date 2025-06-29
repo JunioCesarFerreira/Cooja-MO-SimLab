@@ -22,22 +22,6 @@ OUTPOS_DAT = OUTPUT_DIR / "positions.dat"
 with open(INPUT_JSON, "r", encoding="utf-8") as f:
     experiment_data = json.load(f)
     
-# Extrai a lista de arquivos
-linked_files = experiment_data.get("linkedFiles", [])
-file_parameters = []
-
-# Prepara lista de arquivos vinculados
-for f in linked_files:
-    file_path = DATA_DIR / f["name"]
-    if file_path.exists():
-        file_parameters.append({
-            "name": f["name"],
-            "filePath": str(file_path)
-        })
-    else:
-        print(f"Aviso: Arquivo não encontrado: {file_path}")
-
-
 sim_model = experiment_data["simulationModel"]
 
 files.convert_simulation_files(sim_model, TEMPLATE_XML, OUTSIM_XML, OUTPOS_DAT)
