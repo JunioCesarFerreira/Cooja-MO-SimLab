@@ -21,28 +21,48 @@ services:
       - mongo-net
 
   restapi:
-    build: ./rest-api
-    container_name: restapi
-    ports:
-      - "8000:8000"
-    depends_on:
-      - mongodb
+    image: python:3.14-rc-alpine3.21
+    container_name: rest_api
+    working_dir: /app
+    volumes:
+      - ./rest-api:/app/rest-api
+      - ./pylib:/app/pylib
     environment:
+      - PYTHONPATH=/app:/app/pylib
       - DB_NAME=simlab
       - MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "
+      pip install --no-cache-dir -r /app/rest-api/requirements.txt &&
+      python /app/rest-api/main.py
+      "
+    depends_on:
+      - mongodb
     networks:
       - mongo-net
 
   masternode:
-    build: ./master-node
-    container_name: master-node
-    ports:
-      - "2220:22"
-    depends_on:
-      - mongodb
+    image: python:3.14-rc-alpine3.21
+    container_name: master_node
+    working_dir: /app
+    volumes:
+      - ./master-node:/app/master-node
+      - ./pylib:/app/pylib
     environment:
+      - PYTHONPATH=/app:/app/pylib
       - DB_NAME=simlab
       - MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
+    ports:
+      - "2220:22"
+    command: >
+      sh -c "
+      pip install --no-cache-dir -r /app/rest-api/requirements.txt &&
+      python /app/master-node/main.py
+      "
+    depends_on:
+      - mongodb
     networks:
       - mongo-net
       - cooja-net
