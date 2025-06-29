@@ -58,7 +58,7 @@ services:
       - "2220:22"
     command: >
       sh -c "
-      pip install --no-cache-dir -r /app/rest-api/requirements.txt &&
+      pip install --no-cache-dir -r /app/master-node/requirements.txt &&
       python /app/master-node/main.py
       "
     depends_on:
