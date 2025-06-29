@@ -1,4 +1,5 @@
-from typing import TypedDict
+from typing import TypedDict, Any
+from datetime import datetime
 
 class BaseMote(TypedDict):
     name: str
@@ -27,3 +28,40 @@ class SimulationConfig(TypedDict):
     radiusOfInter: float # Cooja admite apenas redes homogeneas
     region: tuple[float, float, float, float]
     simulationElements: SimulationElements
+    
+    
+# Database
+class SourceRepository(TypedDict):
+    id: str
+    name : str
+    description: str
+    source_ids: list[str]
+    
+class Simulation(TypedDict):
+    id: str
+    status: str
+    start_time: datetime
+    end_time: datetime
+    parameters: SimulationConfig
+    pos_file_id: str
+    csc_file_id: str
+    log_cooja_id: str
+    runtime_log_id: str
+    csv_log_id: str
+    
+class SimulationQueue(TypedDict):
+    id: str
+    status: str
+    start_time: datetime
+    end_time: datetime
+    simulations_ids: list[str]
+    
+class Experiment(TypedDict):
+    id: str
+    name: str
+    status: str
+    created_time: datetime
+    start_time: datetime
+    end_time: datetime
+    parameters: dict[str, Any]
+    packets_queue_ids: list[str]
