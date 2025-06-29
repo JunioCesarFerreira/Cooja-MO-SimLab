@@ -18,7 +18,7 @@ services:
       - "mongo_data:/data/db"
       - "mongo_config:/data/configdb"
     networks:
-      - mongo_net
+      - mongo-net
 
   restapi:
     build: ./rest-api
@@ -31,7 +31,7 @@ services:
       - DB_NAME=simlab
       - MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
     networks:
-      - mongo_net
+      - mongo-net
 
   masternode:
     build: ./master-node
@@ -44,7 +44,7 @@ services:
       - DB_NAME=simlab
       - MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
     networks:
-      - mongo_net
+      - mongo-net
       - cooja-net
 
   cooja1:
