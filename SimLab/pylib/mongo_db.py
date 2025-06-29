@@ -1,12 +1,13 @@
 import logging
-import time
 from datetime import datetime
-from typing import Optional, Generator
+from typing import Optional, Generator, NamedTuple
 
 from bson import ObjectId
 from pymongo import MongoClient
 import gridfs
 from contextlib import contextmanager
+
+from dto import SourceRepository, Simulation, SimulationQueue, Experiment
 
 # Constantes de status
 STATUS_WAITING = "Waiting"
@@ -54,88 +55,99 @@ class MongoGridFSHandler:
 
 
 class ExperimentRepository:
-    def __init__(self, connection: MongoDBConnection, fs_handler: MongoGridFSHandler):
+    def __init__(self, connection: MongoDBConnection):
         self.connection = connection
-        self.fs_handler = fs_handler
 
-    def _build_experiment_document(self, data: dict, linked_files: list[dict]) -> dict:
-        return {
-            "name": data.get("name", ""),
-            "status": data.get("status", STATUS_WAITING),
-            "enqueuedTime": datetime.now(),
-            "evolutiveParameters": data.get("evolutiveParameters", {}),
-            "simulationModel": data.get("simulationModel", {}),
-            "linkedFiles": linked_files,
-            "generations": []
-        }
-
-    def _process_file_parameters(self, file_params: list[dict]) -> list[dict]:
-        linked_files = []
-        for param in file_params:
-            try:
-                file_id = self.fs_handler.upload_file(param["filePath"], param["name"])
-                linked_files.append({"name": param["name"], "fileId": file_id})
-            except Exception as e:
-                logger.error(f"Erro ao processar arquivo {param['filePath']}: {e}")
-        return linked_files
-
-    def insert_experiment(self, experiment_data: dict, file_parameters: Optional[list[dict]] = None) -> ObjectId:
-        linked_files = self._process_file_parameters(file_parameters or [])
-        document = self._build_experiment_document(experiment_data, linked_files)
+    def insert(self, experiment: Experiment) -> ObjectId:
         with self.connection.connect() as db:
-            return db["experiments"].insert_one(document).inserted_id
+            return db["experiments"].insert_one(experiment).inserted_id
 
-    def get_all_waiting(self) -> list[dict]:
+    def find_by_status(self, status: str) -> list[Experiment]:
         with self.connection.connect() as db:
-            return list(db["experiments"].find({"status": STATUS_WAITING}))
+            return list(db["experiments"].find({"status": status}))
 
-    def get_first_waiting(self) -> Optional[dict]:
+    def find_first_by_status(self, status: str) -> Optional[Experiment]:
         with self.connection.connect() as db:
-            return db["experiments"].find_one({"status": STATUS_WAITING})
+            return db["experiments"].find_one({"status": status})
 
-    def update_experiment(self, experiment_id: str, updates: dict) -> bool:
+    def update(self, experiment_id: str, updates: dict) -> bool:
         with self.connection.connect() as db:
             result = db["experiments"].update_one({"_id": ObjectId(experiment_id)}, {"$set": updates})
             return result.modified_count > 0
+
+
+class SimulationRepository:
+    def __init__(self, connection: MongoDBConnection):
+        self.connection = connection
+
+    def insert(self, simulation: Simulation) -> ObjectId:
+        with self.connection.connect() as db:
+            return db["simulations"].insert_one(simulation).inserted_id
+
+    def update_status(self, sim_id: str, new_status: str):
+        with self.connection.connect() as db:
+            db["simulations"].update_one(
+                {"_id": ObjectId(sim_id)},
+                {"$set": {"status": new_status, "end_time": datetime.now()}}
+            )
+            logger.info(f"Simulação {sim_id} atualizada para status: {new_status}")
 
 
 class SimulationQueueRepository:
     def __init__(self, connection: MongoDBConnection):
         self.connection = connection
 
-    def find_pending_simulations(self):
+    def insert(self, queue: SimulationQueue) -> ObjectId:
         with self.connection.connect() as db:
-            return db["simqueue"].find({"status": STATUS_WAITING})
+            return db["simqueue"].insert_one(queue).inserted_id
 
-    def update_status(self, sim_id: str, new_status: str):
+    def find_pending(self) -> list[SimulationQueue]:
+        with self.connection.connect() as db:
+            return list(db["simqueue"].find({"status": STATUS_WAITING}))
+
+    def mark_done(self, queue_id: str):
         with self.connection.connect() as db:
             db["simqueue"].update_one(
-                {"_id": ObjectId(sim_id)},
-                {"$set": {"status": new_status, "timestamp": time.time()}}
+                {"_id": ObjectId(queue_id)},
+                {"$set": {"status": STATUS_DONE, "end_time": datetime.now()}}
             )
-            logger.info(f"Simulação {sim_id} atualizada para status: {new_status}")
 
-    def mark_simulation_done(self, sim: dict, log_result_id: str):
-        log_oid = ObjectId(log_result_id)
+
+class SourceRepositoryAccess:
+    def __init__(self, connection: MongoDBConnection):
+        self.connection = connection
+
+    def insert(self, source: SourceRepository) -> ObjectId:
         with self.connection.connect() as db:
-            db["simqueue"].update_one(
-                {"_id": sim["_id"]},
-                {"$set": {"simLogFile": log_result_id, "status": STATUS_DONE, "timestamp": time.time()}}
-            )
-            update_result = db["generations"].update_one(
-                {"_id": sim["generation_id"]},
-                {"$set": {"population.$[ind].simLogFile": log_oid}},
-                array_filters=[{"ind.simulationFile": sim["simulationFile"]}]
-            )
-            if update_result.matched_count == 0:
-                logger.warning("Nenhum indivíduo correspondente encontrado na geração.")
+            return db["sources"].insert_one(source).inserted_id
+
+    def get_all(self) -> list[SourceRepository]:
+        with self.connection.connect() as db:
+            return list(db["sources"].find())
 
 
 # Fábrica de componentes
 
-def factory(mongo_uri: str, db_name: str):
+
+class MongoRepositoryFactory(NamedTuple):
+    experiment_repo: ExperimentRepository
+    simulation_repo: SimulationRepository
+    simulation_queue_repo: SimulationQueueRepository
+    source_repo: SourceRepositoryAccess
+    fs_handler: MongoGridFSHandler
+
+
+def create_mongo_repository_factory(mongo_uri: str, db_name: str) -> MongoRepositoryFactory:
     connection = MongoDBConnection(mongo_uri, db_name)
     fs_handler = MongoGridFSHandler(connection)
-    experiment_repo = ExperimentRepository(connection, fs_handler)
-    simulation_repo = SimulationQueueRepository(connection)
-    return experiment_repo, simulation_repo, fs_handler
+    experiment_repo = ExperimentRepository(connection)
+    simulation_repo = SimulationRepository(connection)
+    simulation_queue_repo = SimulationQueueRepository(connection)
+    source_repo = SourceRepositoryAccess(connection)
+    return MongoRepositoryFactory(
+        experiment_repo=experiment_repo,
+        simulation_repo=simulation_repo,
+        simulation_queue_repo=simulation_queue_repo,
+        source_repo=source_repo,
+        fs_handler=fs_handler
+    )
