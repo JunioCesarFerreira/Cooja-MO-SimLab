@@ -1,9 +1,7 @@
-import threading
+import threading, os, sys, time
 import queue
 from pathlib import Path
 from scp import SCPClient
-import os
-import sys
 
 # Configura caminho do projeto para acessar pylib
 project_path = os.path.abspath(os.path.join(os.getcwd(), ".."))
@@ -26,7 +24,7 @@ Path(LOCAL_LOG_DIR).mkdir(exist_ok=True)
 SSH_CONFIG = {
     "username": "root",
     "password": "root",
-    "hostname": "localhost",
+    "hostnames": ["cooja1", "cooja2", "cooja3", "cooja4", "cooja5"],
     "ports": [2231, 2232, 2233, 2234, 2235]
 }
 
@@ -57,8 +55,8 @@ def prepare_simulation_files(sim, mongo):
 
     return local_files, remote_files
 
-def run_cooja_simulation(sim, port, mongo):
-    ssh = sshscp.create_ssh_client(SSH_CONFIG["hostname"], port, SSH_CONFIG["username"], SSH_CONFIG["password"])
+def run_cooja_simulation(sim, port, hostname, mongo):
+    ssh = sshscp.create_ssh_client(hostname, port, SSH_CONFIG["username"], SSH_CONFIG["password"])
     sim_id = str(sim["_id"])
     try:
         print(f"[{port}] Iniciando simulação {sim_id}...")
@@ -86,7 +84,7 @@ def run_cooja_simulation(sim, port, mongo):
     finally:
         ssh.close()
 
-def simulation_worker(sim_queue, port):
+def simulation_worker(sim_queue, port, hostname):
     mongo = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
     while True:
         sim = sim_queue.get()
@@ -97,11 +95,11 @@ def simulation_worker(sim_queue, port):
         local_files, remote_files = prepare_simulation_files(sim, mongo)
         try:
             print(f"[{port}] Enviando arquivos da simulação {sim_id}")
-            ssh = sshscp.create_ssh_client(SSH_CONFIG["hostname"], port, SSH_CONFIG["username"], SSH_CONFIG["password"])
+            ssh = sshscp.create_ssh_client(hostname, port, SSH_CONFIG["username"], SSH_CONFIG["password"])
             sshscp.send_files_scp(ssh, LOCAL_DIRECTORY, REMOTE_DIRECTORY, local_files, remote_files)
             ssh.close()
 
-            run_cooja_simulation(sim, port, mongo)
+            run_cooja_simulation(sim, port, hostname, mongo)
         except Exception as e:
             print(f"[{port}] ERRO geral na simulação {sim_id}: {e}")
             mongo.simulation_repo.update_status(sim_id, "error")
@@ -111,7 +109,12 @@ def simulation_worker(sim_queue, port):
 def start_workers(num_workers=5):
     q = queue.Queue()
     for i in range(num_workers):
-        t = threading.Thread(target=simulation_worker, args=(q, SSH_CONFIG["ports"][i]), daemon=True)
+        t = threading.Thread(
+            target=simulation_worker, 
+            args=(q, 
+                  SSH_CONFIG["ports"][i], 
+                  SSH_CONFIG["hostnames"][i]), 
+            daemon=True)
         t.start()
     print("[Sistema] Workers iniciados.")
     return q
@@ -125,5 +128,13 @@ def load_initial_waiting_jobs(sim_queue):
         sim_queue.put(sim)
 
 if __name__ == "__main__":
+    print("start")
+    print(f"env:\n\tMONGO_URI: {MONGO_URI}\n\tDB_NAME: {DB_NAME}")
     sim_queue = start_workers()
     load_initial_waiting_jobs(sim_queue)
+    
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("Encerrando...")
