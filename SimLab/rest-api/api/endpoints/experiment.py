@@ -2,9 +2,10 @@
 from fastapi import APIRouter, HTTPException
 from dto import Experiment    
 from pylib import mongo_db
+import os
 
-MONGO_URI = "mongodb://localhost:27017"
-DB_NAME = "my_simulation_db"
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/?replicaSet=rs0")
+DB_NAME = os.getenv("DB_NAME", "simlab")
 factory = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
 
 router = APIRouter()
