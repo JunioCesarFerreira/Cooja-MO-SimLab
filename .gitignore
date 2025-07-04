@@ -6,3 +6,4 @@ SimLab/rest-api/.vs
 SimLab/poc/logs
 SimLab/poc/temp
 SimLab/poc/tmp
+.pytest_cache
