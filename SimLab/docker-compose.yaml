@@ -21,7 +21,9 @@ services:
       - mongo-net
 
   restapi:
-    image: python:3.12-slim
+    build:
+      context: .
+      dockerfile: Dockerfile.rest-api
     container_name: rest_api
     working_dir: /app
     volumes:
@@ -33,18 +35,15 @@ services:
       - MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
     ports:
       - "8000:8000"
-    command: >
-      sh -c "
-      pip install --no-cache-dir -r /app/rest-api/requirements.txt &&
-      python /app/rest-api/main.py
-      "
     depends_on:
       - mongodb
     networks:
       - mongo-net
 
   masternode:
-    image: python:3.12-slim
+    build:
+      context: .
+      dockerfile: Dockerfile.master-node
     container_name: master_node
     working_dir: /app
     volumes:
@@ -56,11 +55,6 @@ services:
       - MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
     ports:
       - "2220:22"
-    command: >
-      sh -c "
-      pip install --no-cache-dir -r /app/master-node/requirements.txt &&
-      python /app/master-node/main.py
-      "
     depends_on:
       - mongodb
     networks:
