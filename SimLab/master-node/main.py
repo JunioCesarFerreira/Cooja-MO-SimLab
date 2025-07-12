@@ -34,7 +34,7 @@ def reload_standard_hosts(number: int):
     SSH_CONFIG["ports"] = []
     for i in range(number):
         SSH_CONFIG["hostnames"].append("cooja" + str(i))  
-        SSH_CONFIG["port"].append(int(2231 + i))
+        SSH_CONFIG["ports"].append(int(2231 + i))
 
 # Pega arquivos do mongo e prepara para simulação no Cooja
 def prepare_simulation_files(sim, mongo):
