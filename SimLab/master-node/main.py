@@ -3,7 +3,7 @@ import queue
 from pathlib import Path
 from scp import SCPClient
 
-# Configura caminho do projeto para acessar pylib
+# Adiciona o diretório do projeto ao sys.path para importar módulos locais
 project_path = os.path.abspath(os.path.join(os.getcwd(), ".."))
 if project_path not in sys.path:
     sys.path.insert(0, project_path)
@@ -14,13 +14,13 @@ from pylib import sshscp, mongo_db
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/?replicaSet=rs0")
 DB_NAME = os.getenv("DB_NAME", "simlab")
 
-# Configurações de caminhos
+# Diretórios utilizados
 LOCAL_DIRECTORY = '.'
 REMOTE_DIRECTORY = '/opt/contiki-ng/tools/cooja'
 LOCAL_LOG_DIR = "logs"
 Path(LOCAL_LOG_DIR).mkdir(exist_ok=True)
 
-# Credenciais
+# Configurações SSH para acesso aos containers do Cooja
 SSH_CONFIG = {
     "username": "root",
     "password": "root",
@@ -28,7 +28,27 @@ SSH_CONFIG = {
     "ports": [2231, 2232, 2233, 2234, 2235]
 }
 
+# Recarrega lista de hosts e portas seguindo o padrão apresentado nos dados default
+def reload_standard_hosts(number: int):
+    SSH_CONFIG["hostnames"] = []
+    SSH_CONFIG["ports"] = []
+    for i in range(number):
+        SSH_CONFIG["hostnames"].append("cooja" + str(i))  
+        SSH_CONFIG["port"].append(int(2231 + i))
+
+# Pega arquivos do mongo e prepara para simulação no Cooja
 def prepare_simulation_files(sim, mongo):
+    """
+    Prepara os arquivos necessários para uma simulação específica, 
+    baixando-os do MongoDB para um diretório temporário local.
+
+    Args:
+        sim (dict): Objeto da simulação, contendo os IDs dos arquivos.
+        mongo: Conexão com os repositórios MongoDB.
+
+    Returns:
+        tuple: Lista de caminhos dos arquivos locais e nomes remotos.
+    """
     sim_id = str(sim["_id"])
     tmp_dir = Path("tmp")
     tmp_dir.mkdir(exist_ok=True)
@@ -55,7 +75,17 @@ def prepare_simulation_files(sim, mongo):
 
     return local_files, remote_files
 
+# Executa simulação no Cooja
 def run_cooja_simulation(sim, port, hostname, mongo):
+    """
+    Executa a simulação no container Cooja via SSH.
+
+    Args:
+        sim (dict): Objeto da simulação.
+        port (int): Porta SSH do container.
+        hostname (str): Hostname do container.
+        mongo: Conexão com os repositórios MongoDB.
+    """
     ssh = sshscp.create_ssh_client(hostname, port, SSH_CONFIG["username"], SSH_CONFIG["password"])
     sim_id = str(sim["_id"])
     try:
@@ -84,7 +114,16 @@ def run_cooja_simulation(sim, port, hostname, mongo):
     finally:
         ssh.close()
 
+# Consome fila de simulações
 def simulation_worker(sim_queue, port, hostname):
+    """
+    Worker que consome a fila de simulações e executa cada uma.
+
+    Args:
+        sim_queue (queue.Queue): Fila de simulações.
+        port (int): Porta do container.
+        hostname (str): Nome do host.
+    """
     mongo = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
     while True:
         sim = sim_queue.get()
@@ -106,7 +145,17 @@ def simulation_worker(sim_queue, port, hostname):
         finally:
             sim_queue.task_done()
 
+# Inicia threads de trabalho
 def start_workers(num_workers=5):
+    """
+    Inicializa múltiplas threads (workers) para execução paralela de simulações.
+
+    Args:
+        num_workers (int): Número de workers a serem criados.
+
+    Returns:
+        queue.Queue: A fila compartilhada entre os workers.
+    """
     q = queue.Queue()
     for i in range(num_workers):
         t = threading.Thread(
@@ -119,7 +168,14 @@ def start_workers(num_workers=5):
     print("[Sistema] Workers iniciados.")
     return q
 
+# Descarrega fila antes de iniciar threads
 def load_initial_waiting_jobs(sim_queue):
+    """
+    Carrega simulações com status "pending" do MongoDB e adiciona na fila.
+
+    Args:
+        sim_queue (queue.Queue): Fila onde serão inseridas as simulações.
+    """
     print("[load] Buscando simulações pendentes...")
     mongo = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
     pending = mongo.simulation_queue_repo.find_pending()
@@ -128,9 +184,20 @@ def load_initial_waiting_jobs(sim_queue):
         sim_queue.put(sim)
 
 if __name__ == "__main__":
+    # Este número deve ser consistente com a quantidade de containers na infra
+    # Verifique o docker-compose.yaml
+    # Para facilitar geração de mais containers use o script gdcc.py para gerar o trecho do docker-compose.yaml
+    NUMBER_OF_CONTAINERS = 10
+    
     print("start")
+    
+    print(f"number of containers: {NUMBER_OF_CONTAINERS}")
+    reload_standard_hosts(NUMBER_OF_CONTAINERS)
+    
     print(f"env:\n\tMONGO_URI: {MONGO_URI}\n\tDB_NAME: {DB_NAME}")
+    
     sim_queue = start_workers()
+    
     load_initial_waiting_jobs(sim_queue)
     
     try:

@@ -106,6 +106,51 @@ services:
     networks:
       - cooja-net
 
+  cooja6:
+    image: juniocesarferreira/simulation-cooja:v1.1
+    container_name: cooja6
+    restart: unless-stopped
+    ports:
+      - "2236:22"
+    networks:
+      - cooja-net
+
+  cooja7:
+    image: juniocesarferreira/simulation-cooja:v1.1
+    container_name: cooja7
+    restart: unless-stopped
+    ports:
+      - "2237:22"
+    networks:
+      - cooja-net
+
+  cooja8:
+    image: juniocesarferreira/simulation-cooja:v1.1
+    container_name: cooja8
+    restart: unless-stopped
+    ports:
+      - "2238:22"
+    networks:
+      - cooja-net
+
+  cooja9:
+    image: juniocesarferreira/simulation-cooja:v1.1
+    container_name: cooja9
+    restart: unless-stopped
+    ports:
+      - "2239:22"
+    networks:
+      - cooja-net
+
+  cooja10:
+    image: juniocesarferreira/simulation-cooja:v1.1
+    container_name: cooja10
+    restart: unless-stopped
+    ports:
+      - "2240:22"
+    networks:
+      - cooja-net
+
 volumes:
   mongo_data:
   mongo_config:
