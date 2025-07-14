@@ -129,7 +129,7 @@ class SourceRepositoryAccess:
 # Fábrica de componentes
 
 
-class MongoRepositoryFactory(NamedTuple):
+class MongoRepository(NamedTuple):
     experiment_repo: ExperimentRepository
     simulation_repo: SimulationRepository
     simulation_queue_repo: SimulationQueueRepository
@@ -137,14 +137,14 @@ class MongoRepositoryFactory(NamedTuple):
     fs_handler: MongoGridFSHandler
 
 
-def create_mongo_repository_factory(mongo_uri: str, db_name: str) -> MongoRepositoryFactory:
+def create_mongo_repository_factory(mongo_uri: str, db_name: str) -> MongoRepository:
     connection = MongoDBConnection(mongo_uri, db_name)
     fs_handler = MongoGridFSHandler(connection)
     experiment_repo = ExperimentRepository(connection)
     simulation_repo = SimulationRepository(connection)
     simulation_queue_repo = SimulationQueueRepository(connection)
     source_repo = SourceRepositoryAccess(connection)
-    return MongoRepositoryFactory(
+    return MongoRepository(
         experiment_repo=experiment_repo,
         simulation_repo=simulation_repo,
         simulation_queue_repo=simulation_queue_repo,
