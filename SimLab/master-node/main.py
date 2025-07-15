@@ -182,7 +182,7 @@ if __name__ == "__main__":
     reload_standard_hosts(NUMBER_OF_CONTAINERS)
 
     print(f"env:\n\tMONGO_URI: {MONGO_URI}\n\tDB_NAME: {DB_NAME}")
-    sim_queue = start_workers()
+    sim_queue = start_workers(NUMBER_OF_CONTAINERS)
     load_initial_waiting_jobs(sim_queue)
 
     try:
