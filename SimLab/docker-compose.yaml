@@ -40,6 +40,42 @@ services:
     networks:
       - mongo-net
 
+  moengine:
+    build:
+      context: .
+      dockerfile: Dockerfile.mo-engine
+    container_name: mo_engine
+    working_dir: /app
+    volumes:
+      - ./mo-engine:/app/mo-engine
+      - ./pylib:/app/pylib
+    environment:
+      - PYTHONPATH=/app:/app/pylib
+      - DB_NAME=simlab
+      - MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
+    depends_on:
+      - mongodb
+    networks:
+      - mongo-net
+
+  moengine:
+    build:
+      context: .
+      dockerfile: Dockerfile.mo-engine
+    container_name: mo_engine
+    working_dir: /app
+    volumes:
+      - ./mo-engine:/app/mo-engine
+      - ./pylib:/app/pylib
+    environment:
+      - PYTHONPATH=/app:/app/pylib
+      - DB_NAME=simlab
+      - MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
+    depends_on:
+      - mongodb
+    networks:
+      - mongo-net
+
   masternode:
     build:
       context: .
