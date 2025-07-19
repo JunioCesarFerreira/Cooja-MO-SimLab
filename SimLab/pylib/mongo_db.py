@@ -1,21 +1,27 @@
 import logging
+import time
+import pymongo
+import gridfs
 from datetime import datetime
-from typing import Optional, Generator, NamedTuple
-
+from typing import Optional, Generator, NamedTuple, Callable, Any
+from enum import Enum
 from bson import ObjectId
 from pymongo import MongoClient
-import gridfs
 from contextlib import contextmanager
+from pymongo.collection import Collection
+from pymongo.change_stream import ChangeStream
+from pymongo.errors import PyMongoError
 
 from dto import SourceRepository, Simulation, SimulationQueue, Experiment
 
 # Constantes de status
-STATUS_WAITING = "Waiting"
-STATUS_DONE = "done"
-STATUS_ERROR = "error"
+class SimulationStatus(str, Enum):
+    WAITING = "Waiting"
+    RUNNING = "Running"
+    DONE = "Done"
+    ERROR = "Error"
 
 logger = logging.getLogger(__name__)
-
 
 class MongoDBConnection:
     def __init__(self, uri: str, db_name: str):
@@ -29,6 +35,39 @@ class MongoDBConnection:
             yield client[self.db_name]
         finally:
             client.close()
+    
+    def waiting_ping(self) -> None:
+        while True:
+            try:
+                self.client.admin.command("ping")
+                break
+            except pymongo.errors.ConnectionFailure:
+                print("[WorkGenerator] Aguardando conexão com MongoDB...")
+                time.sleep(3)
+    
+    def watch_collection(self,
+        collection_name: str,
+        pipeline: list[dict],
+        on_change: Callable[[dict], None],
+        full_document: str = "default"
+        ) -> None:
+        """
+        Observa alterações em uma coleção específica com um pipeline dado.
+
+        Args:
+            collection_name (str): Nome da coleção MongoDB.
+            pipeline (list): Pipeline de agregação (ex: [$match]).
+            on_change (Callable): Função de callback chamada a cada evento.
+            full_document (str): Modo de recuperação do documento completo.
+        """
+        with self.connect() as db:
+            collection: Collection = db[collection_name]
+            try:
+                with collection.watch(pipeline, full_document=full_document) as stream:
+                    for change in stream:
+                        on_change(change)
+            except PyMongoError as e:
+                print(f"[watch_collection] Erro ao observar coleção '{collection_name}': {e}")
 
 
 class MongoGridFSHandler:
@@ -103,13 +142,13 @@ class SimulationQueueRepository:
 
     def find_pending(self) -> list[SimulationQueue]:
         with self.connection.connect() as db:
-            return list(db["simqueue"].find({"status": STATUS_WAITING}))
+            return list(db["simqueue"].find({"status": SimulationStatus.WAITING}))
 
     def mark_done(self, queue_id: str):
         with self.connection.connect() as db:
             db["simqueue"].update_one(
                 {"_id": ObjectId(queue_id)},
-                {"$set": {"status": STATUS_DONE, "end_time": datetime.now()}}
+                {"$set": {"status": SimulationStatus.DONE, "end_time": datetime.now()}}
             )
 
 
