@@ -163,6 +163,34 @@ class SourceRepositoryAccess:
     def get_all(self) -> list[SourceRepository]:
         with self.connection.connect() as db:
             return list(db["sources"].find())
+        
+    def append_source_id(self, repository_id: str, new_source_id: str) -> bool:
+        """
+        Adiciona um novo ID à lista source_ids de um SourceRepository.
+        """
+        with self.connection.connect() as db:
+            result = db["sources"].update_one(
+                {"_id": ObjectId(repository_id)},
+                {"$addToSet": {"source_ids": new_source_id}}  # evita duplicatas
+            )
+            return result.modified_count > 0
+
+    def update_metadata(self, repository_id: str, updates: dict[str, Any]) -> bool:
+        """
+        Atualiza os campos de metadados de um SourceRepository (exceto 'source_ids').
+        """
+        allowed_keys = {"name", "description"}  # adicione mais campos permitidos se necessário
+        filtered_updates = {k: v for k, v in updates.items() if k in allowed_keys}
+
+        if not filtered_updates:
+            return False
+
+        with self.connection.connect() as db:
+            result = db["sources"].update_one(
+                {"_id": ObjectId(repository_id)},
+                {"$set": filtered_updates}
+            )
+            return result.modified_count > 0
 
 
 # Fábrica de componentes
