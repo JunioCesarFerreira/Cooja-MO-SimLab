@@ -10,7 +10,8 @@ project_path = os.path.abspath(os.path.join(os.getcwd(), ".."))
 if project_path not in sys.path:
     sys.path.insert(0, project_path)
 
-from pylib import mongo_db
+from pylib.mongo_db import create_mongo_repository_factory
+from pylib.mongo_db import MongoRepository
 from pylib.dto import SourceRepository
 
 # Carrega variáveis de ambiente
@@ -31,7 +32,7 @@ def main():
     output_path.mkdir(parents=True, exist_ok=True)
 
     # Conexão com o MongoDB
-    mdb: mongo_db.MongoRepository = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
+    mdb: MongoRepository = create_mongo_repository_factory(MONGO_URI, DB_NAME)
 
     # Busca repositório
     with mdb.source_repo.connection.connect() as db:
@@ -67,7 +68,7 @@ def main():
 
     print(f"[OK] Arquivos salvos em: {output_path}")
 
-def get_filename_from_gridfs(mdb: mongo_db.MongoRepository, file_id: str) -> str:
+def get_filename_from_gridfs(mdb: MongoRepository, file_id: str) -> str:
     """
     Recupera o nome do arquivo original salvo no GridFS.
     """

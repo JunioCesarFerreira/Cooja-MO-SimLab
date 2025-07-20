@@ -1,4 +1,6 @@
 {
     "id": null,
-    "name": "Teste Geradores de Redes"
+    "name": "Teste Geradores de Redes",
+    "parameters": { "number": 50 },
+    "source_repository_id": "687d552c2ed038b88443e27b"
 }

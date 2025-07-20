@@ -5,6 +5,7 @@ from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
 from typing import cast
+from bson import ObjectId
 
 # Adiciona o diretório do projeto ao sys.path
 project_path = os.path.abspath(os.path.join(os.getcwd(), ".."))
@@ -43,7 +44,7 @@ def sanitize_experiment(data: dict) -> Experiment:
         "end_time": data.get("end_time", None),
         "parameters": data.get("parameters", {}),
         "packets_queue_ids": data.get("packets_queue_ids", []),
-        "source_repository_id": data.get("source_repository_id", ""),
+        "source_repository_id": ObjectId(data.get("source_repository_id", "")),
     })
 
 def main():

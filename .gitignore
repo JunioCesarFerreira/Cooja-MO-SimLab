@@ -7,3 +7,4 @@ SimLab/poc/logs
 SimLab/poc/temp
 SimLab/poc/tmp
 .pytest_cache
+SimLab/toolkit/output

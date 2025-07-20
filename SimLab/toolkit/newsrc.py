@@ -2,7 +2,6 @@ import os
 import sys
 import json
 from pathlib import Path
-from datetime import datetime
 from typing import cast
 from dotenv import load_dotenv
 
@@ -12,7 +11,8 @@ if project_path not in sys.path:
     sys.path.insert(0, project_path)
 
 # Imports locais
-from pylib import mongo_db
+from pylib.mongo_db import create_mongo_repository_factory
+from pylib.mongo_db import MongoRepository
 from pylib.dto import SourceRepository
 
 # Carrega variáveis de ambiente
@@ -52,7 +52,7 @@ def main():
     description = repo_data.get("description", "")
 
     # Conecta ao MongoDB
-    mdb: mongo_db.MongoRepository = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
+    mdb: MongoRepository = create_mongo_repository_factory(MONGO_URI, DB_NAME)
 
     # Envia arquivos para GridFS
     file_ids: list[str] = []
