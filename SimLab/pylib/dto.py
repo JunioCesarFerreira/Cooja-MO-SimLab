@@ -65,3 +65,5 @@ class Experiment(TypedDict):
     end_time: datetime
     parameters: dict[str, Any]
     packets_queue_ids: list[str]
+    source_repository_id: str
+    
