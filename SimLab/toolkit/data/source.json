@@ -1,0 +1,5 @@
+{
+    "id": null,
+    "name": "Fonte RPL-UDP-TSCH com medidas de desempenho",
+    "description": "Conjunto de fontes base para simulações com RPL/UDP/TSCH coletando diversas informações de rede."
+}
