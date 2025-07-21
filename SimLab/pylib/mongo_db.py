@@ -39,7 +39,8 @@ class MongoDBConnection:
     def waiting_ping(self) -> None:
         while True:
             try:
-                self.client.admin.command("ping")
+                with MongoClient(self.uri) as client:
+                    client.admin.command("ping")
                 break
             except pymongo.errors.ConnectionFailure:
                 print("[WorkGenerator] Aguardando conexão com MongoDB...")
