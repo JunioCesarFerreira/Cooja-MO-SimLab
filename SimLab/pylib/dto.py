@@ -49,7 +49,7 @@ class Simulation(TypedDict):
     runtime_log_id: str
     csv_log_id: str
     
-class SimulationQueue(TypedDict):
+class Generation(TypedDict):
     id: str
     status: str
     start_time: datetime
@@ -64,6 +64,6 @@ class Experiment(TypedDict):
     start_time: datetime
     end_time: datetime
     parameters: dict[str, Any]
-    packets_queue_ids: list[str]
+    generations_ids: list[str]
     source_repository_id: str
     

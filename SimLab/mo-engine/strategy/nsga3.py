@@ -1,6 +1,6 @@
 from strategy.base import EngineStrategy
 from pylib.rand_pts import network_gen
-from pylib.dto import Simulation, SimulationConfig, SimulationQueue
+from pylib.dto import Simulation, SimulationConfig, Generation
 from datetime import datetime
 import random
 from bson import ObjectId
@@ -76,7 +76,7 @@ class NSGALoopStrategy(EngineStrategy):
             self.sim_id_to_solution[str(sim_id)] = individual
             simulation_ids.append(str(sim_id))
 
-        queue: SimulationQueue = {
+        queue: Generation = {
             "id": "",
             "status": "Waiting",
             "start_time": datetime.now(),

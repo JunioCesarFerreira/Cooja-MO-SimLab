@@ -43,7 +43,7 @@ def sanitize_experiment(data: dict) -> Experiment:
         "start_time": data.get("start_time", None),
         "end_time": data.get("end_time", None),
         "parameters": data.get("parameters", {}),
-        "packets_queue_ids": data.get("packets_queue_ids", []),
+        "generations_ids": data.get("generations_ids", []),
         "source_repository_id": ObjectId(data.get("source_repository_id", "")),
     })
 

@@ -1,6 +1,7 @@
 from strategy.base import EngineStrategy
 from pylib.rand_pts import network_gen
-from pylib.dto import Simulation, SimulationConfig, SimulationQueue
+from pylib.dto import Simulation, SimulationConfig, Generation
+from pylib.mongo_db import SimulationStatus
 from datetime import datetime
 
 class GeneratorRandomStrategy(EngineStrategy):
@@ -29,7 +30,7 @@ class GeneratorRandomStrategy(EngineStrategy):
             }
 
             sim_doc: Simulation = {
-                "id": "",
+                "id": i,
                 "status": "Waiting",
                 "start_time": None,
                 "end_time": None,
@@ -44,9 +45,9 @@ class GeneratorRandomStrategy(EngineStrategy):
             sim_id = self.mongo.simulation_repo.insert(sim_doc)
             simulation_ids.append(str(sim_id))
 
-        queue: SimulationQueue = {
+        queue: Generation = {
             "id": "",
-            "status": "Waiting",
+            "status": SimulationStatus.WAITING,
             "start_time": datetime.now(),
             "end_time": None,
             "simulations_ids": simulation_ids
@@ -55,9 +56,9 @@ class GeneratorRandomStrategy(EngineStrategy):
         queue_id = self.mongo.simulation_queue_repo.insert(queue)
 
         self.mongo.experiment_repo.update(str(self.experiment["_id"]), {
-            "status": "Done",
+            "status": SimulationStatus.RUNNING,
             "end_time": datetime.now(),
-            "packets_queue_ids": [str(queue_id)]
+            "generations_ids": [str(queue_id)]
         })
 
     def on_simulation_result(self, result_doc: dict):
