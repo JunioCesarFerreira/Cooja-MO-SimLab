@@ -8,6 +8,7 @@ if project_path not in sys.path:
     sys.path.insert(0, project_path)
 
 from pylib import mongo_db
+from pylib.mongo_db import SimulationStatus
 from strategy.generator_random import GeneratorRandomStrategy
 from strategy.nsga3 import NSGALoopStrategy  # futuro
 
@@ -44,30 +45,45 @@ def process_experiment(exp_doc: dict):
         print(f"[Erro] Falha ao iniciar estratégia para experimento {exp_id}: {e}")
 
 
-def on_experiment_event(change: dict):
+def on_experiment_event(change: dict, is_full_doc = True):
     print("[Engine] on experiment event...")
     print(f"[Engine] change: {change}")
 
-    exp_id = str(change["_id"])
+    if is_full_doc:
+        exp_doc = change.get("fullDocument")
+        if not exp_doc:
+            print("[Engine] Documento ausente no evento.")
+            return
+        exp_id = str(exp_doc["_id"])
+    else:
+        exp_id = str(change["_id"])
     success = mongo.experiment_repo.update(exp_id, {
-        "status": "Running",
+        "status": SimulationStatus.RUNNING,
         "start_time": datetime.now()
     })
     if success:
-        process_experiment(change)
+        if is_full_doc:
+            process_experiment(exp_doc)
+        else:
+            process_experiment(change)
 
 
 def watch_experiments():
     print("[Engine] Aguardando novos experimentos...")
     pipeline = [
-        {"$match": {
-            "operationType": {"$in": ["insert", "update", "replace"]},
-            "$or": [
-                {"experiments.status": "Waiting"},
-            ]
-        }}
+        {
+            "$match": {
+                "operationType": {"$in": ["insert", "update", "replace"]},
+                "fullDocument.status": "Waiting"
+            }
+        }
     ]
-    mongo.experiment_repo.connection.watch_collection("experiments", pipeline, on_experiment_event, full_document="updateLookup")
+    mongo.experiment_repo.connection.watch_collection(
+        "experiments", 
+        pipeline, 
+        on_experiment_event, 
+        full_document="updateLookup"
+        )
 
 
 def on_simulation_result(change: dict):
@@ -104,7 +120,7 @@ if __name__ == "__main__":
     pending = mongo.experiment_repo.find_by_status("Waiting")
 
     while (len(pending) > 0):
-        on_experiment_event(pending.pop())
+        on_experiment_event(pending.pop(), is_full_doc=False)
 
     Thread(target=watch_experiments, daemon=True).start()
     Thread(target=listen_results, daemon=True).start()
