@@ -21,10 +21,13 @@ active_strategies = {}  # exp_id -> instance
 
 
 def select_strategy(exp_doc: dict):
+    print("[Engine] select strategy...")
     exp_type = exp_doc.get("parameters", {}).get("type", "simple")
     if exp_type == "simple":
+        print("simple")
         return GeneratorRandomStrategy(exp_doc, mongo)
     elif exp_type == "nsga3":
+        print("nsga3")
         return NSGALoopStrategy(exp_doc, mongo)
     else:
         raise ValueError(f"[Engine] Tipo de experimento desconhecido: {exp_type}")
@@ -42,17 +45,16 @@ def process_experiment(exp_doc: dict):
 
 
 def on_experiment_event(change: dict):
-    doc = change.get("fullDocument")
-    if not doc or doc.get("status") != "Waiting":
-        return
+    print("[Engine] on experiment event...")
+    print(f"[Engine] change: {change}")
 
-    exp_id = str(doc["_id"])
+    exp_id = str(change["_id"])
     success = mongo.experiment_repo.update(exp_id, {
         "status": "Running",
         "start_time": datetime.now()
     })
     if success:
-        process_experiment(doc)
+        process_experiment(change)
 
 
 def watch_experiments():
@@ -61,8 +63,7 @@ def watch_experiments():
         {"$match": {
             "operationType": {"$in": ["insert", "update", "replace"]},
             "$or": [
-                {"fullDocument.status": "Waiting"},
-                {"updateDescription.updatedFields.status": "Waiting"}
+                {"experiments.status": "Waiting"},
             ]
         }}
     ]
@@ -96,10 +97,14 @@ def listen_results():
     pipeline = [{"$match": {"operationType": "insert"}}]
     mongo.simulation_repo.connection.watch_collection("simulations_results", pipeline, on_simulation_result)
 
-
 if __name__ == "__main__":
     print("[Engine] Serviço iniciado.")
     mongo.experiment_repo.connection.waiting_ping()
+
+    pending = mongo.experiment_repo.find_by_status("Waiting")
+
+    while (len(pending) > 0):
+        on_experiment_event(pending.pop())
 
     Thread(target=watch_experiments, daemon=True).start()
     Thread(target=listen_results, daemon=True).start()

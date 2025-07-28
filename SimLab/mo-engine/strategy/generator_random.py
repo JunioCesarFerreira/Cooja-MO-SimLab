@@ -8,12 +8,13 @@ class GeneratorRandomStrategy(EngineStrategy):
     def start(self):
         params = self.experiment.get("parameters", {})
         num = int(params.get("number", 10))
+        size = int(params.get("size", 10))
         region = tuple(params.get("region", (0, 0, 100, 100)))
         radius = float(params.get("radius", 25.0))
 
         simulation_ids = []
         for i in range(num):
-            points = network_gen(amount=num, region=region, radius=radius)
+            points = network_gen(amount=size, region=region, radius=radius)
             fixed = [{"name": f"m{j}", "position": [x, y], "sourceCode": "default", "radiusOfReach": radius, "radiusOfInter": radius}
                      for j, (x, y) in enumerate(points)]
 
