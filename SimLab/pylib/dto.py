@@ -1,5 +1,6 @@
 from typing import TypedDict, Any
 from datetime import datetime
+from bson import ObjectId
 
 class BaseMote(TypedDict):
     name: str
@@ -39,6 +40,8 @@ class SourceRepository(TypedDict):
     
 class Simulation(TypedDict):
     id: str
+    experiment_id: ObjectId
+    generation_id: ObjectId
     status: str
     start_time: datetime
     end_time: datetime
@@ -51,10 +54,12 @@ class Simulation(TypedDict):
     
 class Generation(TypedDict):
     id: str
+    index: int
+    experiment_id: ObjectId
     status: str
     start_time: datetime
     end_time: datetime
-    simulations_ids: list[str]
+    simulations_ids: list[ObjectId]
     
 class Experiment(TypedDict):
     id: str
@@ -64,6 +69,6 @@ class Experiment(TypedDict):
     start_time: datetime
     end_time: datetime
     parameters: dict[str, Any]
-    generations_ids: list[str]
+    generations: list[ObjectId]
     source_repository_id: str
     

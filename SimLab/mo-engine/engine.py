@@ -22,13 +22,12 @@ active_strategies = {}  # exp_id -> instance
 
 
 def select_strategy(exp_doc: dict):
-    print("[Engine] select strategy...")
+    print("[Engine] select strategy")
     exp_type = exp_doc.get("parameters", {}).get("type", "simple")
+    print(f"[Engine] selected: {exp_type}")
     if exp_type == "simple":
-        print("simple")
         return GeneratorRandomStrategy(exp_doc, mongo)
     elif exp_type == "nsga3":
-        print("nsga3")
         return NSGALoopStrategy(exp_doc, mongo)
     else:
         raise ValueError(f"[Engine] Tipo de experimento desconhecido: {exp_type}")

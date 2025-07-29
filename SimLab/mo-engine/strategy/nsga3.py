@@ -84,7 +84,7 @@ class NSGALoopStrategy(EngineStrategy):
             "simulations_ids": simulation_ids
         }
 
-        self.mongo.simulation_queue_repo.insert(queue)
+        self.mongo.generation_repo.insert(queue)
         print(f"[NSGA-III] Geração {self.generation} enfileirada com {len(simulation_ids)} simulações.")
 
     def on_simulation_result(self, result_doc: dict):

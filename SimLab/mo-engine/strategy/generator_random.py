@@ -6,12 +6,24 @@ from datetime import datetime
 
 class GeneratorRandomStrategy(EngineStrategy):
     def start(self):
+        exp_id = self.experiment["_id"]
         params = self.experiment.get("parameters", {})
         num = int(params.get("number", 10))
         size = int(params.get("size", 10))
         region = tuple(params.get("region", (0, 0, 100, 100)))
         radius = float(params.get("radius", 25.0))
 
+        gen: Generation = {
+            "index": 1,
+            "experiment_id": exp_id,
+            "status": SimulationStatus.WAITING,
+            "start_time": datetime.now(),
+            "end_time": None,
+            "simulations_ids": []
+        }
+        
+        gen_id = self.mongo.generation_repo.insert(gen)
+        
         simulation_ids = []
         for i in range(num):
             points = network_gen(amount=size, region=region, radius=radius)
@@ -32,6 +44,8 @@ class GeneratorRandomStrategy(EngineStrategy):
 
             sim_doc: Simulation = {
                 "id": i,
+                "experiment_id": exp_id,
+                "generation_id": gen_id,
                 "status": "Waiting",
                 "start_time": None,
                 "end_time": None,
@@ -46,20 +60,14 @@ class GeneratorRandomStrategy(EngineStrategy):
             sim_id = self.mongo.simulation_repo.insert(sim_doc)
             simulation_ids.append(str(sim_id))
 
-        queue: Generation = {
-            "id": "",
-            "status": SimulationStatus.WAITING,
-            "start_time": datetime.now(),
-            "end_time": None,
-            "simulations_ids": simulation_ids
-        }
+        gen["simulations_ids"] = simulation_ids
 
-        queue_id = self.mongo.simulation_queue_repo.insert(queue)
+        self.mongo.generation_repo.update(str(gen_id), gen)
 
-        self.mongo.experiment_repo.update(str(self.experiment["_id"]), {
+        self.mongo.experiment_repo.update(str(exp_id), {
             "status": SimulationStatus.RUNNING,
             "end_time": datetime.now(),
-            "generations_ids": [str(queue_id)]
+            "generations_ids": [str(gen_id)]
         })
 
     def on_simulation_result(self, result_doc: dict):

@@ -111,9 +111,36 @@ class ExperimentRepository:
             return db["experiments"].find_one({"status": status})
 
     def update(self, experiment_id: str, updates: dict) -> bool:
+        updates["id"] = experiment_id
         with self.connection.connect() as db:
             result = db["experiments"].update_one({"_id": ObjectId(experiment_id)}, {"$set": updates})
             return result.modified_count > 0
+
+
+class GenerationRepository:
+    def __init__(self, connection: MongoDBConnection):
+        self.connection = connection
+
+    def insert(self, gen: Generation) -> ObjectId:
+        with self.connection.connect() as db:
+            return db["generations"].insert_one(gen).inserted_id
+
+    def update(self, generation_id: str, updates: dict) -> bool:
+        updates["id"] = generation_id
+        with self.connection.connect() as db:
+            result = db["generations"].update_one({"_id": ObjectId(generation_id)}, {"$set": updates})
+            return result.modified_count > 0
+        
+    def find_pending(self) -> list[Generation]:
+        with self.connection.connect() as db:
+            return list(db["generations"].find({"status": SimulationStatus.WAITING}))
+
+    def mark_done(self, queue_id: str):
+        with self.connection.connect() as db:
+            db["generations"].update_one(
+                {"_id": ObjectId(queue_id)},
+                {"$set": {"status": SimulationStatus.DONE, "end_time": datetime.now()}}
+            )
 
 
 class SimulationRepository:
@@ -128,10 +155,10 @@ class SimulationRepository:
         with self.connection.connect() as db:
             return list(db["simulations"].find({"status": SimulationStatus.WAITING}))
         
-    def mark_done(self, queue_id: str):
+    def mark_done(self, sim_id: str):
         with self.connection.connect() as db:
             db["simulations"].update_one(
-                {"_id": ObjectId(queue_id)},
+                {"_id": ObjectId(sim_id)},
                 {"$set": {"status": SimulationStatus.DONE, "end_time": datetime.now()}}
             )
             
@@ -142,26 +169,6 @@ class SimulationRepository:
                 {"$set": {"status": new_status, "end_time": datetime.now()}}
             )
             logger.info(f"Simulação {sim_id} atualizada para status: {new_status}")
-
-class GenerationRepository:
-    def __init__(self, connection: MongoDBConnection):
-        self.connection = connection
-
-    def insert(self, queue: Generation) -> ObjectId:
-        with self.connection.connect() as db:
-            return db["generations"].insert_one(queue).inserted_id
-
-    def find_pending(self) -> list[Generation]:
-        with self.connection.connect() as db:
-            return list(db["generations"].find({"status": SimulationStatus.WAITING}))
-
-    def mark_done(self, queue_id: str):
-        with self.connection.connect() as db:
-            db["generations"].update_one(
-                {"_id": ObjectId(queue_id)},
-                {"$set": {"status": SimulationStatus.DONE, "end_time": datetime.now()}}
-            )
-
 
 class SourceRepositoryAccess:
     def __init__(self, connection: MongoDBConnection):
@@ -210,7 +217,7 @@ class SourceRepositoryAccess:
 class MongoRepository(NamedTuple):
     experiment_repo: ExperimentRepository
     simulation_repo: SimulationRepository
-    simulation_queue_repo: GenerationRepository
+    generation_repo: GenerationRepository
     source_repo: SourceRepositoryAccess
     fs_handler: MongoGridFSHandler
 
@@ -225,7 +232,7 @@ def create_mongo_repository_factory(mongo_uri: str, db_name: str) -> MongoReposi
     return MongoRepository(
         experiment_repo=experiment_repo,
         simulation_repo=simulation_repo,
-        simulation_queue_repo=simulation_queue_repo,
+        generation_repo=simulation_queue_repo,
         source_repo=source_repo,
         fs_handler=fs_handler
     )
