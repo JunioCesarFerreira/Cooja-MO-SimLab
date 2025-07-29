@@ -3,6 +3,7 @@ from pylib.rand_pts import network_gen
 from pylib.dto import Simulation, SimulationConfig, Generation
 from pylib.mongo_db import SimulationStatus
 from datetime import datetime
+from strategy.build_sim_input import create_files
 
 class GeneratorRandomStrategy(EngineStrategy):
     def start(self):
@@ -41,6 +42,8 @@ class GeneratorRandomStrategy(EngineStrategy):
                     "mobileMotes": []
                 }
             }
+            
+            files_ids = create_files(config, self.mongo.fs_handler)
 
             sim_doc: Simulation = {
                 "id": i,
@@ -50,12 +53,13 @@ class GeneratorRandomStrategy(EngineStrategy):
                 "start_time": None,
                 "end_time": None,
                 "parameters": config,
-                "pos_file_id": "",
-                "csc_file_id": "",
+                "pos_file_id": files_ids["pos_file_id"],
+                "csc_file_id": files_ids["csc_file_id"],
                 "log_cooja_id": "",
                 "runtime_log_id": "",
                 "csv_log_id": ""
             }
+            
 
             sim_id = self.mongo.simulation_repo.insert(sim_doc)
             simulation_ids.append(str(sim_id))
