@@ -32,11 +32,16 @@ class SimulationConfig(TypedDict):
     
     
 # Database
+
+class SourceFile(TypedDict):
+    id: str          # ID do arquivo
+    file_name: str   # Nome do arquivo
+    
 class SourceRepository(TypedDict):
     id: str
     name : str
     description: str
-    source_ids: list[str]
+    source_ids: list[SourceFile]
     
 class Simulation(TypedDict):
     id: str

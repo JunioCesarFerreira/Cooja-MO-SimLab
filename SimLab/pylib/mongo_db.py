@@ -3,16 +3,16 @@ import time
 import pymongo
 import gridfs
 from datetime import datetime
-from typing import Optional, Generator, NamedTuple, Callable, Any
+from typing import TypedDict, Optional, Generator, NamedTuple, Callable, Any
 from enum import Enum
-from bson import ObjectId
+from bson import ObjectId, errors
 from pymongo import MongoClient
 from contextlib import contextmanager
 from pymongo.collection import Collection
 from pymongo.change_stream import ChangeStream
 from pymongo.errors import PyMongoError
 
-from dto import SourceRepository, Simulation, Generation, Experiment
+from dto import SourceFile, SourceRepository, Simulation, Generation, Experiment
 
 # Constantes de status
 class SimulationStatus(str, Enum):
@@ -115,6 +115,15 @@ class ExperimentRepository:
         with self.connection.connect() as db:
             result = db["experiments"].update_one({"_id": ObjectId(experiment_id)}, {"$set": updates})
             return result.modified_count > 0
+        
+    def get_by_id(self, experiment_id: str)->Experiment:
+        try:
+            oid = ObjectId(experiment_id)
+        except errors.InvalidId:
+            print("ID inválido")
+        with self.connection.connect() as db:
+            result = db["experiments"].find_one({"_id": oid})
+            return result
 
 
 class GenerationRepository:
@@ -170,6 +179,7 @@ class SimulationRepository:
             )
             logger.info(f"Simulação {sim_id} atualizada para status: {new_status}")
 
+
 class SourceRepositoryAccess:
     def __init__(self, connection: MongoDBConnection):
         self.connection = connection
@@ -181,22 +191,18 @@ class SourceRepositoryAccess:
     def get_all(self) -> list[SourceRepository]:
         with self.connection.connect() as db:
             return list(db["sources"].find())
-        
-    def append_source_id(self, repository_id: str, new_source_id: str) -> bool:
-        """
-        Adiciona um novo ID à lista source_ids de um SourceRepository.
-        """
+    
+    # Adiciona um novo arquivo (SourceFile) à lista source_ids de um SourceRepository.
+    def append_source_file(self, repository_id: str, new_source_file: SourceFile) -> bool:
         with self.connection.connect() as db:
             result = db["sources"].update_one(
                 {"_id": ObjectId(repository_id)},
-                {"$addToSet": {"source_ids": new_source_id}}  # evita duplicatas
+                {"$addToSet": {"source_ids": new_source_file}}  # evita duplicatas exatas
             )
             return result.modified_count > 0
 
+    # Atualiza os campos de metadados de um SourceRepository (exceto 'source_ids').
     def update_metadata(self, repository_id: str, updates: dict[str, Any]) -> bool:
-        """
-        Atualiza os campos de metadados de um SourceRepository (exceto 'source_ids').
-        """
         allowed_keys = {"name", "description"}  # adicione mais campos permitidos se necessário
         filtered_updates = {k: v for k, v in updates.items() if k in allowed_keys}
 
@@ -209,6 +215,11 @@ class SourceRepositoryAccess:
                 {"$set": filtered_updates}
             )
             return result.modified_count > 0
+    
+    # Recupera um SourceRepository pelo seu ID.
+    def get_by_id(self, repository_id: str) -> Optional[SourceRepository]:
+        with self.connection.connect() as db:
+            return db["sources"].find_one({"_id": ObjectId(repository_id)})
 
 
 # Fábrica de componentes
