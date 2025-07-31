@@ -13,7 +13,7 @@ if project_path not in sys.path:
 # Imports locais
 from pylib.mongo_db import create_mongo_repository_factory
 from pylib.mongo_db import MongoRepository
-from pylib.dto import SourceRepository
+from pylib.dto import SourceFile, SourceRepository
 
 # Carrega variáveis de ambiente
 load_dotenv()
@@ -55,12 +55,15 @@ def main():
     mdb: MongoRepository = create_mongo_repository_factory(MONGO_URI, DB_NAME)
 
     # Envia arquivos para GridFS
-    file_ids: list[str] = []
+    source_files: list[SourceFile] = []
     for file_path in get_all_files_recursively(SRC_DIR):
         try:
-            file_id = mdb.fs_handler.upload_file(str(file_path), name=str(file_path.name))
+            file_id = mdb.fs_handler.upload_file(str(file_path), name=file_path.name)
             print(f"[OK] Arquivo {file_path} enviado. ID: {file_id}")
-            file_ids.append(str(file_id))
+            source_files.append({
+                "file_name": file_path.name,
+                "id": str(file_id)
+            })
         except Exception as e:
             print(f"[Erro] Falha ao enviar {file_path}: {e}")
 
@@ -69,7 +72,7 @@ def main():
         "id": "",  # será ignorado
         "name": name,
         "description": description,
-        "source_ids": file_ids
+        "source_ids": source_files
     })
 
     try:
