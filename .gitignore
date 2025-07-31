@@ -8,3 +8,4 @@ SimLab/poc/temp
 SimLab/poc/tmp
 .pytest_cache
 SimLab/toolkit/output
+SimLab/toolkit/test-mongo-db.ipynb

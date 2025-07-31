@@ -1,6 +1,6 @@
 # api/endpoints/simqueue.py
 from fastapi import APIRouter, HTTPException
-from dto import SimulationQueue    
+from dto import Generation    
 from pylib import mongo_db
 import os
 
@@ -11,21 +11,21 @@ factory = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
 router = APIRouter()
 
 @router.post("/", response_model=str)
-def create_simulation_queue(queue: SimulationQueue):
+def create_simulation_queue(queue: Generation):
     try:
-        queue_id = factory.simulation_queue_repo.insert(queue)
+        queue_id = factory.generation_repo.insert(queue)
         return str(queue_id)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.get("/waiting", response_model=list[SimulationQueue])
+@router.get("/waiting", response_model=list[Generation])
 def get_waiting_queues():
-    return factory.simulation_queue_repo.find_pending()
+    return factory.generation_repo.find_pending()
 
 @router.patch("/{queue_id}/done", response_model=bool)
 def mark_queue_done(queue_id: str):
     try:
-        factory.simulation_queue_repo.mark_done(queue_id)
+        factory.generation_repo.mark_done(queue_id)
         return True
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

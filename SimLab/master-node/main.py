@@ -4,8 +4,6 @@ import sys
 import time
 import queue
 from pathlib import Path
-from typing import TypedDict, Optional
-from bson import ObjectId
 
 from scp import SCPClient
 from paramiko import SSHClient
@@ -16,22 +14,9 @@ if project_path not in sys.path:
     sys.path.insert(0, project_path)
 
 from pylib import sshscp, mongo_db
-
-# Tipos
-class SimulationDict(TypedDict):
-    _id: ObjectId
-    simulationFile: str
-    positionsFile: str
-    experiment_id: str
-
-class LinkedFileDict(TypedDict):
-    fileId: str
-    name: str
-
-class ExperimentDict(TypedDict, total=False):
-    _id: ObjectId
-    status: str
-    linkedFiles: list[LinkedFileDict]
+from dto import Simulation, Experiment, SourceRepository
+from mongo_db import SimulationStatus
+from pylib.json_encoder import json_encoder
 
 # Configurações MongoDB 
 MONGO_URI: str = os.getenv("MONGO_URI", "mongodb://localhost:27017/?replicaSet=rs0")
@@ -51,16 +36,18 @@ SSH_CONFIG: dict = {
     "ports": [2231, 2232, 2233, 2234, 2235]
 }
 
+
 # Recarrega lista de hosts e portas seguindo o padrão apresentado nos dados default
 def reload_standard_hosts(number: int) -> None:
-    SSH_CONFIG["hostnames"] = [f"cooja{i}" for i in range(number)]
+    SSH_CONFIG["hostnames"] = ["localhost" for i in range(number)]#[f"cooja{i}" for i in range(number)]
     SSH_CONFIG["ports"] = [2231 + i for i in range(number)]
+
 
 # Pega arquivos do mongo e prepara para simulação no Cooja
 def prepare_simulation_files(
-    sim: SimulationDict,            # Objeto da simulação, contendo os IDs dos arquivos.
+    sim: Simulation,            # Objeto da simulação
     mongo: mongo_db.MongoRepository # Conexão com os repositórios MongoDB.
-) -> tuple[list[str], list[str]]:   # Lista de caminhos dos arquivos locais e nomes remotos.
+) -> tuple[bool, list[str], list[str]]:   # Lista de caminhos dos arquivos locais e nomes remotos.
     sim_id = str(sim["_id"])
     tmp_dir = Path("tmp")
     tmp_dir.mkdir(exist_ok=True)
@@ -68,28 +55,40 @@ def prepare_simulation_files(
     local_xml = tmp_dir / f"simulation_{sim_id}.xml"
     local_dat = tmp_dir / f"positions_{sim_id}.dat"
 
-    mongo.fs_handler.download_file(sim["simulationFile"], str(local_xml))
-    mongo.fs_handler.download_file(sim["positionsFile"], str(local_dat))
+    mongo.fs_handler.download_file(sim["csc_file_id"], str(local_xml))
+    if sim["pos_file_id"] != "":
+        mongo.fs_handler.download_file(sim["pos_file_id"], str(local_dat))
 
-    local_files = [str(local_xml), str(local_dat)]
-    remote_files = ["simulation.csc", "positions.dat"]
-
-    exp: Optional[ExperimentDict] = mongo.experiment_repo.find_first_by_status("Waiting")
-    if exp and "linkedFiles" in exp:
-        for f in exp["linkedFiles"]:
-            file_path = tmp_dir / f["name"]
-            mongo.fs_handler.download_file(f["fileId"], str(file_path))
-            local_files.append(str(file_path))
-            remote_name = "simulation.csc" if f["name"] == "simulation.xml" else f["name"]
-            remote_files.append(remote_name)
+        local_files = [str(local_xml), str(local_dat)]
+        remote_files = ["simulation.csc", "positions.dat"]
     else:
-        print(f"[WARN] Nenhum arquivo extra vinculado para experimento {sim['experiment_id']}")
+        local_files = [str(local_xml)]
+        remote_files = ["simulation.csc"]
 
-    return local_files, remote_files
+    exp: Experiment = mongo.experiment_repo.get_by_id(sim['experiment_id'])
+    
+    success = True
+    if exp:
+        src: SourceRepository = mongo.source_repo.get_by_id(exp["source_repository_id"])
+        if src and "source_files" in src:
+            for source_file in src["source_files"]:
+                file_path = str(tmp_dir / source_file["file_name"])
+                mongo.fs_handler.download_file(source_file["id"], file_path)
+                local_files.append(file_path)
+                remote_files.append(source_file["file_name"])
+        else:
+            success = False
+            print(f"[WARN] Não foi possível encontrar o repositório {exp["source_repository_id"]} no experimento {sim['experiment_id']}")
+    else:
+        success = False
+        print(f"[WARN] Falha ao recuperar dados do experimento {sim['experiment_id']}")
+
+    return success, local_files, remote_files
+
 
 # Executa a simulação no container Cooja via SSH.
 def run_cooja_simulation(
-    sim: SimulationDict, # Objeto da simulação
+    sim: Simulation, # Objeto da simulação
     port: int,           # Porta SSH do container
     hostname: str,       # Hostname do container na rede docker
     mongo: mongo_db.MongoRepository # Conexão com os repositórios MongoDB
@@ -98,7 +97,7 @@ def run_cooja_simulation(
     sim_id = str(sim["_id"])
     try:
         print(f"[{port}] Iniciando simulação {sim_id}...")
-        mongo.simulation_repo.update_status(sim_id, "running")
+        mongo.simulation_repo.update_status(sim_id, SimulationStatus.RUNNING)
 
         command = f"cd ../{REMOTE_DIRECTORY} && /opt/java/openjdk/bin/java --enable-preview -Xms4g -Xmx4g -jar build/libs/cooja.jar --no-gui simulation.csc"
         stdin, stdout, stderr = ssh.exec_command(command)
@@ -115,12 +114,13 @@ def run_cooja_simulation(
 
         log_id = mongo.fs_handler.upload_file(log_path, "sim_result.log")
         print(f"[{port}] Log salvo com ID: {log_id}")
-        mongo.simulation_queue_repo.mark_done(sim["_id"])
+        mongo.generation_repo.mark_done(sim["_id"])
     except Exception as e:
         print(f"[{port}] ERRO na simulação {sim_id}: {e}")
-        mongo.simulation_repo.update_status(sim_id, "error")
+        mongo.simulation_repo.update_status(sim_id, SimulationStatus.ERROR)
     finally:
         ssh.close()
+
 
 # Consome fila de simulações.
 def simulation_worker(
@@ -135,19 +135,23 @@ def simulation_worker(
             break
 
         sim_id = str(sim["_id"])
-        local_files, remote_files = prepare_simulation_files(sim, mongo)
-        try:
-            print(f"[{port}] Enviando arquivos da simulação {sim_id}")
-            ssh = sshscp.create_ssh_client(hostname, port, SSH_CONFIG["username"], SSH_CONFIG["password"])
-            sshscp.send_files_scp(ssh, LOCAL_DIRECTORY, REMOTE_DIRECTORY, local_files, remote_files)
-            ssh.close()
+        success, local_files, remote_files = prepare_simulation_files(sim, mongo)
+        if success:
+            try:
+                print(f"[{port}] Enviando arquivos da simulação {sim_id}")
+                print(f"create ssh client: {hostname}, {port}, {SSH_CONFIG["username"]}, {SSH_CONFIG["password"]}")
+                ssh = sshscp.create_ssh_client(hostname, port, SSH_CONFIG["username"], SSH_CONFIG["password"])
+                print("sending scp files")
+                sshscp.send_files_scp(ssh, LOCAL_DIRECTORY, REMOTE_DIRECTORY, local_files, remote_files)
+                ssh.close()
+                print("running cooja simulation")
+                run_cooja_simulation(sim, port, hostname, mongo)
+            except Exception as e:
+                print(f"[{port}] ERRO geral na simulação {sim_id}: {e}")
+                mongo.simulation_repo.update_status(sim_id, SimulationStatus.ERROR)
+            finally:
+                sim_queue.task_done()
 
-            run_cooja_simulation(sim, port, hostname, mongo)
-        except Exception as e:
-            print(f"[{port}] ERRO geral na simulação {sim_id}: {e}")
-            mongo.simulation_repo.update_status(sim_id, "error")
-        finally:
-            sim_queue.task_done()
 
 # Inicializa múltiplas threads (workers) para execução paralela de simulações.
 def start_workers(
@@ -164,18 +168,20 @@ def start_workers(
     print("[Sistema] Workers iniciados.")
     return q
 
+
 # Descarrega fila antes de iniciar threads
 def load_initial_waiting_jobs(sim_queue: queue.Queue) -> None:
     print("[load] Buscando simulações pendentes...")
     mongo = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
-    pending = mongo.simulation_queue_repo.find_pending()
+    pending = mongo.simulation_repo.find_pending()
     for sim in pending:
-        print(f"[load] Simulação pendente: {sim['_id']}")
+        print(f"[load] Simulação pendente: {sim['id']} | {sim['_id']}")
         sim_queue.put(sim)
+
 
 # MAIN --------------------------------------------------------------------------------
 if __name__ == "__main__":
-    NUMBER_OF_CONTAINERS: int = 10
+    NUMBER_OF_CONTAINERS: int = 5
 
     print("start")
     print(f"number of containers: {NUMBER_OF_CONTAINERS}")
