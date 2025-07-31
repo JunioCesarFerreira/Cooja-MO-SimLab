@@ -41,7 +41,7 @@ class SourceRepository(TypedDict):
     id: str
     name : str
     description: str
-    source_ids: list[SourceFile]
+    source_files: list[SourceFile]
     
 class Simulation(TypedDict):
     id: str

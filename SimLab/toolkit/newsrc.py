@@ -72,7 +72,7 @@ def main():
         "id": "",  # será ignorado
         "name": name,
         "description": description,
-        "source_ids": source_files
+        "source_files": source_files
     })
 
     try:

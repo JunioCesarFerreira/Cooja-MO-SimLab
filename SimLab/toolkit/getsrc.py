@@ -46,21 +46,24 @@ def main():
             "id": str(raw_repo["_id"]),
             "name": raw_repo.get("name", ""),
             "description": raw_repo.get("description", ""),
-            "source_ids": raw_repo.get("source_ids", [])
+            "source_files": raw_repo.get("source_files", [])
         }
 
     # Baixa arquivos do GridFS
-    for file_id in repo["source_ids"]:
+    for source_file in repo["source_files"]:
         try:
-            mdb.fs_handler.download_file(file_id, str(output_path / get_filename_from_gridfs(mdb, file_id)))
+            mdb.fs_handler.download_file(
+                source_file["id"], 
+                str(output_path / source_file["file_name"])
+                )
         except Exception as e:
-            print(f"[Erro] Falha ao baixar arquivo {file_id}: {e}")
+            print(f"[Erro] Falha ao baixar arquivo {source_file["id"]}: {e}")
 
     # Salva metadados
     metadata = {
         "name": repo["name"],
         "description": repo["description"],
-        "source_ids": repo["source_ids"]
+        "source_files": repo["source_files"]
     }
 
     with open(output_path / "metadata.json", "w", encoding="utf-8") as f:
