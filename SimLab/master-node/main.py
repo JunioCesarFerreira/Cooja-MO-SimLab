@@ -16,7 +16,6 @@ if project_path not in sys.path:
 from pylib import sshscp, mongo_db
 from dto import Simulation, Experiment, SourceRepository
 from mongo_db import SimulationStatus
-from pylib.json_encoder import json_encoder
 
 # Configurações MongoDB 
 MONGO_URI: str = os.getenv("MONGO_URI", "mongodb://localhost:27017/?replicaSet=rs0")
@@ -114,7 +113,7 @@ def run_cooja_simulation(
 
         log_id = mongo.fs_handler.upload_file(log_path, "sim_result.log")
         print(f"[{port}] Log salvo com ID: {log_id}")
-        mongo.generation_repo.mark_done(sim["_id"])
+        mongo.simulation_repo.mark_done(sim["_id"])
     except Exception as e:
         print(f"[{port}] ERRO na simulação {sim_id}: {e}")
         mongo.simulation_repo.update_status(sim_id, SimulationStatus.ERROR)

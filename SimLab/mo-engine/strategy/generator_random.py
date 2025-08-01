@@ -11,8 +11,9 @@ class GeneratorRandomStrategy(EngineStrategy):
         params = self.experiment.get("parameters", {})
         num = int(params.get("number", 10))
         size = int(params.get("size", 10))
-        region = tuple(params.get("region", (0, 0, 100, 100)))
-        radius = float(params.get("radius", 25.0))
+        region = tuple(params.get("region", (-100, -100, 100, 100)))
+        radius = float(params.get("radius", 50))
+        interf = float(params.get("interf", 60))
 
         gen: Generation = {
             "index": 1,
@@ -28,14 +29,14 @@ class GeneratorRandomStrategy(EngineStrategy):
         simulation_ids = []
         for i in range(num):
             points = network_gen(amount=size, region=region, radius=radius)
-            fixed = [{"name": f"m{j}", "position": [x, y], "sourceCode": "default", "radiusOfReach": radius, "radiusOfInter": radius}
+            fixed = [{"name": f"m{j}", "position": [x, y], "sourceCode": "default", "radiusOfReach": radius, "radiusOfInter": interf}
                      for j, (x, y) in enumerate(points)]
 
             config: SimulationConfig = {
                 "name": f"auto-{i}",
-                "duration": 300.0,
+                "duration": 120,
                 "radiusOfReach": radius,
-                "radiusOfInter": radius,
+                "radiusOfInter": interf,
                 "region": region,
                 "simulationElements": {
                     "fixedMotes": fixed,

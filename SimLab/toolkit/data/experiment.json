@@ -1,6 +1,6 @@
 {
     "id": null,
     "name": "Teste Geradores de Redes",
-    "parameters": { "number": 30, "type": "simple", "size": 50 },
-    "source_repository_id": "687d552c2ed038b88443e27b"
+    "parameters": { "number": 30, "type": "simple", "size": 20 },
+    "source_repository_id": "688bfb729b9bf70cec625b73"
 }
