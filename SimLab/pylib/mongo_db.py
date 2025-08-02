@@ -2,14 +2,14 @@ import logging
 import time
 import pymongo
 import gridfs
+import queue
 from datetime import datetime
-from typing import TypedDict, Optional, Generator, NamedTuple, Callable, Any
+from typing import Optional, Generator, NamedTuple, Callable, Any
 from enum import Enum
 from bson import ObjectId, errors
 from pymongo import MongoClient
 from contextlib import contextmanager
 from pymongo.collection import Collection
-from pymongo.change_stream import ChangeStream
 from pymongo.errors import PyMongoError
 
 from dto import SourceFile, SourceRepository, Simulation, Generation, Experiment
@@ -102,7 +102,7 @@ class ExperimentRepository:
         with self.connection.connect() as db:
             return db["experiments"].insert_one(experiment).inserted_id
 
-    def find_by_status(self, status: str) -> list[Experiment]:
+    def find_by_status(self, status: SimulationStatus) -> list[Experiment]:
         with self.connection.connect() as db:
             return list(db["experiments"].find({"status": status}))
 
@@ -177,24 +177,51 @@ class SimulationRepository:
         with self.connection.connect() as db:
             return db["simulations"].insert_one(simulation).inserted_id
 
-    def find_pending(self) -> list[Generation]:
+    def find_pending(self) -> list[Simulation]:
         with self.connection.connect() as db:
             return list(db["simulations"].find({"status": SimulationStatus.WAITING}))
         
-    def mark_done(self, sim_id: str):
+    def find_pending_by_generation(self, gen_id: ObjectId) -> list[Simulation]:
+        with self.connection.connect() as db:
+            return list(db["simulations"].find(
+                {
+                    "status": SimulationStatus.WAITING,
+                    "generation_id": gen_id
+                }))
+    
+    def mark_running(self, sim_id: ObjectId):
         with self.connection.connect() as db:
             db["simulations"].update_one(
-                {"_id": ObjectId(sim_id)},
-                {"$set": {"status": SimulationStatus.DONE, "end_time": datetime.now()}}
+                {"_id": sim_id},
+                {"$set": {
+                    "status": SimulationStatus.RUNNING, 
+                    "start_time": datetime.now(),
+                    }
+                 }
+            )
+    
+    def mark_done(self, sim_id: ObjectId, log_id: ObjectId):
+        with self.connection.connect() as db:
+            db["simulations"].update_one(
+                {"_id": sim_id},
+                {"$set": {
+                    "status": SimulationStatus.DONE, 
+                    "end_time": datetime.now(),
+                    "log_cooja_id": log_id,
+                    }
+                 }
             )
             
-    def update_status(self, sim_id: str, new_status: str):
+    def mark_error(self, sim_id: ObjectId):
         with self.connection.connect() as db:
             db["simulations"].update_one(
-                {"_id": ObjectId(sim_id)},
-                {"$set": {"status": new_status, "end_time": datetime.now()}}
+                {"_id": sim_id},
+                {"$set": {
+                    "status": SimulationStatus.ERROR, 
+                    "end_time": datetime.now(),
+                    }
+                 }
             )
-            logger.info(f"Simulação {sim_id} atualizada para status: {new_status}")
 
 
 class SourceRepositoryAccess:

@@ -51,11 +51,12 @@ class Simulation(TypedDict):
     start_time: datetime
     end_time: datetime
     parameters: SimulationConfig
-    pos_file_id: str
-    csc_file_id: str
-    log_cooja_id: str
-    runtime_log_id: str
-    csv_log_id: str
+    pos_file_id: ObjectId
+    csc_file_id: ObjectId
+    log_cooja_id: ObjectId
+    runtime_log_id: ObjectId
+    csv_log_id: ObjectId
+    topology_picture_id: ObjectId
     
 class Generation(TypedDict):
     id: str
