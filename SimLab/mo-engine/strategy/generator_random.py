@@ -47,7 +47,10 @@ class GeneratorRandomStrategy(EngineStrategy):
             
             files_ids = create_files(config, self.mongo.fs_handler)
             
-            visual.plot_network_save_from_sim(f'./tmp/{exp_id}-{gen_id}-{i}', config)
+            image_tmp_path = f'./tmp/{exp_id}-{gen_id}-{i}.png'
+            visual.plot_network_save_from_sim(image_tmp_path, config)
+            
+            topology_picture_id = self.mongo.fs_handler.upload_file(image_tmp_path, f"topology-{exp_id}-{gen_id}-{i}")
 
             sim_doc: Simulation = {
                 "id": i,
@@ -59,6 +62,7 @@ class GeneratorRandomStrategy(EngineStrategy):
                 "parameters": config,
                 "pos_file_id": files_ids["pos_file_id"],
                 "csc_file_id": files_ids["csc_file_id"],
+                "topology_picture_id": topology_picture_id,
                 "log_cooja_id": "",
                 "runtime_log_id": "",
                 "csv_log_id": ""

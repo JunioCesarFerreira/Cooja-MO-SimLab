@@ -124,6 +124,23 @@ class ExperimentRepository:
         with self.connection.connect() as db:
             result = db["experiments"].find_one({"_id": oid})
             return result
+            
+    def watch_experiments(self, on_change: Callable[[dict], None]):
+        print("[ExperimentRepository] Waiting new experiments...")
+        pipeline = [
+            {
+                "$match": {
+                    "operationType": {"$in": ["insert", "update", "replace"]},
+                    "fullDocument.status": "Waiting"
+                }
+            }
+        ]
+        self.connection.watch_collection(
+            "experiments", 
+            pipeline, 
+            on_change, 
+            full_document="updateLookup"
+            )
 
 
 class GenerationRepository:

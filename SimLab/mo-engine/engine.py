@@ -1,5 +1,4 @@
 import os, sys, time
-from bson import ObjectId
 from threading import Thread
 from datetime import datetime
 
@@ -18,9 +17,6 @@ DB_NAME = os.getenv("DB_NAME", "simlab")
 
 mongo = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
 
-active_strategies = {}  # exp_id -> instance
-
-
 def select_strategy(exp_doc: dict):
     print("[Engine] select strategy")
     exp_type = exp_doc.get("parameters", {}).get("type", "simple")
@@ -30,99 +26,65 @@ def select_strategy(exp_doc: dict):
     elif exp_type == "nsga3":
         return NSGALoopStrategy(exp_doc, mongo)
     else:
-        raise ValueError(f"[Engine] Tipo de experimento desconhecido: {exp_type}")
+        raise ValueError(f"[Engine] Experiment type unknown: {exp_type}")
 
 
 def process_experiment(exp_doc: dict):
     exp_id = str(exp_doc["_id"])
-    print(f"[Engine] Processando experimento {exp_id}")
+    print(f"[Engine] Processing experiment id: {exp_id}")
     try:
         strategy = select_strategy(exp_doc)
-        active_strategies[exp_id] = strategy
         strategy.start()
     except Exception as e:
-        print(f"[Erro] Falha ao iniciar estratégia para experimento {exp_id}: {e}")
+        print(f"[Erro] Failed to start strategy for experiment {exp_id}: {e}")
 
 
-def on_experiment_event(change: dict, is_full_doc = True):
+def on_experiment_event(change: dict):
     print("[Engine] on experiment event...")
     print(f"[Engine] change: {change}")
 
-    if is_full_doc:
-        exp_doc = change.get("fullDocument")
-        if not exp_doc:
-            print("[Engine] Documento ausente no evento.")
-            return
-        exp_id = str(exp_doc["_id"])
-    else:
-        exp_id = str(change["_id"])
+    exp_doc = change.get("fullDocument")
+    if not exp_doc:
+        print("[Engine] Document missing from the event.")
+        return
+    exp_id = str(exp_doc["_id"])
+        
     success = mongo.experiment_repo.update(exp_id, {
         "status": SimulationStatus.RUNNING,
         "start_time": datetime.now()
     })
     if success:
-        if is_full_doc:
-            process_experiment(exp_doc)
-        else:
-            process_experiment(change)
+        process_experiment(exp_doc)
 
 
-def watch_experiments():
-    print("[Engine] Aguardando novos experimentos...")
-    pipeline = [
-        {
-            "$match": {
-                "operationType": {"$in": ["insert", "update", "replace"]},
-                "fullDocument.status": "Waiting"
-            }
-        }
-    ]
-    mongo.experiment_repo.connection.watch_collection(
-        "experiments", 
-        pipeline, 
-        on_experiment_event, 
-        full_document="updateLookup"
-        )
+def run_experiment_event(change: dict):
+    print("[Engine] run experiment event...")
+    print(f"[Engine] change: {change}")
 
-
-def on_simulation_result(change: dict):
-    if change["operationType"] != "insert":
-        return
-    result = change.get("fullDocument")
-    if not result:
-        return
-
-    sim_id = result.get("simulationId") or result.get("simulation_id")
-    if not sim_id:
-        return
-
-    # Mapear qual experimento está ligado à simulação
-    with mongo.simulation_repo.connection.connect() as db:
-        sim_doc = db["simulations"].find_one({"_id": ObjectId(sim_id)})
-        if not sim_doc:
-            return
-        exp_id = str(sim_doc.get("experiment_id"))  # precisa ser salvo junto à simulação!
-
-    strategy = active_strategies.get(exp_id)
-    if strategy:
-        strategy.on_simulation_result(result)
-
-
-def listen_results():
-    pipeline = [{"$match": {"operationType": "insert"}}]
-    mongo.simulation_repo.connection.watch_collection("simulations_results", pipeline, on_simulation_result)
+    exp_id = str(change["_id"])
+    
+    success = mongo.experiment_repo.update(exp_id, {
+        "status": SimulationStatus.RUNNING,
+        "start_time": datetime.now()
+    })
+    if success:
+        process_experiment(change)
+       
 
 if __name__ == "__main__":
-    print("[Engine] Serviço iniciado.")
-    mongo.experiment_repo.connection.waiting_ping()
+    print("[Engine] Service started.")
+    exp_repo = mongo.experiment_repo
+    exp_repo.connection.waiting_ping()
 
-    pending = mongo.experiment_repo.find_by_status("Waiting")
+    pending = exp_repo.find_by_status(SimulationStatus.WAITING)
 
     while (len(pending) > 0):
-        on_experiment_event(pending.pop(), is_full_doc=False)
+        run_experiment_event(pending.pop())
 
-    Thread(target=watch_experiments, daemon=True).start()
-    Thread(target=listen_results, daemon=True).start()
+    Thread(
+        target=exp_repo.watch_experiments, 
+        args=(on_experiment_event,),
+        daemon=True).start()
 
     while True:
         time.sleep(10)
