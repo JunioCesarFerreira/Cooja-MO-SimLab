@@ -2,6 +2,7 @@ from strategy.base import EngineStrategy
 from pylib.rand_pts import network_gen
 from pylib.dto import Simulation, SimulationConfig, Generation
 from pylib.mongo_db import SimulationStatus
+from pylib import visual
 from datetime import datetime
 from strategy.build_sim_input import create_files
 
@@ -45,6 +46,8 @@ class GeneratorRandomStrategy(EngineStrategy):
             }
             
             files_ids = create_files(config, self.mongo.fs_handler)
+            
+            visual.plot_network_save_from_sim(f'./tmp/{exp_id}-{gen_id}-{i}', config)
 
             sim_doc: Simulation = {
                 "id": i,
