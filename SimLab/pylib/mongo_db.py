@@ -167,6 +167,75 @@ class GenerationRepository:
                 {"_id": ObjectId(queue_id)},
                 {"$set": {"status": SimulationStatus.DONE, "end_time": datetime.now()}}
             )
+    
+    def _find_pending_by_generation(self, gen_id: ObjectId) -> list[Simulation]:
+        with self.connection.connect() as db:
+            return list(db["simulations"].find(
+                {
+                    "status": SimulationStatus.WAITING,
+                    "generation_id": gen_id
+                }))
+            
+    def _make_generation_event_handler(self, sim_queue: queue.Queue) -> callable:
+        def on_generation_event(change: dict):
+            print("[Master-Node] on generation event...")
+            print(f"[Master-Node] change: {change}")
+
+            gen_doc = change.get("fullDocument")
+            if not gen_doc:
+                print("[Master-Node] Document missing from the event.")
+                return
+            gen_id = str(gen_doc["_id"])
+            
+            success = self.update(gen_id, {
+                "status": SimulationStatus.RUNNING,
+                "start_time": datetime.now()
+            })
+            if success:
+                list_sim = self._find_pending_by_generation(gen_id)
+                for sim in list_sim:
+                    sim_queue.put(sim)
+        return on_generation_event
+
+
+    def watch_generations(self, sim_queue: queue.Queue) -> None:
+        print("[GenerationRepository] Aguardando novas Gerações...")
+        pipeline = [
+            {
+                "$match": {
+                    "operationType": {"$in": ["insert", "update", "replace"]},
+                    "fullDocument.status": "Waiting"
+                }
+            }
+        ]
+        event_handler = self._make_generation_event_handler(sim_queue)
+        self.connection.watch_collection(
+            "generations", 
+            pipeline, 
+            event_handler, 
+            full_document="updateLookup"
+        )
+        
+
+    def all_simulations_done(self, generation_id: ObjectId) -> bool:
+        with self.connection.connect() as db:
+            generation = db["generations"].find_one({ "_id": generation_id })
+            if not generation:
+                print(f"[GenerationRepository] Generation {generation_id} not found.")
+                return False
+
+            sim_ids = generation.get("simulations_ids", [])
+            if not sim_ids:
+                print(f"[GenerationRepository] Generation {generation_id} does not have simulations.")
+                return True 
+            
+            # Conta quantas simulações ainda NÃO estão com status Done
+            count_not_done = db["simulations"].count_documents({
+                "_id": { "$in": sim_ids },
+                "status": { "$ne": "Done" }
+            })
+
+            return count_not_done == 0
 
 
 class SimulationRepository:

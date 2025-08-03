@@ -1,12 +1,9 @@
-import os
-import sys
-import time
-import queue
-import datetime
+import os, sys, time, queue, datetime
 from scp import SCPClient
 from paramiko import SSHClient
 from threading import Thread
 from pathlib import Path
+from bson import ObjectId
 
 # Adiciona o diretório do projeto ao sys.path para importar módulos locais
 project_path = os.path.abspath(os.path.join(os.getcwd(), ".."))
@@ -19,7 +16,6 @@ from dto import Simulation, Experiment, SourceRepository
 # Configurações MongoDB 
 MONGO_URI: str = os.getenv("MONGO_URI", "mongodb://localhost:27017/?replicaSet=rs0")
 DB_NAME: str = os.getenv("DB_NAME", "simlab")
-
 
 # Diretórios utilizados
 LOCAL_DIRECTORY: str = '.'
@@ -93,7 +89,7 @@ def run_cooja_simulation(
     mongo: mongo_db.MongoRepository # Conexão com os repositórios MongoDB
 ) -> None:
     ssh: SSHClient = sshscp.create_ssh_client(hostname, port, SSH_CONFIG["username"], SSH_CONFIG["password"])
-    sim_id = str(sim["_id"])
+    sim_id = ObjectId(sim["_id"])
     try:
         print(f"[{port}] Starting simulation {sim_id}...")
         mongo.simulation_repo.mark_running(sim_id)
@@ -102,23 +98,28 @@ def run_cooja_simulation(
         stdin, stdout, stderr = ssh.exec_command(command)
 
         for line in iter(stdout.readline, ""):
-            print(f"[{port}][stdout] {line}", end="")
+            print(f"[ssh][{port}][stdout] {line}", end="")
         for line in iter(stderr.readline, ""):
-            print(f"[{port}][stderr] {line}", end="")
+            print(f"[ssh][{port}][stderr] {line}", end="")
 
         log_path = f"{LOCAL_LOG_DIR}/sim_{sim_id}.log"
         with SCPClient(ssh.get_transport()) as scp:
-            print(f"[{port}] Copiando log para {log_path}")
+            print(f"[ssh][{port}] Copying log for {log_path}")
             scp.get(f"{REMOTE_DIRECTORY}/COOJA.testlog", log_path)
 
         log_id = mongo.fs_handler.upload_file(log_path, "sim_result.log")
         
-        print(f"[{port}] Log saved with ID: {log_id}")
+        print(f"[Master-Node][{port}] Log saved with ID: {log_id}")
         
         mongo.simulation_repo.mark_done(sim["_id"], log_id)
         
+        gen_id = sim["generation_id"]
+        gen_done = mongo.generation_repo.all_simulations_done(gen_id)
+        if gen_done:
+            mongo.generation_repo.mark_done(gen_id)
+        
     except Exception as e:
-        print(f"[{port}] Simulation ERRROR {sim_id}: {e}")
+        print(f"[Master-Node][{port}] Simulation ERRROR {sim_id}: {e}")
         mongo.simulation_repo.mark_error(sim_id)
     finally:
         ssh.close()
@@ -167,8 +168,9 @@ def start_workers(
             daemon=True
         )
         t.start()
-    print("[Sistema] Workers starded.")
+    print("[Master-Node] Workers starded.")
     return q
+
 
 def on_generation_event(change: dict):
     mongo = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
@@ -190,53 +192,13 @@ def on_generation_event(change: dict):
         for sim in list_sim:
             sim_queue.put(sim)
 
-def make_generation_event_handler(sim_queue: queue.Queue) -> callable:
-    def on_generation_event(change: dict):
-        mongo = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
-        print("[Master-Node] on generation event...")
-        print(f"[Master-Node] change: {change}")
-
-        gen_doc = change.get("fullDocument")
-        if not gen_doc:
-            print("[Master-Node] Document missing from the event.")
-            return
-        gen_id = str(gen_doc["_id"])
-        
-        success = mongo.generation_repo.update(gen_id, {
-            "status": mongo_db.SimulationStatus.RUNNING,
-            "start_time": datetime.datetime.now()
-        })
-        if success:
-            list_sim = mongo.simulation_repo.find_pending_by_generation(gen_id)
-            for sim in list_sim:
-                sim_queue.put(sim)
-    return on_generation_event
-
-
-def watch_generations(mongo: mongo_db.MongoRepository, sim_queue: queue.Queue):
-    print("[Master-Node] Aguardando novas Gerações...")
-    pipeline = [
-        {
-            "$match": {
-                "operationType": {"$in": ["insert", "update", "replace"]},
-                "fullDocument.status": "Waiting"
-            }
-        }
-    ]
-    event_handler = make_generation_event_handler(sim_queue)
-    mongo.generation_repo.connection.watch_collection(
-        "generations", 
-        pipeline, 
-        event_handler, 
-        full_document="updateLookup"
-    )
 
 # Descarrega fila antes de iniciar threads
 def load_initial_waiting_jobs(mongo: mongo_db.MongoRepository, sim_queue: queue.Queue) -> None:
-    print("[load] Buscando simulações pendentes...")
+    print("[Master-Node] Buscando simulações pendentes...")
     pending = mongo.simulation_repo.find_pending()
     for sim in pending:
-        print(f"[load] Pending simulation: {sim['id']} | {sim['_id']}")
+        print(f"[Master-Node] Pending simulation: {sim['id']} | {sim['_id']}")
         sim_queue.put(sim)
 
 
@@ -255,8 +217,8 @@ if __name__ == "__main__":
     load_initial_waiting_jobs(mongo, sim_queue)
 
     Thread(
-        target=watch_generations, 
-        args=(mongo, sim_queue),
+        target=mongo.generation_repo.watch_generations, 
+        args=(sim_queue,),
         daemon=True
         ).start()
     

@@ -2,6 +2,8 @@ from typing import TypedDict, Any
 from datetime import datetime
 from bson import ObjectId
 
+# Simulation Structure -----------------------------------------------------------------------------------
+
 class BaseMote(TypedDict):
     name: str
     sourceCode: str
@@ -31,7 +33,7 @@ class SimulationConfig(TypedDict):
     simulationElements: SimulationElements
     
     
-# Database
+# Database Structure -------------------------------------------------------------------------------------
 
 class SourceFile(TypedDict):
     id: str          # ID do arquivo
@@ -78,3 +80,4 @@ class Experiment(TypedDict):
     generations: list[ObjectId]
     source_repository_id: str
     
+#---------------------------------------------------------------------------------------------------------
