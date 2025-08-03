@@ -18,20 +18,20 @@ DB_NAME = os.getenv("DB_NAME", "simlab")
 mongo = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
 
 def select_strategy(exp_doc: dict):
-    print("[Engine] select strategy")
+    print("[mo-engine] select strategy")
     exp_type = exp_doc.get("parameters", {}).get("type", "simple")
-    print(f"[Engine] selected: {exp_type}")
+    print(f"[mo-engine] selected: {exp_type}")
     if exp_type == "simple":
         return GeneratorRandomStrategy(exp_doc, mongo)
     elif exp_type == "nsga3":
         return NSGALoopStrategy(exp_doc, mongo)
     else:
-        raise ValueError(f"[Engine] Experiment type unknown: {exp_type}")
+        raise ValueError(f"[mo-engine] Experiment type unknown: {exp_type}")
 
 
 def process_experiment(exp_doc: dict):
     exp_id = str(exp_doc["_id"])
-    print(f"[Engine] Processing experiment id: {exp_id}")
+    print(f"[mo-engine] Processing experiment id: {exp_id}")
     try:
         strategy = select_strategy(exp_doc)
         strategy.start()
@@ -40,12 +40,12 @@ def process_experiment(exp_doc: dict):
 
 
 def on_experiment_event(change: dict):
-    print("[Engine] on experiment event...")
-    print(f"[Engine] change: {change}")
+    print("[mo-engine] on experiment event...")
+    print(f"[mo-engine] change: {change}")
 
     exp_doc = change.get("fullDocument")
     if not exp_doc:
-        print("[Engine] Document missing from the event.")
+        print("[mo-engine] Document missing from the event.")
         return
     exp_id = str(exp_doc["_id"])
         
@@ -58,8 +58,8 @@ def on_experiment_event(change: dict):
 
 
 def run_experiment_event(change: dict):
-    print("[Engine] run experiment event...")
-    print(f"[Engine] change: {change}")
+    print("[mo-engine] run experiment event...")
+    print(f"[mo-engine] change: {change}")
 
     exp_id = str(change["_id"])
     
@@ -72,7 +72,8 @@ def run_experiment_event(change: dict):
        
 
 if __name__ == "__main__":
-    print("[Engine] Service started.")
+    print("[mo-engine] Service started.")
+    print(f"[mo-engine] env:\n\tMONGO_URI: {MONGO_URI}\n\tDB_NAME: {DB_NAME}")
     exp_repo = mongo.experiment_repo
     exp_repo.connection.waiting_ping()
 

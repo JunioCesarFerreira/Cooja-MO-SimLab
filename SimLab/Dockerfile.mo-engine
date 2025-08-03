@@ -11,4 +11,4 @@ ENV PYTHONPATH=/app:/app/pylib
 ENV DB_NAME=simlab
 ENV MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
 
-CMD ["python", "/app/mo-engine/main.py"]
+CMD ["python", "/app/mo-engine/engine.py"]

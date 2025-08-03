@@ -45,7 +45,6 @@ class GenerationRepository:
                     "generation_id": gen_id
                 }))
             
-            
     def _make_generation_event_handler(self, sim_queue: queue.Queue) -> callable:
         def on_generation_event(change: dict):
             print("[GenerationRepository] on generation event...")
@@ -58,9 +57,9 @@ class GenerationRepository:
             gen_id = ObjectId(gen_doc["_id"])
             
             list_sim = self._find_pending_by_generation(gen_id)
-            print(f"len(list_sim)={len(list_sim)}")
+            print(f"[GenerationRepository] len(list_sim)={len(list_sim)}")
             for sim in list_sim:
-                print(f"enqueue sim_id: {sim["_id"]}")
+                print(f"[GenerationRepository] enqueue sim_id: {sim["_id"]}")
                 sim_queue.put(sim)
             
             if len(list_sim) > 0:
@@ -68,9 +67,7 @@ class GenerationRepository:
                     "status": EnumStatus.RUNNING,
                     "start_time": datetime.now()
                     })    
-            
         return on_generation_event
-
 
     def watch_generations(self, sim_queue: queue.Queue) -> None:
         print("[GenerationRepository] Waiting new generations...")
@@ -89,7 +86,6 @@ class GenerationRepository:
             event_handler, 
             full_document="updateLookup"
         )
-        
 
     def all_simulations_done(self, generation_id: ObjectId) -> bool:
         with self.connection.connect() as db:
@@ -108,5 +104,4 @@ class GenerationRepository:
                 "_id": { "$in": sim_ids },
                 "status": { "$ne": "Done" }
             })
-
             return count_not_done == 0

@@ -33,7 +33,7 @@ SSH_CONFIG: dict = {
 
 # Recarrega lista de hosts e portas seguindo o padrão apresentado nos dados default
 def reload_standard_hosts(number: int) -> None:
-    SSH_CONFIG["hostnames"] = ["localhost" for i in range(number)]#[f"cooja{i}" for i in range(number)]
+    SSH_CONFIG["hostnames"] = [f"cooja{i}" for i in range(number)]
     SSH_CONFIG["ports"] = [2231 + i for i in range(number)]
 
 

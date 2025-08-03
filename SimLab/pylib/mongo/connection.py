@@ -20,6 +20,7 @@ logger = logging.getLogger(__name__)
 
 class MongoDBConnection:
     def __init__(self, uri: str, db_name: str):
+        print(f"[MongoDBConnection] uri:{uri} db_name:{db_name}")
         self.uri = uri
         self.db_name = db_name
 
