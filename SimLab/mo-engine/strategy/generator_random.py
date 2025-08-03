@@ -1,7 +1,7 @@
 from strategy.base import EngineStrategy
 from pylib.rand_pts import network_gen
 from pylib.dto import Simulation, SimulationConfig, Generation
-from pylib.mongo_db import SimulationStatus
+from pylib.mongo_db import EnumStatus
 from pylib import visual
 from datetime import datetime
 from strategy.build_sim_input import create_files
@@ -19,7 +19,7 @@ class GeneratorRandomStrategy(EngineStrategy):
         gen: Generation = {
             "index": 1,
             "experiment_id": exp_id,
-            "status": SimulationStatus.WAITING,
+            "status": EnumStatus.BUILDING,
             "start_time": datetime.now(),
             "end_time": None,
             "simulations_ids": []
@@ -74,10 +74,11 @@ class GeneratorRandomStrategy(EngineStrategy):
 
         gen["simulations_ids"] = simulation_ids
 
-        self.mongo.generation_repo.update(str(gen_id), gen)
+        self.mongo.generation_repo.update(gen_id, gen)
+        self.mongo.generation_repo.mark_waiting(gen_id)
 
         self.mongo.experiment_repo.update(str(exp_id), {
-            "status": SimulationStatus.RUNNING,
+            "status": EnumStatus.RUNNING,
             "end_time": datetime.now(),
             "generations_ids": [str(gen_id)]
         })

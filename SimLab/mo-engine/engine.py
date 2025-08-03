@@ -7,11 +7,11 @@ if project_path not in sys.path:
     sys.path.insert(0, project_path)
 
 from pylib import mongo_db
-from pylib.mongo_db import SimulationStatus
+from pylib.mongo_db import EnumStatus
 from strategy.generator_random import GeneratorRandomStrategy
 from strategy.nsga3 import NSGALoopStrategy  # futuro
 
-SimStatus = mongo_db.SimulationStatus
+SimStatus = mongo_db.EnumStatus
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/?replicaSet=rs0")
 DB_NAME = os.getenv("DB_NAME", "simlab")
 
@@ -50,7 +50,7 @@ def on_experiment_event(change: dict):
     exp_id = str(exp_doc["_id"])
         
     success = mongo.experiment_repo.update(exp_id, {
-        "status": SimulationStatus.RUNNING,
+        "status": EnumStatus.RUNNING,
         "start_time": datetime.now()
     })
     if success:
@@ -64,7 +64,7 @@ def run_experiment_event(change: dict):
     exp_id = str(change["_id"])
     
     success = mongo.experiment_repo.update(exp_id, {
-        "status": SimulationStatus.RUNNING,
+        "status": EnumStatus.RUNNING,
         "start_time": datetime.now()
     })
     if success:
@@ -76,7 +76,7 @@ if __name__ == "__main__":
     exp_repo = mongo.experiment_repo
     exp_repo.connection.waiting_ping()
 
-    pending = exp_repo.find_by_status(SimulationStatus.WAITING)
+    pending = exp_repo.find_by_status(EnumStatus.WAITING)
 
     while (len(pending) > 0):
         run_experiment_event(pending.pop())

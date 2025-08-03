@@ -1,4 +1,4 @@
-import os, sys, time, queue, datetime
+import os, sys, time, queue
 from scp import SCPClient
 from paramiko import SSHClient
 from threading import Thread
@@ -30,7 +30,6 @@ SSH_CONFIG: dict = {
     "hostnames": ["cooja1", "cooja2", "cooja3", "cooja4", "cooja5"],
     "ports": [2231, 2232, 2233, 2234, 2235]
 }
-
 
 # Recarrega lista de hosts e portas seguindo o padrão apresentado nos dados default
 def reload_standard_hosts(number: int) -> None:
@@ -109,7 +108,7 @@ def run_cooja_simulation(
 
         log_id = mongo.fs_handler.upload_file(log_path, "sim_result.log")
         
-        print(f"[Master-Node][{port}] Log saved with ID: {log_id}")
+        print(f"[master-node][{port}] Log saved with ID: {log_id}")
         
         mongo.simulation_repo.mark_done(sim["_id"], log_id)
         
@@ -119,7 +118,7 @@ def run_cooja_simulation(
             mongo.generation_repo.mark_done(gen_id)
         
     except Exception as e:
-        print(f"[Master-Node][{port}] Simulation ERRROR {sim_id}: {e}")
+        print(f"[master-node][{port}] Simulation ERRROR {sim_id}: {e}")
         mongo.simulation_repo.mark_error(sim_id)
     finally:
         ssh.close()
@@ -168,37 +167,19 @@ def start_workers(
             daemon=True
         )
         t.start()
-    print("[Master-Node] Workers starded.")
+    print("[master-node] Workers starded.")
     return q
 
 
-def on_generation_event(change: dict):
-    mongo = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
-    print("[Master-Node] on generation event...")
-    print(f"[Master-Node] change: {change}")
-
-    gen_doc = change.get("fullDocument")
-    if not gen_doc:
-        print("[Master-Node] Document missing from the event.")
-        return
-    gen_id = str(gen_doc["_id"])
-    
-    success = mongo.generation_repo.update(gen_id, {
-        "status": mongo_db.SimulationStatus.RUNNING,
-        "start_time": datetime.now()
-    })
-    if success:
-        list_sim = mongo.simulation_repo.find_pending_by_generation(gen_id)
-        for sim in list_sim:
-            sim_queue.put(sim)
-
-
 # Descarrega fila antes de iniciar threads
-def load_initial_waiting_jobs(mongo: mongo_db.MongoRepository, sim_queue: queue.Queue) -> None:
-    print("[Master-Node] Buscando simulações pendentes...")
+def load_initial_waiting_jobs(
+    mongo: mongo_db.MongoRepository, 
+    sim_queue: queue.Queue
+    ) -> None:
+    print("[master-node] Searching for pending simulations...")
     pending = mongo.simulation_repo.find_pending()
     for sim in pending:
-        print(f"[Master-Node] Pending simulation: {sim['id']} | {sim['_id']}")
+        print(f"[master-node] Pending simulation: {sim['id']} | {sim['_id']}")
         sim_queue.put(sim)
 
 
@@ -206,11 +187,11 @@ def load_initial_waiting_jobs(mongo: mongo_db.MongoRepository, sim_queue: queue.
 if __name__ == "__main__":
     NUMBER_OF_CONTAINERS: int = 5
 
-    print("start")
-    print(f"number of containers: {NUMBER_OF_CONTAINERS}")
+    print("[master-node] start")
+    print(f"[master-node] number of containers: {NUMBER_OF_CONTAINERS}")
     reload_standard_hosts(NUMBER_OF_CONTAINERS)
 
-    print(f"env:\n\tMONGO_URI: {MONGO_URI}\n\tDB_NAME: {DB_NAME}")
+    print(f"[master-node] env:\n\tMONGO_URI: {MONGO_URI}\n\tDB_NAME: {DB_NAME}")
     mongo = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
     
     sim_queue = start_workers(NUMBER_OF_CONTAINERS)

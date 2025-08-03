@@ -79,5 +79,8 @@ class Experiment(TypedDict):
     parameters: dict[str, Any]
     generations: list[ObjectId]
     source_repository_id: str
-    
+
+# refactor note: Por simplicidade vou manter estas estruturas aqui, caso necessário em versões futuras,
+# pode ser interessante criar um subdir em mongo para schemas.
+
 #---------------------------------------------------------------------------------------------------------
