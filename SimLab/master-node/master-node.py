@@ -157,8 +157,8 @@ def simulation_worker(
 
 # Inicializa múltiplas threads (workers) para execução paralela de simulações.
 def start_workers(
-    num_workers: int = 5 # Quantidade de containers Cooja disponíveis
-    ) -> queue.Queue:    # Fila de simulações.
+    num_workers: int   # Quantidade de containers Cooja disponíveis
+    ) -> queue.Queue:  # Fila de simulações.
     q: queue.Queue = queue.Queue()
     for i in range(num_workers):
         t = Thread(
@@ -185,7 +185,7 @@ def load_initial_waiting_jobs(
 
 # MAIN --------------------------------------------------------------------------------
 if __name__ == "__main__":
-    NUMBER_OF_CONTAINERS: int = 5
+    NUMBER_OF_CONTAINERS: int = 10
 
     print("[master-node] start")
     print(f"[master-node] number of containers: {NUMBER_OF_CONTAINERS}")

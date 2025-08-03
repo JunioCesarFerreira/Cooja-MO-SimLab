@@ -84,3 +84,38 @@ class Experiment(TypedDict):
 # pode ser interessante criar um subdir em mongo para schemas.
 
 #---------------------------------------------------------------------------------------------------------
+
+class SimulationDto(TypedDict):
+    id: str
+    experiment_id: str
+    generation_id: str
+    status: str
+    start_time: datetime
+    end_time: datetime
+    parameters: SimulationConfig
+    pos_file_id: str
+    csc_file_id: str
+    log_cooja_id: str
+    runtime_log_id: str
+    csv_log_id: str
+    topology_picture_id: str
+    
+class GenerationDto(TypedDict):
+    id: str
+    index: int
+    experiment_id: str
+    status: str
+    start_time: datetime
+    end_time: datetime
+    simulations_ids: list[str]
+    
+class ExperimentDto(TypedDict):
+    id: str
+    name: str
+    status: str
+    created_time: datetime
+    start_time: datetime
+    end_time: datetime
+    parameters: dict[str, Any]
+    generations: list[str]
+    source_repository_id: str

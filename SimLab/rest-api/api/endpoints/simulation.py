@@ -1,6 +1,6 @@
 # api/endpoints/simulation.py
 from fastapi import APIRouter, HTTPException
-from dto import Simulation    
+from dto import SimulationDto    
 from pylib import mongo_db
 import os
 
@@ -11,7 +11,7 @@ factory = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
 router = APIRouter()
 
 @router.post("/", response_model=str)
-def create_simulation(simulation: Simulation):
+def create_simulation(simulation: SimulationDto):
     try:
         sim_id = factory.simulation_repo.insert(simulation)
         return str(sim_id)
