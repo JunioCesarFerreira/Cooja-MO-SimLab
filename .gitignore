@@ -12,3 +12,7 @@ SimLab/toolkit/test-mongo-db.ipynb
 SimLab/master-node/tmp
 SimLab/master-node/logs
 SimLab/mo-engine/tmp
+SimLab/rest-api/api/endpoints/__pycache__
+SimLab/rest-api/api/__pycache__
+SimLab/pylib/mongo/__pycache__
+SimLab/pylib/__pycache__
