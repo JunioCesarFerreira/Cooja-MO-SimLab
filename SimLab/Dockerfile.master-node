@@ -10,5 +10,7 @@ RUN pip install --no-cache-dir -r /app/master-node/requirements.txt
 ENV PYTHONPATH=/app:/app/pylib
 ENV DB_NAME=simlab
 ENV MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
+ENV PYTHONUNBUFFERED=1
+ENV IS_DOCKER_EXECUTION=True
 
 CMD ["python", "/app/master-node/master-node.py"]

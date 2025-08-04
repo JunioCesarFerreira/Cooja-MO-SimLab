@@ -71,6 +71,7 @@ services:
       - PYTHONPATH=/app:/app/pylib
       - DB_NAME=simlab
       - MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
+      - IS_DOCKER_EXECUTION=True
     ports:
       - "2220:22"
     depends_on:

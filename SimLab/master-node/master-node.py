@@ -13,6 +13,8 @@ if project_path not in sys.path:
 from pylib import sshscp, mongo_db
 from dto import Simulation, Experiment, SourceRepository
 
+IS_DOCKER_EXECUTION = os.getenv("IS_DOCKER_EXECUTION", False)
+
 # Configurações MongoDB 
 MONGO_URI: str = os.getenv("MONGO_URI", "mongodb://localhost:27017/?replicaSet=rs0")
 DB_NAME: str = os.getenv("DB_NAME", "simlab")
@@ -33,8 +35,12 @@ SSH_CONFIG: dict = {
 
 # Recarrega lista de hosts e portas seguindo o padrão apresentado nos dados default
 def reload_standard_hosts(number: int) -> None:
-    SSH_CONFIG["hostnames"] = [f"cooja{i}" for i in range(number)]
-    SSH_CONFIG["ports"] = [2231 + i for i in range(number)]
+    if IS_DOCKER_EXECUTION:
+        SSH_CONFIG["hostnames"] = [f"cooja{i+1}" for i in range(number)]
+        SSH_CONFIG["ports"] = [22 for i in range(number)]
+    else:
+        SSH_CONFIG["hostnames"] = ["localhost" for i in range(number)]
+        SSH_CONFIG["ports"] = [2231 + i for i in range(number)]
 
 
 # Pega arquivos do mongo e prepara para simulação no Cooja
@@ -187,7 +193,7 @@ def load_initial_waiting_jobs(
 if __name__ == "__main__":
     NUMBER_OF_CONTAINERS: int = 10
 
-    print("[master-node] start")
+    print("[master-node] start", flush=True)
     print(f"[master-node] number of containers: {NUMBER_OF_CONTAINERS}")
     reload_standard_hosts(NUMBER_OF_CONTAINERS)
 
