@@ -25,7 +25,7 @@ def create_files(sim_config: SimulationConfig, grid_fs: MongoGridFSHandler)-> di
             dat_id = ""
 
         if IS_DOCKER:
-            os.remove(out_dat)
+            os.remove(out_xml)
             if os.path.exists(out_dat):
                 os.remove(out_dat)
 

@@ -122,6 +122,8 @@
 
         // Loga o tempo final da simulação
         log.log("Final simulation time: " + sim.getSimulationTime() + " ms\n");
+
+        testOK();
       ]]></script>
     </plugin_config>
   </plugin>
