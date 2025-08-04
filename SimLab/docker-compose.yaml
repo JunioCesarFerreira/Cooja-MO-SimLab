@@ -33,6 +33,7 @@ services:
       - PYTHONPATH=/app:/app/pylib
       - DB_NAME=simlab
       - MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
+      - IS_DOCKER=True
     ports:
       - "8000:8000"
     depends_on:
@@ -54,6 +55,9 @@ services:
       - DB_NAME=simlab
       - MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
       - TEMPLATE_XML=/app/mo-engine/simulation_template.xml
+      - IS_DOCKER=True
+    ports:
+      - "2219:22"
     depends_on:
       - mongodb
     networks:
@@ -72,7 +76,7 @@ services:
       - PYTHONPATH=/app:/app/pylib
       - DB_NAME=simlab
       - MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
-      - IS_DOCKER_EXECUTION=True
+      - IS_DOCKER=True
     ports:
       - "2220:22"
     depends_on:
@@ -86,7 +90,7 @@ services:
     container_name: cooja1
     restart: unless-stopped
     ports:
-      - "2231:22"
+      - "2241:22"
     networks:
       - cooja-net
 
@@ -95,7 +99,7 @@ services:
     container_name: cooja2
     restart: unless-stopped
     ports:
-      - "2232:22"
+      - "2242:22"
     networks:
       - cooja-net
 
@@ -104,7 +108,7 @@ services:
     container_name: cooja3
     restart: unless-stopped
     ports:
-      - "2233:22"
+      - "2243:22"
     networks:
       - cooja-net
 
@@ -113,7 +117,7 @@ services:
     container_name: cooja4
     restart: unless-stopped
     ports:
-      - "2234:22"
+      - "2244:22"
     networks:
       - cooja-net
 
@@ -122,7 +126,7 @@ services:
     container_name: cooja5
     restart: unless-stopped
     ports:
-      - "2235:22"
+      - "2245:22"
     networks:
       - cooja-net
 
@@ -131,7 +135,7 @@ services:
     container_name: cooja6
     restart: unless-stopped
     ports:
-      - "2236:22"
+      - "2246:22"
     networks:
       - cooja-net
 
@@ -140,7 +144,7 @@ services:
     container_name: cooja7
     restart: unless-stopped
     ports:
-      - "2237:22"
+      - "2247:22"
     networks:
       - cooja-net
 
@@ -149,7 +153,7 @@ services:
     container_name: cooja8
     restart: unless-stopped
     ports:
-      - "2238:22"
+      - "2248:22"
     networks:
       - cooja-net
 
@@ -158,7 +162,7 @@ services:
     container_name: cooja9
     restart: unless-stopped
     ports:
-      - "2239:22"
+      - "2249:22"
     networks:
       - cooja-net
 
@@ -167,7 +171,7 @@ services:
     container_name: cooja10
     restart: unless-stopped
     ports:
-      - "2240:22"
+      - "2250:22"
     networks:
       - cooja-net
 

@@ -13,6 +13,9 @@ from strategy.nsga3 import NSGALoopStrategy  # futuro
 
 SimStatus = mongo_db.EnumStatus
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/?replicaSet=rs0")
+
+IS_DOCKER = os.getenv("IS_DOCKER", False)
+
 DB_NAME = os.getenv("DB_NAME", "simlab")
 
 mongo = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)

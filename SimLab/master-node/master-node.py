@@ -13,7 +13,8 @@ if project_path not in sys.path:
 from pylib import sshscp, mongo_db
 from dto import Simulation, Experiment, SourceRepository
 
-IS_DOCKER_EXECUTION = os.getenv("IS_DOCKER_EXECUTION", False)
+# Quando IS_DOCKER é False mantém os arquivos locais, caso contrário apaga todo arquivo temporário gerado pelo processo.
+IS_DOCKER = os.getenv("IS_DOCKER", False)
 
 # Configurações MongoDB 
 MONGO_URI: str = os.getenv("MONGO_URI", "mongodb://localhost:27017/?replicaSet=rs0")
@@ -35,7 +36,7 @@ SSH_CONFIG: dict = {
 
 # Recarrega lista de hosts e portas seguindo o padrão apresentado nos dados default
 def reload_standard_hosts(number: int) -> None:
-    if IS_DOCKER_EXECUTION:
+    if IS_DOCKER:
         SSH_CONFIG["hostnames"] = [f"cooja{i+1}" for i in range(number)]
         SSH_CONFIG["ports"] = [22 for i in range(number)]
     else:
@@ -103,9 +104,9 @@ def run_cooja_simulation(
         stdin, stdout, stderr = ssh.exec_command(command)
 
         for line in iter(stdout.readline, ""):
-            print(f"[ssh][{port}][stdout] {line}", end="")
+            print(f"[ssh][{hostname if IS_DOCKER else port}][stdout] {line}", end="")
         for line in iter(stderr.readline, ""):
-            print(f"[ssh][{port}][stderr] {line}", end="")
+            print(f"[ssh][{hostname if IS_DOCKER else port}][stderr] {line}", end="")
 
         log_path = f"{LOCAL_LOG_DIR}/sim_{sim_id}.log"
         with SCPClient(ssh.get_transport()) as scp:
@@ -117,6 +118,9 @@ def run_cooja_simulation(
         print(f"[master-node][{port}] Log saved with ID: {log_id}")
         
         mongo.simulation_repo.mark_done(sim["_id"], log_id)
+        
+        if IS_DOCKER:
+            os.remove(log_path)
         
         gen_id = sim["generation_id"]
         gen_done = mongo.generation_repo.all_simulations_done(gen_id)
@@ -154,6 +158,9 @@ def simulation_worker(
                 ssh.close()
                 print("running cooja simulation")
                 run_cooja_simulation(sim, port, hostname, mongo)
+                if IS_DOCKER:
+                    for file in local_files:
+                        os.remove(file)
             except Exception as e:
                 print(f"[{port}] General ERROR in simulation {sim_id}: {e}")
                 mongo.simulation_repo.mark_error(sim_id)
