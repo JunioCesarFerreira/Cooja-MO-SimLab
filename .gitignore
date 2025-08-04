@@ -16,3 +16,4 @@ SimLab/rest-api/api/endpoints/__pycache__
 SimLab/rest-api/api/__pycache__
 SimLab/pylib/mongo/__pycache__
 SimLab/pylib/__pycache__
+SimLab/mo-engine/strategy/__pycache__
