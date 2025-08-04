@@ -1,4 +1,4 @@
-from typing import TypedDict, Any
+from typing import TypedDict, Any, Optional
 from datetime import datetime
 from bson import ObjectId
 
@@ -110,12 +110,12 @@ class GenerationDto(TypedDict):
     simulations_ids: list[str]
     
 class ExperimentDto(TypedDict):
-    id: str
+    id: Optional[str] = None
     name: str
-    status: str
-    created_time: datetime
-    start_time: datetime
-    end_time: datetime
+    status: Optional[str] = 'Building'
+    created_time: datetime | None
+    start_time: Optional[datetime] = None
+    end_time: Optional[datetime] = None
     parameters: dict[str, Any]
     generations: list[str]
     source_repository_id: str
