@@ -1,5 +1,5 @@
 from datetime import datetime
-from bson import ObjectId
+from bson import ObjectId, errors
 
 from dto import Simulation
 from mongo.connection import MongoDBConnection, EnumStatus
@@ -11,6 +11,15 @@ class SimulationRepository:
     def insert(self, simulation: Simulation) -> ObjectId:
         with self.connection.connect() as db:
             return db["simulations"].insert_one(simulation).inserted_id
+
+    def get_by_id(self, simulation_id: str)->Simulation:
+        try:
+            oid = ObjectId(simulation_id)
+        except errors.InvalidId:
+            print("ID inválido")
+        with self.connection.connect() as db:
+            result = db["simulations"].find_one({"_id": oid})
+            return result
 
     def find_pending(self) -> list[Simulation]:
         with self.connection.connect() as db:

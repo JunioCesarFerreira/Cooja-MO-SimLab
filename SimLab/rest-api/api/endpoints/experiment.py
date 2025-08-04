@@ -25,7 +25,17 @@ def update_experiment(experiment: ExperimentDto):
         return str(exp_id)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
+    
+@router.get("/{experiment_id}", response_model=ExperimentDto)
+def get_experiment_by_id(experiment_id: str):
+    try:
+        experiment = factory.experiment_repo.get_by_id(experiment_id)
+        if not experiment:
+            raise HTTPException(status_code=404, detail="Experiment not found")
+        return experiment
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
 @router.get("/waiting", response_model=list[ExperimentDto])
 def get_waiting_experiments():
     return factory.experiment_repo.find_by_status("Waiting")

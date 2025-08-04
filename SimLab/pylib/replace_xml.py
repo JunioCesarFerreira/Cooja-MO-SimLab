@@ -42,7 +42,7 @@ def update_simulation_xml(
         script_text = script_element.text
         new_timeout = simulation_time * 60000  # Convertendo minutos para milissegundos
         script_text = script_text.replace("const timeOut = X * 1000;", f"const timeOut = {new_timeout} * 1000;")
-        script_text = script_text.replace("TIMEOUT(X);", f"TIMEOUT({new_timeout + 3000});")
+        script_text = script_text.replace("TIMEOUT(X);", f"TIMEOUT({new_timeout + 11000});") # 11 segundos de tolerância para fechar, pois o tempo de ping é 10 segundos.
         script_element.text = f"<![CDATA[\n{script_text}\n]]>"
     
     # update motes
