@@ -10,5 +10,7 @@ RUN pip install --no-cache-dir -r /app/mo-engine/requirements.txt
 ENV PYTHONPATH=/app:/app/pylib
 ENV DB_NAME=simlab
 ENV MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
+ENV PYTHONUNBUFFERED=1
+ENV TEMPLATE_XML=/app/mo-engine/simulation_template.xml
 
 CMD ["python", "/app/mo-engine/engine.py"]

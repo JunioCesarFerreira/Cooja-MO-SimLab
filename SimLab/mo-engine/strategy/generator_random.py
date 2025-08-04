@@ -5,6 +5,7 @@ from pylib.mongo_db import EnumStatus
 from pylib import visual
 from datetime import datetime
 from strategy.build_sim_input import create_files
+from pathlib import Path
 
 class GeneratorRandomStrategy(EngineStrategy):
     def start(self):
@@ -47,6 +48,11 @@ class GeneratorRandomStrategy(EngineStrategy):
             
             files_ids = create_files(config, self.mongo.fs_handler)
             
+            path = Path("./tmp")
+
+            if not path.exists():
+                path.mkdir(parents=True, exist_ok=True)
+                
             image_tmp_path = f'./tmp/{exp_id}-{gen_id}-{i}.png'
             visual.plot_network_save_from_sim(image_tmp_path, config)
             

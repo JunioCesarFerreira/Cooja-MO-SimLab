@@ -72,7 +72,7 @@ def run_experiment_event(change: dict):
        
 
 if __name__ == "__main__":
-    print("[mo-engine] Service started.")
+    print("[mo-engine] Service started.", flush=True)
     print(f"[mo-engine] env:\n\tMONGO_URI: {MONGO_URI}\n\tDB_NAME: {DB_NAME}")
     exp_repo = mongo.experiment_repo
     exp_repo.connection.waiting_ping()

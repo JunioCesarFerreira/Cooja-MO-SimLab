@@ -4,13 +4,15 @@ from pylib import files
 from pylib.dto import SimulationConfig
 from pylib.mongo_db import MongoGridFSHandler
 
-TEMPLATE_XML = "./simulation_template.xml"
+TEMPLATE_XML = os.getenv("TEMPLATE_XML", "./simulation_template.xml")
 
 def create_files(sim_config: SimulationConfig, grid_fs: MongoGridFSHandler)-> dict[str, str]: 
     with tempfile.TemporaryDirectory() as tmp_dir:
         tmp_path = Path(tmp_dir)
         out_xml = tmp_path / "simulation.xml"
         out_dat = tmp_path / "positions.dat"
+
+        
 
         # Gera os arquivos a partir do template
         files.convert_simulation_files(sim_config, TEMPLATE_XML, out_xml, out_dat)

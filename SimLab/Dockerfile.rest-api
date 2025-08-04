@@ -10,5 +10,6 @@ RUN pip install --no-cache-dir -r /app/rest-api/requirements.txt
 ENV PYTHONPATH=/app:/app/pylib
 ENV DB_NAME=simlab
 ENV MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
+ENV PYTHONUNBUFFERED=1
 
 CMD ["python", "/app/rest-api/main.py"]

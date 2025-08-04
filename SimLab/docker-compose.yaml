@@ -53,6 +53,7 @@ services:
       - PYTHONPATH=/app:/app/pylib
       - DB_NAME=simlab
       - MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
+      - TEMPLATE_XML=/app/mo-engine/simulation_template.xml
     depends_on:
       - mongodb
     networks:
