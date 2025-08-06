@@ -18,6 +18,14 @@ def create_generation(generation: GenerationDto):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@router.patch("/{sim_id}/status", response_model=bool)
+def update_generation_status(sim_id: str, new_status: str):
+    try:
+        factory.generation_repo.update_status(sim_id, new_status)
+        return True
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 @router.get("/waiting", response_model=list[GenerationDto])
 def get_waiting_generations():
     return factory.generation_repo.find_pending()

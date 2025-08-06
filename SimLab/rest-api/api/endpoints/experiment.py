@@ -43,3 +43,11 @@ def get_waiting_experiments():
 @router.patch("/{experiment_id}", response_model=bool)
 def update_experiment(experiment_id: str, updates: dict):
     return factory.experiment_repo.update(experiment_id, updates)
+
+@router.patch("/{sim_id}/status", response_model=bool)
+def update_generation_status(sim_id: str, new_status: str):
+    try:
+        factory.experiment_repo.update_status(sim_id, new_status)
+        return True
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

@@ -44,6 +44,13 @@ class GenerationRepository:
                     "status": EnumStatus.WAITING,
                     "generation_id": gen_id
                 }))
+    
+    def update_status(self, sim_id: str, status: str):
+        with self.connection.connect() as db:
+            db["generations"].update_one(
+                {"_id": ObjectId(sim_id)},
+                {"$set": {"status": status}}
+            )        
             
     def _make_generation_event_handler(self, sim_queue: queue.Queue) -> callable:
         def on_generation_event(change: dict):

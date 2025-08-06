@@ -26,6 +26,13 @@ class ExperimentRepository:
             result = db["experiments"].update_one({"_id": ObjectId(experiment_id)}, {"$set": updates})
             return result.modified_count > 0
         
+    def update_status(self, sim_id: str, status: str):
+        with self.connection.connect() as db:
+            db["experiments"].update_one(
+                {"_id": ObjectId(sim_id)},
+                {"$set": {"status": status}}
+            )      
+            
     def get_by_id(self, experiment_id: str)->Experiment:
         try:
             oid = ObjectId(experiment_id)

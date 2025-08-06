@@ -33,6 +33,13 @@ class SimulationRepository:
                     "generation_id": gen_id
                 }))
     
+    def update_status(self, sim_id: str, status: str):
+        with self.connection.connect() as db:
+            db["simulations"].update_one(
+                {"_id": ObjectId(sim_id)},
+                {"$set": {"status": status}}
+            )
+    
     def mark_running(self, sim_id: ObjectId):
         with self.connection.connect() as db:
             db["simulations"].update_one(
