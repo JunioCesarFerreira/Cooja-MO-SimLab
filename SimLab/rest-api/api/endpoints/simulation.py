@@ -13,6 +13,7 @@ factory = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
 
 router = APIRouter()
 
+
 @router.post("/", response_model=str)
 def create_simulation(simulation: SimulationDto):
     try:
@@ -21,15 +22,17 @@ def create_simulation(simulation: SimulationDto):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
+    
 @router.get("/{simulation_id}", response_model=SimulationDto)
 def get_generation_by_id(simulation_id: str):
     try:
-        experiment = factory.experiment_repo.get_by_id(simulation_id)
-        if not experiment:
+        simulation = factory.simulation_repo.get_by_id(simulation_id)
+        if not simulation:
             raise HTTPException(status_code=204, detail="Simulation not found")
-        return experiment
+        return simulation
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
     
 @router.get("/{sim_id}/download/{field_name}")
 def download_simulation_file(sim_id: str, field_name: str):
@@ -59,6 +62,7 @@ def download_simulation_file(sim_id: str, field_name: str):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro ao baixar arquivo '{field_name}': {e}")
+    
     
 @router.patch("/{sim_id}/status", response_model=bool)
 def update_simulation_status(sim_id: str, new_status: str):
