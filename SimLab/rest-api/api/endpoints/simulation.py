@@ -20,15 +20,17 @@ def create_simulation(simulation: SimulationDto):
         return str(sim_id)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-@router.patch("/{sim_id}/status", response_model=bool)
-def update_simulation_status(sim_id: str, new_status: str):
+    
+@router.get("/{simulation_id}", response_model=SimulationDto)
+def get_generation_by_id(simulation_id: str):
     try:
-        factory.simulation_repo.update_status(sim_id, new_status)
-        return True
+        experiment = factory.experiment_repo.get_by_id(simulation_id)
+        if not experiment:
+            raise HTTPException(status_code=204, detail="Simulation not found")
+        return experiment
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
+    
 @router.get("/{sim_id}/download/{field_name}")
 def download_simulation_file(sim_id: str, field_name: str):
     """
@@ -57,3 +59,11 @@ def download_simulation_file(sim_id: str, field_name: str):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro ao baixar arquivo '{field_name}': {e}")
+    
+@router.patch("/{sim_id}/status", response_model=bool)
+def update_simulation_status(sim_id: str, new_status: str):
+    try:
+        factory.simulation_repo.update_status(sim_id, new_status)
+        return True
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

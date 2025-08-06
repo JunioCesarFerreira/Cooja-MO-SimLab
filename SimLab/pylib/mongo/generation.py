@@ -1,6 +1,6 @@
 import queue
 from datetime import datetime
-from bson import ObjectId
+from bson import ObjectId, errors
 
 from dto import Simulation, Generation
 from mongo.connection import MongoDBConnection, EnumStatus
@@ -18,6 +18,15 @@ class GenerationRepository:
         with self.connection.connect() as db:
             result = db["generations"].update_one({"_id": generation_id}, {"$set": updates})
             return result.modified_count > 0
+            
+    def get_by_id(self, generation_id: str)->Generation:
+        try:
+            oid = ObjectId(generation_id)
+        except errors.InvalidId:
+            print("ID inválido")
+        with self.connection.connect() as db:
+            result = db["generations"].find_one({"_id": oid})
+            return result
         
     def find_pending(self) -> list[Generation]:
         with self.connection.connect() as db:

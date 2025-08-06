@@ -17,6 +17,20 @@ def create_generation(generation: GenerationDto):
         return str(queue_id)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+@router.get("/{generation_id}", response_model=GenerationDto)
+def get_generation_by_id(generation_id: str):
+    try:
+        experiment = factory.experiment_repo.get_by_id(generation_id)
+        if not experiment:
+            raise HTTPException(status_code=204, detail="Generation not found")
+        return experiment
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+@router.get("/waiting", response_model=list[GenerationDto])
+def get_waiting_generations():
+    return factory.generation_repo.find_pending()
 
 @router.patch("/{sim_id}/status", response_model=bool)
 def update_generation_status(sim_id: str, new_status: str):
@@ -25,10 +39,6 @@ def update_generation_status(sim_id: str, new_status: str):
         return True
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-@router.get("/waiting", response_model=list[GenerationDto])
-def get_waiting_generations():
-    return factory.generation_repo.find_pending()
 
 @router.patch("/{queue_id}/done", response_model=bool)
 def mark_queue_done(queue_id: str):
