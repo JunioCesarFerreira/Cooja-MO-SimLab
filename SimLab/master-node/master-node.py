@@ -1,224 +1,324 @@
-import os, sys, time, queue
-from scp import SCPClient
-from paramiko import SSHClient
-from threading import Thread
+import os
+import sys
+import time
+import queue
+import logging
+from dataclasses import dataclass
 from pathlib import Path
-from bson import ObjectId
+from threading import Thread
 
-# Adiciona o diretório do projeto ao sys.path para importar módulos locais
+from bson import ObjectId
+from paramiko import SSHClient
+from scp import SCPClient
+
+# --------------------------------------------------------------------
+# SysPath para módulos locais
 project_path = os.path.abspath(os.path.join(os.getcwd(), ".."))
 if project_path not in sys.path:
     sys.path.insert(0, project_path)
 
-from pylib import sshscp, mongo_db
+from pylib import sshscp, mongo_db  
 from dto import Simulation, Experiment, SourceRepository
-
-# Quando IS_DOCKER é False mantém os arquivos locais, caso contrário apaga todo arquivo temporário gerado pelo processo.
-IS_DOCKER = os.getenv("IS_DOCKER", False)
-
-# Configurações MongoDB 
-MONGO_URI: str = os.getenv("MONGO_URI", "mongodb://localhost:27017/?replicaSet=rs0")
-DB_NAME: str = os.getenv("DB_NAME", "simlab")
-
-# Diretórios utilizados
-LOCAL_DIRECTORY: str = '.'
-REMOTE_DIRECTORY: str = '/opt/contiki-ng/tools/cooja'
-LOCAL_LOG_DIR: str = "logs"
-Path(LOCAL_LOG_DIR).mkdir(exist_ok=True)
-
-# Configurações SSH para acesso aos containers do Cooja
-SSH_CONFIG: dict = {
-    "username": "root",
-    "password": "root",
-    "hostnames": ["cooja1", "cooja2", "cooja3", "cooja4", "cooja5"],
-    "ports": [2231, 2232, 2233, 2234, 2235]
-}
-
-# Recarrega lista de hosts e portas seguindo o padrão apresentado nos dados default
-def reload_standard_hosts(number: int) -> None:
-    if IS_DOCKER:
-        SSH_CONFIG["hostnames"] = [f"cooja{i+1}" for i in range(number)]
-        SSH_CONFIG["ports"] = [22 for i in range(number)]
-    else:
-        SSH_CONFIG["hostnames"] = ["localhost" for i in range(number)]
-        SSH_CONFIG["ports"] = [2231 + i for i in range(number)]
+# --------------------------------------------------------------------
 
 
-# Pega arquivos do mongo e prepara para simulação no Cooja
+# --------------------------- Logging --------------------------------
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] [master-node] %(message)s",
+)
+log = logging.getLogger("master-node")
+# --------------------------------------------------------------------
+
+
+@dataclass(frozen=True)
+class Settings:
+    is_docker: bool
+    mongo_uri: str
+    db_name: str
+    local_dir: str
+    remote_dir: str
+    local_log_dir: str
+    hostnames: list[str]
+    ports: list[int]
+    sim_timeout_sec: int
+
+    @staticmethod
+    def from_env() -> "Settings":
+        def to_bool(s: str, default: bool = False) -> bool:
+            if s is None:
+                return default
+            return s.strip().lower() in {"1", "true", "yes", "y", "on"}
+
+        is_docker = to_bool(os.getenv("IS_DOCKER", "false"))
+        mongo_uri = os.getenv("MONGO_URI", "mongodb://localhost:27017/?replicaSet=rs0")
+        db_name = os.getenv("DB_NAME", "simlab")
+        local_dir = "."
+        remote_dir = "/opt/contiki-ng/tools/cooja"
+        local_log_dir = "logs"
+        Path(local_log_dir).mkdir(exist_ok=True)
+
+        # Defaults
+        default_n = int(os.getenv("NUMBER_OF_CONTAINERS", "10"))
+        if is_docker:
+            hostnames = [f"cooja{i+1}" for i in range(default_n)]
+            ports = [22 for _ in range(default_n)]
+        else:
+            hostnames = ["localhost" for _ in range(default_n)]
+            ports = [2231 + i for i in range(default_n)]
+
+        sim_timeout_sec = int(os.getenv("SIM_TIMEOUT_SEC", "0"))  # 0 = sem timeout
+
+        return Settings(
+            is_docker=is_docker,
+            mongo_uri=mongo_uri,
+            db_name=db_name,
+            local_dir=local_dir,
+            remote_dir=remote_dir,
+            local_log_dir=local_log_dir,
+            hostnames=hostnames,
+            ports=ports,
+            sim_timeout_sec=sim_timeout_sec,
+        )
+
+
+SET = Settings.from_env()
+
+
+def _assert_capacity(num_workers: int) -> None:
+    if num_workers > len(SET.hostnames) or num_workers > len(SET.ports):
+        raise ValueError(
+            f"Workers({num_workers}) > hostnames({len(SET.hostnames)})/ports({len(SET.ports)})"
+        )
+
+
 def prepare_simulation_files(
-    sim: Simulation,            # Objeto da simulação
-    mongo: mongo_db.MongoRepository # Conexão com os repositórios MongoDB.
-) -> tuple[bool, list[str], list[str]]:   # Lista de caminhos dos arquivos locais e nomes remotos.
-    sim_id = str(sim["_id"])
+    sim: Simulation,
+    mongo: mongo_db.MongoRepository,
+) -> tuple[bool, list[str], list[str]]:
+    """
+    Baixa XML/positions da simulação e os arquivos do SourceRepository.
+    Retorna (success, local_files, remote_files).
+    """
+    sim_oid = ObjectId(sim["_id"]) if not isinstance(sim["_id"], ObjectId) else sim["_id"]
     tmp_dir = Path("tmp")
     tmp_dir.mkdir(exist_ok=True)
 
-    local_xml = tmp_dir / f"simulation_{sim_id}.xml"
-    local_dat = tmp_dir / f"positions_{sim_id}.dat"
+    local_xml = tmp_dir / f"simulation_{sim_oid}.xml"
+    local_dat = tmp_dir / f"positions_{sim_oid}.dat"
 
+    local_files: list[str] = []
+    remote_files: list[str] = []
+
+    # CSC/XML
     mongo.fs_handler.download_file(sim["csc_file_id"], str(local_xml))
-    if sim["pos_file_id"] != "":
+    local_files.append(str(local_xml))
+    remote_files.append("simulation.csc")
+
+    # Positions (opcional)
+    if sim.get("pos_file_id"):
         mongo.fs_handler.download_file(sim["pos_file_id"], str(local_dat))
+        local_files.append(str(local_dat))
+        remote_files.append("positions.dat")
 
-        local_files = [str(local_xml), str(local_dat)]
-        remote_files = ["simulation.csc", "positions.dat"]
-    else:
-        local_files = [str(local_xml)]
-        remote_files = ["simulation.csc"]
+    # Source repository
+    exp: Experiment = mongo.experiment_repo.get_by_id(sim["experiment_id"])
+    if not exp:
+        log.warning("Experiment not found for sim %s", sim_oid)
+        return False, local_files, remote_files
 
-    exp: Experiment = mongo.experiment_repo.get_by_id(sim['experiment_id'])
-    
-    success = True
-    if exp:
-        src: SourceRepository = mongo.source_repo.get_by_id(exp["source_repository_id"])
-        if src and "source_files" in src:
-            for source_file in src["source_files"]:
-                file_path = str(tmp_dir / source_file["file_name"])
-                mongo.fs_handler.download_file(source_file["id"], file_path)
-                local_files.append(file_path)
-                remote_files.append(source_file["file_name"])
-        else:
-            success = False
-            print(f"[WARN] Could not find repository {exp["source_repository_id"]} no experimento {sim['experiment_id']}")
-    else:
-        success = False
-        print(f"[WARN] Failed to retrieve experiment data {sim['experiment_id']}")
+    src_repo_id = exp.get("source_repository_id")
+    src: SourceRepository = mongo.source_repo.get_by_id(src_repo_id)
+    if not src or "source_files" not in src:
+        log.warning("Source repository %s not found for experiment %s", src_repo_id, exp.get("_id"))
+        return False, local_files, remote_files
 
-    return success, local_files, remote_files
+    for sf in src["source_files"]:
+        file_path = str(tmp_dir / sf["file_name"])
+        mongo.fs_handler.download_file(sf["id"], file_path)
+        local_files.append(file_path)
+        remote_files.append(sf["file_name"])
+
+    return True, local_files, remote_files
 
 
-# Executa a simulação no container Cooja via SSH.
 def run_cooja_simulation(
-    sim: Simulation, # Objeto da simulação
-    port: int,           # Porta SSH do container
-    hostname: str,       # Hostname do container na rede docker
-    mongo: mongo_db.MongoRepository # Conexão com os repositórios MongoDB
+    sim: Simulation,
+    port: int,
+    hostname: str,
+    mongo: mongo_db.MongoRepository,
 ) -> None:
-    ssh: SSHClient = sshscp.create_ssh_client(hostname, port, SSH_CONFIG["username"], SSH_CONFIG["password"])
-    sim_id = ObjectId(sim["_id"])
+    """
+    Executa a simulação no container via SSH, acompanha logs e envia resultado ao GridFS.
+    """
+    sim_oid = ObjectId(sim["_id"]) if not isinstance(sim["_id"], ObjectId) else sim["_id"]
+    ssh: SSHClient = sshscp.create_ssh_client(hostname, port, "root", "root")
     try:
-        print(f"[{port}] Starting simulation {sim_id}...")
-        mongo.simulation_repo.mark_running(sim_id)
+        log.info("[port=%s host=%s] Starting simulation %s", port, hostname, sim_oid)
+        mongo.simulation_repo.mark_running(sim_oid)
 
-        command = f"cd ../{REMOTE_DIRECTORY} && /opt/java/openjdk/bin/java --enable-preview -Xms4g -Xmx4g -jar build/libs/cooja.jar --no-gui simulation.csc"
-        stdin, stdout, stderr = ssh.exec_command(command)
+        # Comando Cooja (sem '../' porque remote_dir é absoluto)
+        command = (
+            f"cd {SET.remote_dir} && "
+            f"/opt/java/openjdk/bin/java --enable-preview -Xms4g -Xmx4g "
+            f"-jar build/libs/cooja.jar --no-gui simulation.csc"
+        )
 
-        for line in iter(stdout.readline, ""):
-            print(f"[ssh][{hostname if IS_DOCKER else port}][stdout] {line}", end="")
-        for line in iter(stderr.readline, ""):
-            print(f"[ssh][{hostname if IS_DOCKER else port}][stderr] {line}", end="")
+        # Execução remota
+        stdin, stdout, stderr = ssh.exec_command(command, get_pty=True, timeout=SET.sim_timeout_sec or None)
 
-        log_path = f"{LOCAL_LOG_DIR}/sim_{sim_id}.log"
+        # Leitura não-bloqueante simples (polling)
+        chan = stdout.channel
+        chan.settimeout(5.0)
+        while not chan.exit_status_ready():
+            if chan.recv_ready():
+                out = chan.recv(4096).decode("utf-8", errors="ignore")
+                if out:
+                    print(f"[ssh][{hostname if SET.is_docker else port}][stdout] {out}", end="")
+            if chan.recv_stderr_ready():
+                err = chan.recv_stderr(4096).decode("utf-8", errors="ignore")
+                if err:
+                    print(f"[ssh][{hostname if SET.is_docker else port}][stderr] {err}", end="")
+            time.sleep(0.1)
+
+        # Coleta de log principal
+        log_path = f"{SET.local_log_dir}/sim_{sim_oid}.log"
         with SCPClient(ssh.get_transport()) as scp:
-            print(f"[ssh][{port}] Copying log for {log_path}")
-            scp.get(f"{REMOTE_DIRECTORY}/COOJA.testlog", log_path)
+            # ajuste o nome do arquivo se necessário
+            remote_log = f"{SET.remote_dir}/COOJA.testlog"
+            log.info("[port=%s] Copying log to %s", port, log_path)
+            scp.get(remote_log, log_path)
 
         log_id = mongo.fs_handler.upload_file(log_path, "sim_result.log")
-        
-        print(f"[master-node][{port}] Log saved with ID: {log_id}")
-        
-        mongo.simulation_repo.mark_done(sim["_id"], log_id)
-        
-        if IS_DOCKER:
-            os.remove(log_path)
-        
+        log.info("[port=%s] Log saved with ID: %s", port, log_id)
+
+        mongo.simulation_repo.mark_done(sim_oid, log_id)
+
+        if SET.is_docker:
+            try:
+                Path(log_path).unlink(missing_ok=True)
+            except Exception as ex:
+                log.warning("Failed to remove temp log %s: %s", log_path, ex)
+
+        # Finalização de geração
         gen_id = sim["generation_id"]
-        gen_done = mongo.generation_repo.all_simulations_done(gen_id)
-        if gen_done:
+        if mongo.generation_repo.all_simulations_done(gen_id):
             mongo.generation_repo.mark_done(gen_id)
-        
+
     except Exception as e:
-        print(f"[master-node][{port}] Simulation ERRROR {sim_id}: {e}")
-        mongo.simulation_repo.mark_error(sim_id)
+        log.exception("[port=%s host=%s] Simulation ERROR %s: %s", port, hostname, sim_oid, e)
+        try:
+            mongo.simulation_repo.mark_error(sim_oid)
+        except Exception:
+            log.exception("Failed to mark error on simulation %s", sim_oid)
     finally:
         ssh.close()
 
 
-# Consome fila de simulações.
-def simulation_worker(
-    sim_queue: queue.Queue, # Fila de simulações.
-    port: int,              # Porta do container.
-    hostname: str           # Nome do host na rede docker.
-) -> None:
-    mongo = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
+def simulation_worker(sim_queue: queue.Queue, port: int, hostname: str) -> None:
+    """
+    Worker que consome a fila e executa simulações em um host/porta.
+    """
+    mongo = mongo_db.create_mongo_repository_factory(SET.mongo_uri, SET.db_name)
     while True:
         sim = sim_queue.get()
-        if sim is None:
-            break
+        try:
+            if sim is None:
+                return
 
-        sim_id = str(sim["_id"])
-        success, local_files, remote_files = prepare_simulation_files(sim, mongo)
-        if success:
+            sim_id_str = str(sim.get("_id"))
+            log.info("[port=%s host=%s] Preparing simulation %s", port, hostname, sim_id_str)
+
+            success, local_files, remote_files = prepare_simulation_files(sim, mongo)
+            if not success:
+                log.warning("[port=%s] Skipping simulation %s (prepare failed)", port, sim_id_str)
+                mongo.simulation_repo.mark_error(ObjectId(sim["_id"]))
+                continue
+
+            # Envio de arquivos
+            log.debug("[port=%s] Creating SSH client %s@%s:%s", port, "root", hostname, port)
+            ssh = sshscp.create_ssh_client(hostname, port, "root", "root")
             try:
-                print(f"[{port}] Sending simulation files {sim_id}")
-                print(f"create ssh client: {hostname}, {port}, {SSH_CONFIG["username"]}, {SSH_CONFIG["password"]}")
-                ssh = sshscp.create_ssh_client(hostname, port, SSH_CONFIG["username"], SSH_CONFIG["password"])
-                print("sending scp files")
-                sshscp.send_files_scp(ssh, LOCAL_DIRECTORY, REMOTE_DIRECTORY, local_files, remote_files)
-                ssh.close()
-                print("running cooja simulation")
-                run_cooja_simulation(sim, port, hostname, mongo)
-                if IS_DOCKER:
-                    for file in local_files:
-                        os.remove(file)
-            except Exception as e:
-                print(f"[{port}] General ERROR in simulation {sim_id}: {e}")
-                mongo.simulation_repo.mark_error(sim_id)
+                sshscp.send_files_scp(ssh, SET.local_dir, SET.remote_dir, local_files, remote_files)
             finally:
-                sim_queue.task_done()
+                ssh.close()
+
+            # Execução
+            run_cooja_simulation(sim, port, hostname, mongo)
+
+            # Limpeza local
+            if SET.is_docker:
+                for f in local_files:
+                    try:
+                        Path(f).unlink(missing_ok=True)
+                    except Exception as ex:
+                        log.warning("Failed to remove temp file %s: %s", f, ex)
+
+        except Exception as e:
+            log.exception("[port=%s host=%s] General ERROR: %s", port, hostname, e)
+            try:
+                if sim and "_id" in sim:
+                    mongo.simulation_repo.mark_error(ObjectId(sim["_id"]))
+            except Exception:
+                log.exception("Failed to mark error on simulation after general exception")
+        finally:
+            # Sempre dar baixa na tarefa
+            sim_queue.task_done()
 
 
-# Inicializa múltiplas threads (workers) para execução paralela de simulações.
-def start_workers(
-    num_workers: int   # Quantidade de containers Cooja disponíveis
-    ) -> queue.Queue:  # Fila de simulações.
+def start_workers(num_workers: int) -> queue.Queue:
+    """
+    Inicializa threads worker de acordo com a capacidade.
+    """
+    _assert_capacity(num_workers)
+
     q: queue.Queue = queue.Queue()
     for i in range(num_workers):
         t = Thread(
             target=simulation_worker,
-            args=(q, SSH_CONFIG["ports"][i], SSH_CONFIG["hostnames"][i]),
-            daemon=True
+            args=(q, SET.ports[i], SET.hostnames[i]),
+            daemon=True,
         )
         t.start()
-    print("[master-node] Workers starded.")
+    log.info("Workers started: %s", num_workers)
     return q
 
 
-# Descarrega fila antes de iniciar threads
-def load_initial_waiting_jobs(
-    mongo: mongo_db.MongoRepository, 
-    sim_queue: queue.Queue
-    ) -> None:
-    print("[master-node] Searching for pending simulations...")
+def load_initial_waiting_jobs(mongo: mongo_db.MongoRepository, sim_queue: queue.Queue) -> None:
+    """
+    Enfileira simulações pendentes no arranque.
+    """
+    log.info("Searching for pending simulations...")
     pending = mongo.simulation_repo.find_pending()
     for sim in pending:
-        print(f"[master-node] Pending simulation: {sim['id']} | {sim['_id']}")
+        log.info("Pending simulation: %s", sim.get("_id"))
         sim_queue.put(sim)
 
 
-# MAIN --------------------------------------------------------------------------------
-if __name__ == "__main__":
-    NUMBER_OF_CONTAINERS: int = 10
+def main() -> None:
+    number_of_containers = len(SET.hostnames)
+    log.info("start")
+    log.info("number of containers: %s", number_of_containers)
+    log.info("env: MONGO_URI=%s | DB_NAME=%s | IS_DOCKER=%s", SET.mongo_uri, SET.db_name, SET.is_docker)
 
-    print("[master-node] start", flush=True)
-    print(f"[master-node] number of containers: {NUMBER_OF_CONTAINERS}")
-    reload_standard_hosts(NUMBER_OF_CONTAINERS)
+    mongo = mongo_db.create_mongo_repository_factory(SET.mongo_uri, SET.db_name)
 
-    print(f"[master-node] env:\n\tMONGO_URI: {MONGO_URI}\n\tDB_NAME: {DB_NAME}")
-    mongo = mongo_db.create_mongo_repository_factory(MONGO_URI, DB_NAME)
-    
-    sim_queue = start_workers(NUMBER_OF_CONTAINERS)
+    sim_queue = start_workers(number_of_containers)
     load_initial_waiting_jobs(mongo, sim_queue)
 
+    # watch em thread separada
     Thread(
-        target=mongo.generation_repo.watch_generations, 
+        target=mongo.generation_repo.watch_generations,
         args=(sim_queue,),
-        daemon=True
-        ).start()
-    
+        daemon=True,
+    ).start()
+
     try:
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
-        print("Encerrando...")
-# --------------------------------------------------------------------------------------
+        log.info("Encerrando...")
+
+
+if __name__ == "__main__":
+    main()
