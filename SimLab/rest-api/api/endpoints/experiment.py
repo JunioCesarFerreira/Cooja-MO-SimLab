@@ -1,8 +1,15 @@
 # api/endpoints/experiment.py
 from fastapi import APIRouter, HTTPException
-from dto import ExperimentDto    
-from pylib import mongo_db
 import os
+from bson import ObjectId
+
+project_path = os.path.abspath(os.path.join(os.getcwd(), ".."))
+import sys
+if project_path not in sys.path:
+    sys.path.insert(0, project_path)
+
+from dto import ExperimentDto, experiment_to_mongo, experiment_from_mongo
+from pylib import mongo_db
 
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/?replicaSet=rs0")
 DB_NAME = os.getenv("DB_NAME", "simlab")
@@ -12,48 +19,50 @@ router = APIRouter()
 
 
 @router.post("/", response_model=str)
-def create_experiment(experiment: ExperimentDto):
+def create_experiment(experiment: ExperimentDto) -> str:
     try:
-        exp_id = factory.experiment_repo.insert(experiment)
+        doc = experiment_to_mongo(experiment)
+        exp_id = factory.experiment_repo.insert(doc)  # returns ObjectId
         return str(exp_id)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    
-    
+
+
 @router.get("/{experiment_id}", response_model=ExperimentDto)
-def get_experiment_by_id(experiment_id: str):
+def get_experiment(experiment_id: str) -> ExperimentDto:
     try:
-        experiment = factory.experiment_repo.get_by_id(experiment_id)
-        if not experiment:
-            raise HTTPException(status_code=204, detail="Experiment not found")
-        return experiment
+        doc = factory.experiment_repo.get_by_id(experiment_id)
+        if not doc:
+            raise HTTPException(status_code=404, detail="Experiment not found")
+        return experiment_from_mongo(doc)
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    
-    
-@router.get("/waiting", response_model=list[ExperimentDto])
-def get_waiting_experiments():
-    return factory.experiment_repo.find_by_status("Waiting")
 
 
-@router.put("/", response_model=str)
-def update_experiment(experiment: ExperimentDto):
+@router.get("/by-status/{status}", response_model=list[ExperimentDto])
+def get_experiments_by_status(status: str) -> list[ExperimentDto]:
     try:
-        exp_id = factory.experiment_repo.update(experiment)
-        return str(exp_id)
+        docs = factory.experiment_repo.find_by_status(status)
+        return [experiment_from_mongo(d) for d in docs]
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    
-    
+
+
 @router.patch("/{experiment_id}", response_model=bool)
-def update_experiment(experiment_id: str, updates: dict):
-    return factory.experiment_repo.update(experiment_id, updates)
-
-
-@router.patch("/{sim_id}/status", response_model=bool)
-def update_generation_status(sim_id: str, new_status: str):
+def update_experiment(experiment_id: str, updates: dict) -> bool:
     try:
-        factory.experiment_repo.update_status(sim_id, new_status)
+        # updates vai como dict direto ao repo
+        return factory.experiment_repo.update(ObjectId(experiment_id), updates)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.patch("/{experiment_id}/status", response_model=bool)
+def update_experiment_status(experiment_id: str, new_status: str) -> bool:
+    try:
+        factory.experiment_repo.update_status(experiment_id, new_status)
         return True
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
