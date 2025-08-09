@@ -313,12 +313,9 @@ def experiment_to_mongo(dto: ExperimentDto) -> Experiment:
     exp["parameters"] = d.get("parameters", {})
     exp["generations"] = _list_str_to_oid(d.get("generations", []))
 
-    # No seu schema atual, source_repository_id é str.
-    # Se quiser migrar para ObjectId no Mongo, troque por:
-    # exp["source_repository_id"] = _str_to_oid(d.get("source_repository_id"))
     exp["source_repository_id"] = d.get("source_repository_id", "")
 
-    return exp  # type: ignore[return-value]
+    return exp 
 
 # --- SourceRepository (opcional) -----------------------------------
 
@@ -360,8 +357,6 @@ def source_repository_to_mongo(sr: SourceRepository) -> dict:
 
     out["name"] = d.get("name", "")
     out["description"] = d.get("description", "")
-    # Se quiser converter 'source_files[i].id' para ObjectId (GridFS):
-    # out["source_files"] = [{"id": _str_to_oid(f["id"]), "file_name": f["file_name"]} for f in d.get("source_files", [])]
     out["source_files"] = [{"id": f["id"], "file_name": f.get("file_name", "")} for f in d.get("source_files", [])]
 
     return out
