@@ -32,6 +32,10 @@ class SimulationRepository:
                     "status": EnumStatus.WAITING,
                     "generation_id": gen_id
                 }))
+            
+    def find_by_status(self, status: str) -> list[Simulation]:
+        with self.connection.connect() as db:
+            return list(db["simulations"].find({"status": status}))
     
     def update_status(self, sim_id: str, status: str):
         with self.connection.connect() as db:

@@ -32,6 +32,10 @@ class GenerationRepository:
         with self.connection.connect() as db:
             return list(db["generations"].find({"status": EnumStatus.WAITING}))
         
+    def find_by_status(self, status: str) -> list[Generation]:
+        with self.connection.connect() as db:
+            return list(db["generations"].find({"status": status}))
+        
     def mark_waiting(self, generation_id: ObjectId):
             with self.connection.connect() as db:
                 db["generations"].update_one(

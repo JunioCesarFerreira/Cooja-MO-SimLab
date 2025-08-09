@@ -21,10 +21,17 @@ def create_simulation(simulation: SimulationDto):
         return str(sim_id)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    
+
+@router.put("/", response_model=str)
+def update_generarion(simulation: SimulationDto):
+    try:
+        exp_id = factory.simulation_repo.update(simulation)
+        return str(exp_id)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))        
     
 @router.get("/{simulation_id}", response_model=SimulationDto)
-def get_generation_by_id(simulation_id: str):
+def get_simulation_by_id(simulation_id: str):
     try:
         simulation = factory.simulation_repo.get_by_id(simulation_id)
         if not simulation:
@@ -33,6 +40,15 @@ def get_generation_by_id(simulation_id: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
+@router.get("/by-status/{status}", response_model=SimulationDto)
+def get_simulation_by_status(status: str):
+    try:
+        simulations = factory.simulation_repo.find_by_status(status)
+        if not simulations:
+            raise HTTPException(status_code=204, detail="not found")
+        return simulations
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
     
 @router.get("/{sim_id}/download/{field_name}")
 def download_simulation_file(sim_id: str, field_name: str):

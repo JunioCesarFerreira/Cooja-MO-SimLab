@@ -12,4 +12,6 @@ ENV DB_NAME=simlab
 ENV MONGO_URI=mongodb://mongodb:27017/?replicaSet=rs0
 ENV PYTHONUNBUFFERED=1
 
+EXPOSE 8000
+
 CMD ["python", "/app/rest-api/main.py"]
