@@ -6,12 +6,12 @@ MO-Cooja-Sim is a research in scalable multi-objective optimization simulation s
 ## System Architecture
 The system is composed of three main components:
 
-1. **Python Evolutionary Algorithm Module**
+1. **MO-Engine: Evolutionary Algorithm Module**
    - Runs an evolutionary algorithm to generate new candidate solutions.
    - Enqueues each new generation's elements in MongoDB for simulation.
    - Listens for simulation results via MongoDB Change Stream.
 
-2. **Master-Node (Go Application)**
+2. **Master-Node**
    - Consumes the simulation queue from MongoDB.
    - Dynamically spawns Docker containers for simulation execution.
    - Transfers simulation input data via SCP.
