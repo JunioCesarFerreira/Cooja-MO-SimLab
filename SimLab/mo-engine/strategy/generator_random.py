@@ -8,6 +8,10 @@ from strategy.build_sim_input import create_files
 from pathlib import Path
 
 class GeneratorRandomStrategy(EngineStrategy):
+    def __init__(self):
+        self.counter: int = 0
+        self.number_of_simulations: int = 0
+        
     def start(self):
         exp_id = self.experiment["_id"]
         params = self.experiment.get("parameters", {})
@@ -85,9 +89,18 @@ class GeneratorRandomStrategy(EngineStrategy):
 
         self.mongo.experiment_repo.update(str(exp_id), {
             "status": EnumStatus.RUNNING,
-            "end_time": datetime.now(),
+            "start_time": datetime.now(),
             "generations_ids": [str(gen_id)]
         })
-
+        
+        self.number_of_simulations = len(simulation_ids)
+        self.counter = 0
+        
     def on_simulation_result(self, result_doc: dict):
-        pass  # não faz nada, pois é um algoritmo que executa uma única vez
+        self.counter += 1
+        if self.counter >= self.number_of_simulations:
+            exp_id = result_doc.get("experiment_id")
+            self.mongo.experiment_repo.update(str(exp_id), {
+                "status": EnumStatus.RUNNING,
+                "end_time": datetime.now(),
+            })
