@@ -1,5 +1,6 @@
 from datetime import datetime
 from bson import ObjectId, errors
+from typing import Callable
 
 from dto import Simulation
 from mongo.connection import MongoDBConnection, EnumStatus
@@ -76,4 +77,21 @@ class SimulationRepository:
                     "end_time": datetime.now(),
                     }
                  }
+            )
+        
+    def watch_simulations(self, on_change: Callable[[dict], None]):
+        print("[SimulationRepository] Waiting changes...")
+        pipeline = [
+            {
+                "$match": {
+                    "operationType": {"$in": ["insert", "update", "replace"]},
+                    "fullDocument.status": EnumStatus.DONE
+                }
+            }
+        ]
+        self.connection.watch_collection(
+            "simulations", 
+            pipeline, 
+            on_change, 
+            full_document="updateLookup"
             )

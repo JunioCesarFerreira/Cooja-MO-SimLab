@@ -48,7 +48,7 @@ class ExperimentRepository:
             {
                 "$match": {
                     "operationType": {"$in": ["insert", "update", "replace"]},
-                    "fullDocument.status": "Waiting"
+                    "fullDocument.status": EnumStatus.WAITING
                 }
             }
         ]
