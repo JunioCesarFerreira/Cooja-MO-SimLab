@@ -8,7 +8,8 @@ from strategy.build_sim_input import create_files
 from pathlib import Path
 
 class GeneratorRandomStrategy(EngineStrategy):
-    def __init__(self):
+    def __init__(self, experiment, mongo):
+        super().__init__(experiment, mongo)
         self.counter: int = 0
         self.number_of_simulations: int = 0
         
