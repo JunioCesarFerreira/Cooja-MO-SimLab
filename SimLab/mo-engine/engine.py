@@ -52,25 +52,17 @@ def on_experiment_event(change: dict):
         return
     exp_id = str(exp_doc["_id"])
         
-    success = mongo.experiment_repo.update(exp_id, {
-        "status": EnumStatus.RUNNING,
-        "start_time": datetime.now()
-    })
-    if success:
+    if mongo.experiment_repo.update_starting(exp_id):
         process_experiment(exp_doc)
 
 
-def run_experiment_event(change: dict):
-    print("[mo-engine] run experiment event...")
+def run_pending_experiment(change: dict):
+    print("[mo-engine] run pending experiment...")
     print(f"[mo-engine] change: {change}")
 
     exp_id = str(change["_id"])
     
-    success = mongo.experiment_repo.update(exp_id, {
-        "status": EnumStatus.RUNNING,
-        "start_time": datetime.now()
-    })
-    if success:
+    if mongo.experiment_repo.update_starting(exp_id):
         process_experiment(change)
        
 
@@ -83,7 +75,7 @@ if __name__ == "__main__":
     pending = exp_repo.find_by_status(EnumStatus.WAITING)
 
     while (len(pending) > 0):
-        run_experiment_event(pending.pop())
+        run_pending_experiment(pending.pop())
 
     Thread(
         target=exp_repo.watch_experiments, 

@@ -1,3 +1,4 @@
+import datetime
 from typing import Optional, Callable
 from bson import ObjectId, errors
 
@@ -31,7 +32,14 @@ class ExperimentRepository:
             db["experiments"].update_one(
                 {"_id": ObjectId(sim_id)},
                 {"$set": {"status": status}}
-            )      
+            )    
+            
+    def update_starting(self, exp_id: str)->bool:
+        success = self.update(exp_id, {
+        "status": EnumStatus.RUNNING,
+        "start_time": datetime.now()
+        })  
+        return success
             
     def get_by_id(self, experiment_id: str)->Experiment:
         try:
