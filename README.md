@@ -33,6 +33,45 @@ O sistema é composto por três componentes principais:
 - **Fluxo de Dados Integrado:** Integração com MongoDB para processamento em tempo real dos resultados.
 - **Automação:** Execução totalmente automatizada, desde a evolução do algoritmo até a coleta dos resultados.
 
+## Sequência de Trabalho do SimLab
+
+Apresento a seguir um diagrama simplificado da sequência de trabalho do SimLab:
+
+```mermaid
+sequenceDiagram
+    API->>+MongoDb: Create New<br/> Source Repository
+    API->>+MongoDb: New Experiment
+    
+    MongoDb-->>+mo-engine: ChangeStream<br/>New Experiment
+    
+    opt Iterative optimization
+        mo-engine->>mo-engine: Generate Experiment
+        mo-engine->>-MongoDb: Create<br/>Generations
+        
+        MongoDb-->>+master-node: ChangeStream: New Generations
+        par For each available container
+            master-node->>+CoojaWorker[1]: Initialize and<br/> Monitoring<br/> Simulation
+            CoojaWorker[1]-->>-master-node: End Simulation              
+            master-node-->>+MongoDb: Write Simulation Results Logs
+            
+            master-node->>+CoojaWorker[...]: Initialize and Monitoring Simulation
+            CoojaWorker[...]-->>-master-node: End Simulation      
+            master-node-->>+MongoDb: Write Simulation Results Logs
+            
+            master-node->>+CoojaWorker[N]: Initialize and Monitoring Simulation
+            CoojaWorker[N]-->>-master-node: End Simulation            
+            master-node-->>-MongoDb: Write Simulation Results Logs
+        end
+        MongoDb-->>+mo-engine: ChangeStream<br/>End Simalations 
+    end
+    mo-engine-->>-MongoDb: Change DONE<br/>If finish<br/>Experiment
+
+    API->>+MongoDb: GET Query Results<br/>and 
+    MongoDb-->>-API: Response
+
+    Note right of master-node: sim_queue<br/>governs<br/>throughput<br/>workers pull<br/>when available.
+```
+
 ## Instalação
 ### Pré-requisitos
 - Docker e Docker Compose

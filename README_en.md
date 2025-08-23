@@ -30,6 +30,45 @@ The system is composed of three main components:
 - **Seamless Data Flow:** Integration with MongoDB for real-time result processing.
 - **Automation:** End-to-end automated execution from algorithm evolution to result collection.
 
+## SimLab Work Sequence
+
+Below is a simplified diagram of the SimLab workflow:
+
+```mermaid
+sequenceDiagram
+    API->>+MongoDb: Create New<br/> Source Repository
+    API->>+MongoDb: New Experiment
+    
+    MongoDb-->>+mo-engine: ChangeStream<br/>New Experiment
+    
+    opt Iterative optimization
+        mo-engine->>mo-engine: Generate Experiment
+        mo-engine->>-MongoDb: Create<br/>Generations
+        
+        MongoDb-->>+master-node: ChangeStream: New Generations
+        par For each available container
+            master-node->>+CoojaWorker[1]: Initialize and<br/> Monitoring<br/> Simulation
+            CoojaWorker[1]-->>-master-node: End Simulation              
+            master-node-->>+MongoDb: Write Simulation Results Logs
+            
+            master-node->>+CoojaWorker[...]: Initialize and Monitoring Simulation
+            CoojaWorker[...]-->>-master-node: End Simulation      
+            master-node-->>+MongoDb: Write Simulation Results Logs
+            
+            master-node->>+CoojaWorker[N]: Initialize and Monitoring Simulation
+            CoojaWorker[N]-->>-master-node: End Simulation            
+            master-node-->>-MongoDb: Write Simulation Results Logs
+        end
+        MongoDb-->>+mo-engine: ChangeStream<br/>End Simalations 
+    end
+    mo-engine-->>-MongoDb: Change DONE<br/>If finish<br/>Experiment
+
+    API->>+MongoDb: GET Query Results<br/>and 
+    MongoDb-->>-API: Response
+
+    Note right of master-node: sim_queue<br/>governs<br/>throughput<br/>workers pull<br/>when available.
+```
+
 ## Installation
 ### Prerequisites
 - Docker & Docker Compose
